@@ -237,7 +237,7 @@ require __DIR__ . '/includes/header.php';
                     </div>
                     <h1 class="blog-page-title mb-4">Field notes for smarter signage decisions.</h1>
                     <p class="blog-page-copy mb-4">
-                        Practical articles on fabrication planning, authority submissions, retail rollouts, and material choices for teams delivering signage in Singapore.
+                        Practical articles on fabrication planning, authority submissions, retail rollouts, and material choices for teams delivering signage in Singapore and Johor Bahru.
                     </p>
                     <div class="d-flex flex-wrap gap-3">
                         <a href="#latest-articles" class="btn-wb-solid">Read Latest Posts</a>
@@ -247,16 +247,16 @@ require __DIR__ . '/includes/header.php';
                 <div class="col-lg-5">
                     <div class="blog-stat-grid">
                         <div class="blog-stat-card">
-                            <strong>3</strong>
+                            <strong>4</strong>
                             <span class="text-uppercase" style="font-size: 0.72rem; letter-spacing: 0.14em; font-weight: 700;">Fresh articles</span>
                         </div>
                         <div class="blog-stat-card">
-                            <strong>8 min</strong>
+                            <strong>7 min</strong>
                             <span class="text-uppercase" style="font-size: 0.72rem; letter-spacing: 0.14em; font-weight: 700;">Average read</span>
                         </div>
                         <div class="blog-stat-card">
-                            <strong>100%</strong>
-                            <span class="text-uppercase" style="font-size: 0.72rem; letter-spacing: 0.14em; font-weight: 700;">Singapore-focused</span>
+                            <strong>SG + JB</strong>
+                            <span class="text-uppercase" style="font-size: 0.72rem; letter-spacing: 0.14em; font-weight: 700;">Regional coverage</span>
                         </div>
                     </div>
                 </div>
@@ -272,14 +272,14 @@ require __DIR__ . '/includes/header.php';
                         <article class="blog-feature-card">
                             <div class="blog-card-meta">
                                 <span>Featured</span>
-                                <span>Permits</span>
+                                <span>Johor Bahru</span>
                                 <span>6 min read</span>
                             </div>
-                            <h2 class="blog-card-title">How to scope signage early enough to avoid approval delays.</h2>
+                            <h2 class="blog-card-title">3D illuminated signboard vs lightbox: which one is right for your business in Johor Bahru?</h2>
                             <p class="blog-card-copy">
-                                Most delays happen before fabrication starts. This guide breaks down what landlords, mall management teams, and local submission workflows usually need so design teams can lock sizes, power loads, and fixing details earlier.
+                                A practical comparison of brand impact, price range, visibility, mall requirements, and when each signboard format makes more sense for JB businesses.
                             </p>
-                            <a href="index.php#compliance" class="btn-wb-outline">See Compliance Capabilities</a>
+                            <a href="3d-illuminated-signboard-vs-lightbox-johor-bahru.php" class="btn-wb-outline">Read The Full Guide</a>
                         </article>
                     </div>
                     <div class="col-lg-5">
@@ -288,7 +288,7 @@ require __DIR__ . '/includes/header.php';
                             <h2 class="h3 mb-4">What clients usually ask before a rollout.</h2>
                             <ul class="blog-topic-list">
                                 <li><span>Material selection for indoor vs outdoor signage</span><span>Build guide</span></li>
-                                <li><span>Choosing between halo-lit letters and lightboxes</span><span>Design</span></li>
+                                <li><span>Choosing between illuminated 3D letters and lightboxes</span><span>Design</span></li>
                                 <li><span>Planning access, lifts, and installation windows</span><span>Execution</span></li>
                                 <li><span>Preparing documentation for landlords and MCSTs</span><span>Compliance</span></li>
                             </ul>
@@ -302,6 +302,19 @@ require __DIR__ . '/includes/header.php';
             <div class="container">
                 <span class="blog-section-kicker">Latest articles</span>
                 <div class="row g-4">
+                    <div class="col-md-6 col-xl-4">
+                        <article class="blog-article-card">
+                            <div class="blog-card-meta">
+                                <span>Johor Bahru</span>
+                                <span>6 min read</span>
+                            </div>
+                            <h2 class="blog-card-title">3D illuminated signboard vs lightbox for JB businesses.</h2>
+                            <p class="blog-card-copy">
+                                Compare 3D channel letters and lightboxes across price, visual impact, mall fit-out requirements, and practical SME use cases in Johor Bahru.
+                            </p>
+                            <a href="3d-illuminated-signboard-vs-lightbox-johor-bahru.php" class="btn-wb-outline">Read Article</a>
+                        </article>
+                    </div>
                     <div class="col-md-6 col-xl-4">
                         <article class="blog-article-card">
                             <div class="blog-card-meta">
