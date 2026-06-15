@@ -3,7 +3,7 @@ $pageTitle = 'Signage SG Blog | Signage Strategy, Compliance and Build Insights'
 $navPage = 'blog';
 $metaDescription = 'Read Signage SG insights on signage planning, compliance, fabrication timing, material choices, and rollout coordination for commercial projects in Singapore.';
 $siteBaseUrl = 'https://signages.com.sg';
-$canonicalPath = '/blog.php';
+$canonicalPath = '/blog';
 $ogType = 'article';
 $ogImage = 'assets/images/logo.png';
 $structuredData = [
@@ -11,7 +11,7 @@ $structuredData = [
     '@type' => 'Blog',
     'name' => 'Signage SG Blog',
     'description' => $metaDescription,
-    'url' => $siteBaseUrl . '/blog.php',
+    'url' => $siteBaseUrl . '/blog',
     'publisher' => [
         '@type' => 'Organization',
         'name' => 'Signage SG',
@@ -279,7 +279,7 @@ require __DIR__ . '/includes/header.php';
                             <p class="blog-card-copy">
                                 A practical comparison of brand impact, price range, visibility, mall requirements, and when each signboard format makes more sense for JB businesses.
                             </p>
-                            <a href="3d-illuminated-signboard-vs-lightbox-johor-bahru.php" class="btn-wb-outline">Read The Full Guide</a>
+                            <a href="blog/3d-signboard-vs-lightbox-jb" class="btn-wb-outline">Read The Full Guide</a>
                         </article>
                     </div>
                     <div class="col-lg-5">
@@ -312,7 +312,7 @@ require __DIR__ . '/includes/header.php';
                             <p class="blog-card-copy">
                                 Compare 3D channel letters and lightboxes across price, visual impact, mall fit-out requirements, and practical SME use cases in Johor Bahru.
                             </p>
-                            <a href="3d-illuminated-signboard-vs-lightbox-johor-bahru.php" class="btn-wb-outline">Read Article</a>
+                            <a href="blog/3d-signboard-vs-lightbox-jb" class="btn-wb-outline">Read Article</a>
                         </article>
                     </div>
                     <div class="col-md-6 col-xl-4">

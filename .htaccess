@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Preserve direct requests for existing files and directories.
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+RewriteRule ^blog/?$ blog.php [L,QSA]
+RewriteRule ^blog/3d-signboard-vs-lightbox-jb/?$ 3d-illuminated-signboard-vs-lightbox-johor-bahru.php [L,QSA]

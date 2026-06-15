@@ -2,7 +2,7 @@
 $pageTitle = '3D Illuminated Signboard vs Lightbox: Which One Is Right for Your Business in Johor Bahru?';
 $navPage = 'blog';
 $siteBaseUrl = 'https://signages.com.sg';
-$canonicalPath = '/3d-illuminated-signboard-vs-lightbox-johor-bahru.php';
+$canonicalPath = '/blog/3d-signboard-vs-lightbox-jb';
 $metaDescription = 'Compare 3D illuminated signboards and lightboxes for shops and businesses in Johor Bahru, including pricing, visibility, mall requirements, and how to choose the right signage type.';
 $ogType = 'article';
 $ogImage = 'https://www.jbsignboard.com/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-04-at-10.55.45-AM-1.jpeg';

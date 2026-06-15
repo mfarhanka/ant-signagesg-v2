@@ -7,13 +7,13 @@
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://signages.com.sg/blog.php</loc>
+        <loc>https://signages.com.sg/blog</loc>
         <lastmod>2026-06-15</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://signages.com.sg/3d-illuminated-signboard-vs-lightbox-johor-bahru.php</loc>
+        <loc>https://signages.com.sg/blog/3d-signboard-vs-lightbox-jb</loc>
         <lastmod>2026-06-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
