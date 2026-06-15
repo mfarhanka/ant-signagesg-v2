@@ -7,14 +7,17 @@ $canonicalPath = $canonicalPath ?? ($_SERVER['PHP_SELF'] ?? '/');
 $ogType = $ogType ?? 'website';
 $ogImage = $ogImage ?? 'assets/images/logo.png';
 $siteBaseUrl = $siteBaseUrl ?? 'https://signages.com.sg';
+$assetBase = $assetBase ?? 'assets';
+$homePagePath = $homePagePath ?? 'index.php';
+$blogPath = $blogPath ?? 'blog';
 $structuredData = $structuredData ?? null;
 $extraHead = $extraHead ?? '';
 
 $isHomePage = $navPage === 'home';
-$homeHref = $isHomePage ? '#hero' : 'index.php#hero';
-$quoteHref = $isHomePage ? '#quote-form' : 'index.php#quote-form';
-$estimatorHref = $isHomePage ? '#estimator' : 'index.php#estimator';
-$contactHref = $isHomePage ? '#location-map' : 'index.php#location-map';
+$homeHref = $isHomePage ? '#hero' : $homePagePath . '#hero';
+$quoteHref = $isHomePage ? '#quote-form' : $homePagePath . '#quote-form';
+$estimatorHref = $isHomePage ? '#estimator' : $homePagePath . '#estimator';
+$contactHref = $isHomePage ? '#location-map' : $homePagePath . '#location-map';
 $canonicalUrl = preg_match('#^https?://#i', $canonicalPath) ? $canonicalPath : rtrim($siteBaseUrl, '/') . '/' . ltrim($canonicalPath, '/');
 $ogImageUrl = preg_match('#^https?://#i', $ogImage) ? $ogImage : rtrim($siteBaseUrl, '/') . '/' . ltrim($ogImage, '/');
 ?>
@@ -49,8 +52,8 @@ $ogImageUrl = preg_match('#^https?://#i', $ogImage) ? $ogImage : rtrim($siteBase
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <link rel="icon" type="image/png" href="assets/images/logo.png">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/png" href="<?php echo htmlspecialchars($assetBase, ENT_QUOTES, 'UTF-8'); ?>/images/logo.png">
+    <link rel="stylesheet" href="<?php echo htmlspecialchars($assetBase, ENT_QUOTES, 'UTF-8'); ?>/css/style.css">
 <?php if ($structuredData !== null): ?>
     <script type="application/ld+json"><?php echo json_encode($structuredData, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT); ?></script>
 <?php endif; ?>
@@ -61,7 +64,7 @@ $ogImageUrl = preg_match('#^https?://#i', $ogImage) ? $ogImage : rtrim($siteBase
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom fixed-top py-3">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-2" href="<?php echo htmlspecialchars($homeHref, ENT_QUOTES, 'UTF-8'); ?>">
-                <img src="assets/images/logo.png" alt="Signage SG logo" style="width: 76px; height: auto;" class="flex-shrink-0">
+                <img src="<?php echo htmlspecialchars($assetBase, ENT_QUOTES, 'UTF-8'); ?>/images/logo.png" alt="Signage SG logo" style="width: 76px; height: auto;" class="flex-shrink-0">
                 <div>
                     <span class="d-block h4 mb-0 fw-bold tracking-widest text-black display-font" style="letter-spacing: 1px;">SIGNAGE SG</span>
                     <span class="d-block text-uppercase text-muted" style="font-size: 0.55rem; letter-spacing: 3px; font-weight: 700;">ARCHITECTURAL SIGN CRAFTS</span>
@@ -79,7 +82,7 @@ $ogImageUrl = preg_match('#^https?://#i', $ogImage) ? $ogImage : rtrim($siteBase
             <div class="collapse navbar-collapse" id="navbarContent">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-1 gap-lg-4">
                     <li class="nav-item"><a class="nav-link<?php echo $isHomePage ? ' active' : ''; ?>" href="<?php echo htmlspecialchars($homeHref, ENT_QUOTES, 'UTF-8'); ?>">Home</a></li>
-                    <li class="nav-item"><a class="nav-link<?php echo $navPage === 'blog' ? ' active' : ''; ?>" href="blog">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link<?php echo $navPage === 'blog' ? ' active' : ''; ?>" href="<?php echo htmlspecialchars($blogPath, ENT_QUOTES, 'UTF-8'); ?>">Blog</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?php echo htmlspecialchars($estimatorHref, ENT_QUOTES, 'UTF-8'); ?>">Cost Calculator</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?php echo htmlspecialchars($contactHref, ENT_QUOTES, 'UTF-8'); ?>">Contact</a></li>
                 </ul>

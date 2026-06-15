@@ -4,7 +4,7 @@
                 <div class="col-lg-4">
                     <div class="d-flex align-items-center gap-2 mb-4">
                         <span class="footer-logo-badge flex-shrink-0">
-                            <img src="assets/images/logo.png" alt="Signage SG logo" class="footer-logo-image">
+                            <img src="<?php echo htmlspecialchars($assetBase, ENT_QUOTES, 'UTF-8'); ?>/images/logo.png" alt="Signage SG logo" class="footer-logo-image">
                         </span>
                         <div>
                             <span class="d-block h5 mb-0 fw-bold tracking-widest text-white display-font" style="letter-spacing: 1px;">SIGNAGE SG</span>
@@ -86,6 +86,6 @@
     </a>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="<?php echo htmlspecialchars($assetBase, ENT_QUOTES, 'UTF-8'); ?>/js/main.js"></script>
 </body>
 </html>
