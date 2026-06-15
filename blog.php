@@ -1,20 +1,7 @@
-<!DOCTYPE html>
-<html lang="en" class="h-full">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signage SG Blog | Signage Strategy, Compliance and Build Insights</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <link rel="icon" type="image/png" href="assets/images/logo.png">
-    <link rel="stylesheet" href="assets/css/style.css">
+<?php
+$pageTitle = 'Signage SG Blog | Signage Strategy, Compliance and Build Insights';
+$navPage = 'blog';
+$extraHead = <<<'HTML'
     <style>
         .blog-hero {
             position: relative;
@@ -209,43 +196,9 @@
             }
         }
     </style>
-</head>
-<body class="d-flex flex-column h-full">
-
-    <nav class="navbar navbar-expand-lg navbar-light navbar-custom fixed-top py-3">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center gap-2" href="index.php#hero">
-                <img src="assets/images/logo.png" alt="Signage SG logo" style="width: 76px; height: auto;" class="flex-shrink-0">
-                <div>
-                    <span class="d-block h4 mb-0 fw-bold tracking-widest text-black display-font" style="letter-spacing: 1px;">SIGNAGE SG</span>
-                    <span class="d-block text-uppercase text-muted" style="font-size: 0.55rem; letter-spacing: 3px; font-weight: 700;">ARCHITECTURAL SIGN CRAFTS</span>
-                </div>
-            </a>
-
-            <button class="navbar-toggler border-1 border-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="mobile-nav-quote d-lg-none w-100 mt-3">
-                <a href="index.php#quote-form" class="btn-wb-solid btn-nav-quote w-100 text-center">Get Quote</a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-1 gap-lg-4">
-                    <li class="nav-item"><a class="nav-link" href="index.php#hero">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="blog.php">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.php#estimator">Cost Calculator</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.php#location-map">Contact</a></li>
-                </ul>
-                <div class="d-flex align-items-center gap-3 navbar-cta-group">
-                    <a href="https://wa.me/6582861600" class="text-black text-decoration-none d-none d-xl-inline-block fw-bold text-nowrap" style="font-size: 0.85rem;" target="_blank" rel="noopener noreferrer">
-                        <i class="fa-solid fa-phone me-1"></i>+65 8286 1600
-                    </a>
-                    <a href="index.php#quote-form" class="btn-wb-solid btn-nav-quote d-none d-lg-inline-flex">Get Quote</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+HTML;
+require __DIR__ . '/includes/header.php';
+?>
 
     <header class="blog-hero">
         <div class="blog-hero-diagonal" aria-hidden="true"></div>
@@ -397,94 +350,4 @@
         </section>
     </main>
 
-    <footer class="mt-auto py-5 bg-black text-white">
-        <div class="container py-3">
-            <div class="row g-5">
-                <div class="col-lg-4">
-                    <div class="d-flex align-items-center gap-2 mb-4">
-                        <span class="footer-logo-badge flex-shrink-0">
-                            <img src="assets/images/logo.png" alt="Signage SG logo" class="footer-logo-image">
-                        </span>
-                        <div>
-                            <span class="d-block h5 mb-0 fw-bold tracking-widest text-white display-font" style="letter-spacing: 1px;">SIGNAGE SG</span>
-                            <span class="d-block text-uppercase text-muted" style="font-size: 0.55rem; letter-spacing: 2px; font-weight: 700;">Singapore</span>
-                        </div>
-                    </div>
-                    <p class="text-light-gray mb-4" style="font-size: 0.9rem; line-height: 1.7; font-weight: 300;">
-                        Precision engineering and aesthetic excellence in architectural signage systems. Fully accredited with bizSAFE Star and BCA standards for secure site handovers.
-                    </p>
-                    <div class="d-flex gap-3">
-                        <a href="#" class="text-white hover-opacity" style="font-size: 1.2rem;"><i class="fa-brands fa-linkedin"></i></a>
-                        <a href="#" class="text-white hover-opacity" style="font-size: 1.2rem;"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" class="text-white hover-opacity" style="font-size: 1.2rem;"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="#" class="text-white hover-opacity" style="font-size: 1.2rem;"><i class="fa-brands fa-whatsapp"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4">
-                    <h5 class="text-white mb-4 tracking-wider text-uppercase font-monospace" style="font-size: 0.85rem;">PRODUCTION WORKSHOP</h5>
-                    <ul class="list-unstyled d-flex flex-column gap-3 text-light-gray" style="font-size: 0.9rem;">
-                        <li class="d-flex align-items-start gap-2">
-                            <i class="fa-solid fa-location-dot mt-1 text-white"></i>
-                            <div>
-                                <strong>Signage SG Private Limited</strong><br>
-                                601 Ang Mo Kio Avenue 5,<br>
-                                560601, Singapore
-                            </div>
-                        </li>
-                        <li class="d-flex align-items-center gap-2">
-                            <i class="fa-solid fa-clock text-white"></i>
-                            <span>Mon - Fri: 9.00 a.m. - 6.00 p.m.; Sat - Sun: Closed</span>
-                        </li>
-                        <li class="d-flex align-items-center gap-2">
-                            <i class="fa-solid fa-phone text-white"></i>
-                            <a href="https://wa.me/6582861600" class="text-light-gray text-decoration-none hover-underline" target="_blank" rel="noopener noreferrer">+65 8286 1600 (Gan)</a>
-                        </li>
-                        <li class="d-flex align-items-center gap-2">
-                            <i class="fa-solid fa-envelope text-white"></i>
-                            <a href="mailto:antadv.gan@gmail.com" class="text-light-gray text-decoration-none hover-underline">antadv.gan@gmail.com</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="col-md-6 col-lg-4">
-                    <h5 class="text-white mb-4 tracking-wider text-uppercase font-monospace" style="font-size: 0.85rem;">LOCAL REGULATORY COMPLIANCE</h5>
-                    <div class="d-flex flex-column gap-2 text-light-gray" style="font-size: 0.8rem;">
-                        <div class="border border-white p-2 text-white font-monospace d-flex justify-content-between align-items-center" style="opacity: 0.8;">
-                            <span>BCA REGISTERED KEY:</span>
-                            <span class="fw-bold">CR11 (L1)</span>
-                        </div>
-                        <div class="border border-white p-2 text-white font-monospace d-flex justify-content-between align-items-center" style="opacity: 0.8;">
-                            <span>SAFETY COMPLIANCE:</span>
-                            <span class="fw-bold text-uppercase">bizSAFE STAR</span>
-                        </div>
-                        <div class="border border-white p-2 text-white font-monospace d-flex justify-content-between align-items-center" style="opacity: 0.8;">
-                            <span>ISO PROTOCOL:</span>
-                            <span class="fw-bold">ISO 45001:2018</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="border-top border-technical-subtle mt-5 pt-4 d-flex flex-column flex-md-row justify-content-between align-items-center text-white" style="font-size: 0.8rem;">
-                <p class="mb-2 mb-md-0">&copy; 2026 Signage SG. All Rights Reserved.</p>
-                <div class="d-flex gap-3">
-                    <a href="#" class="text-white text-decoration-none hover-white">Terms of Fabrication</a>
-                    <span>|</span>
-                    <a href="#" class="text-white text-decoration-none hover-white">PDPA Privacy Protocol</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <a href="https://wa.me/6582861600" class="floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat with Signage SG on WhatsApp">
-        <span class="floating-whatsapp-icon" aria-hidden="true">
-            <i class="fa-brands fa-whatsapp"></i>
-        </span>
-        <span class="floating-whatsapp-label">WhatsApp Us</span>
-    </a>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/main.js"></script>
-</body>
-</html>
+<?php require __DIR__ . '/includes/footer.php'; ?>

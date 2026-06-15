@@ -1,0 +1,66 @@
+<?php
+$pageTitle = $pageTitle ?? 'Signage SG | Premium Architectural Fabricators Singapore';
+$navPage = $navPage ?? 'home';
+$extraHead = $extraHead ?? '';
+
+$isHomePage = $navPage === 'home';
+$homeHref = $isHomePage ? '#hero' : 'index.php#hero';
+$quoteHref = $isHomePage ? '#quote-form' : 'index.php#quote-form';
+$estimatorHref = $isHomePage ? '#estimator' : 'index.php#estimator';
+$contactHref = $isHomePage ? '#location-map' : 'index.php#location-map';
+?>
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo htmlspecialchars($pageTitle, ENT_QUOTES, 'UTF-8'); ?></title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+<?php echo $extraHead; ?>
+</head>
+<body class="d-flex flex-column h-full">
+
+    <nav class="navbar navbar-expand-lg navbar-light navbar-custom fixed-top py-3">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="<?php echo htmlspecialchars($homeHref, ENT_QUOTES, 'UTF-8'); ?>">
+                <img src="assets/images/logo.png" alt="Signage SG logo" style="width: 76px; height: auto;" class="flex-shrink-0">
+                <div>
+                    <span class="d-block h4 mb-0 fw-bold tracking-widest text-black display-font" style="letter-spacing: 1px;">SIGNAGE SG</span>
+                    <span class="d-block text-uppercase text-muted" style="font-size: 0.55rem; letter-spacing: 3px; font-weight: 700;">ARCHITECTURAL SIGN CRAFTS</span>
+                </div>
+            </a>
+
+            <button class="navbar-toggler border-1 border-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="mobile-nav-quote d-lg-none w-100 mt-3">
+                <a href="<?php echo htmlspecialchars($quoteHref, ENT_QUOTES, 'UTF-8'); ?>" class="btn-wb-solid btn-nav-quote w-100 text-center">Get Quote</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-1 gap-lg-4">
+                    <li class="nav-item"><a class="nav-link<?php echo $isHomePage ? ' active' : ''; ?>" href="<?php echo htmlspecialchars($homeHref, ENT_QUOTES, 'UTF-8'); ?>">Home</a></li>
+                    <li class="nav-item"><a class="nav-link<?php echo $navPage === 'blog' ? ' active' : ''; ?>" href="blog.php">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?php echo htmlspecialchars($estimatorHref, ENT_QUOTES, 'UTF-8'); ?>">Cost Calculator</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?php echo htmlspecialchars($contactHref, ENT_QUOTES, 'UTF-8'); ?>">Contact</a></li>
+                </ul>
+                <div class="d-flex align-items-center gap-3 navbar-cta-group">
+                    <a href="https://wa.me/6582861600" class="text-black text-decoration-none d-none d-xl-inline-block fw-bold text-nowrap" style="font-size: 0.85rem;" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-solid fa-phone me-1"></i>+65 8286 1600
+                    </a>
+                    <a href="<?php echo htmlspecialchars($quoteHref, ENT_QUOTES, 'UTF-8'); ?>" class="btn-wb-solid btn-nav-quote d-none d-lg-inline-flex">Get Quote</a>
+                </div>
+            </div>
+        </div>
+    </nav>
