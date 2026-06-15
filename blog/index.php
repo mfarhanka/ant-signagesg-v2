@@ -1,10 +1,30 @@
 <?php
+$posts = array_values(require __DIR__ . '/includes/posts.php');
+usort($posts, static function (array $left, array $right): int {
+    return strcmp($right['published_date'], $left['published_date']);
+});
+
+$featuredPost = $posts[0] ?? null;
+$averageReadTime = 0;
+
+if ($posts) {
+    $totalReadMinutes = 0;
+
+    foreach ($posts as $post) {
+        if (preg_match('/(\d+)/', $post['read_time'], $matches) === 1) {
+            $totalReadMinutes += (int) $matches[1];
+        }
+    }
+
+    $averageReadTime = (int) round($totalReadMinutes / count($posts));
+}
+
 $pageTitle = 'Signage SG Blog | Signage Strategy, Compliance and Build Insights';
 $navPage = 'blog';
 $metaDescription = 'Read Signage SG insights on signage planning, compliance, fabrication timing, material choices, and rollout coordination for commercial projects in Singapore.';
 $siteBaseUrl = 'https://signages.com.sg';
 $canonicalPath = '/blog';
-$ogType = 'article';
+$ogType = 'website';
 $ogImage = '../assets/images/logo.png';
 $assetBase = '../assets';
 $homePagePath = '../index.php';
@@ -24,11 +44,14 @@ $structuredData = [
         ]
     ],
     'inLanguage' => 'en-SG',
-    'about' => [
-        ['@type' => 'Thing', 'name' => 'Signage fabrication'],
-        ['@type' => 'Thing', 'name' => 'Commercial signage compliance'],
-        ['@type' => 'Thing', 'name' => 'Retail signage planning']
-    ]
+    'blogPost' => array_map(static function (array $post) use ($siteBaseUrl): array {
+        return [
+            '@type' => 'BlogPosting',
+            'headline' => $post['title'],
+            'url' => $siteBaseUrl . '/blog/' . $post['slug'],
+            'datePublished' => $post['published_date']
+        ];
+    }, $posts)
 ];
 $extraHead = <<<'HTML'
     <style>
@@ -250,11 +273,11 @@ require __DIR__ . '/../includes/header.php';
                 <div class="col-lg-5">
                     <div class="blog-stat-grid">
                         <div class="blog-stat-card">
-                            <strong>4</strong>
+                            <strong><?php echo count($posts); ?></strong>
                             <span class="text-uppercase" style="font-size: 0.72rem; letter-spacing: 0.14em; font-weight: 700;">Fresh articles</span>
                         </div>
                         <div class="blog-stat-card">
-                            <strong>7 min</strong>
+                            <strong><?php echo $averageReadTime; ?> min</strong>
                             <span class="text-uppercase" style="font-size: 0.72rem; letter-spacing: 0.14em; font-weight: 700;">Average read</span>
                         </div>
                         <div class="blog-stat-card">
@@ -272,18 +295,20 @@ require __DIR__ . '/../includes/header.php';
             <div class="container">
                 <div class="row g-4 align-items-stretch">
                     <div class="col-lg-7">
+<?php if ($featuredPost !== null): ?>
                         <article class="blog-feature-card">
                             <div class="blog-card-meta">
                                 <span>Featured</span>
-                                <span>Johor Bahru</span>
-                                <span>6 min read</span>
+                                <span><?php echo htmlspecialchars($featuredPost['category'], ENT_QUOTES, 'UTF-8'); ?></span>
+                                <span><?php echo htmlspecialchars($featuredPost['read_time'], ENT_QUOTES, 'UTF-8'); ?></span>
                             </div>
-                            <h2 class="blog-card-title">3D illuminated signboard vs lightbox: which one is right for your business in Johor Bahru?</h2>
+                            <h2 class="blog-card-title"><?php echo htmlspecialchars($featuredPost['title'], ENT_QUOTES, 'UTF-8'); ?></h2>
                             <p class="blog-card-copy">
-                                A practical comparison of brand impact, price range, visibility, mall requirements, and when each signboard format makes more sense for JB businesses.
+                                <?php echo htmlspecialchars($featuredPost['summary'], ENT_QUOTES, 'UTF-8'); ?>
                             </p>
-                            <a href="3d-signboard-vs-lightbox-jb" class="btn-wb-outline">Read The Full Guide</a>
+                            <a href="<?php echo htmlspecialchars($featuredPost['slug'], ENT_QUOTES, 'UTF-8'); ?>" class="btn-wb-outline">Read The Full Guide</a>
                         </article>
+<?php endif; ?>
                     </div>
                     <div class="col-lg-5">
                         <aside class="blog-topic-card">
@@ -305,19 +330,21 @@ require __DIR__ . '/../includes/header.php';
             <div class="container">
                 <span class="blog-section-kicker">Latest articles</span>
                 <div class="row g-4">
+<?php foreach ($posts as $post): ?>
                     <div class="col-md-6 col-xl-4">
                         <article class="blog-article-card">
                             <div class="blog-card-meta">
-                                <span>Johor Bahru</span>
-                                <span>6 min read</span>
+                                <span><?php echo htmlspecialchars($post['category'], ENT_QUOTES, 'UTF-8'); ?></span>
+                                <span><?php echo htmlspecialchars($post['read_time'], ENT_QUOTES, 'UTF-8'); ?></span>
                             </div>
-                            <h2 class="blog-card-title">3D illuminated signboard vs lightbox for JB businesses.</h2>
+                            <h2 class="blog-card-title"><?php echo htmlspecialchars($post['title'], ENT_QUOTES, 'UTF-8'); ?></h2>
                             <p class="blog-card-copy">
-                                Compare 3D channel letters and lightboxes across price, visual impact, mall fit-out requirements, and practical SME use cases in Johor Bahru.
+                                <?php echo htmlspecialchars($post['card_summary'], ENT_QUOTES, 'UTF-8'); ?>
                             </p>
-                            <a href="3d-signboard-vs-lightbox-jb" class="btn-wb-outline">Read Article</a>
+                            <a href="<?php echo htmlspecialchars($post['slug'], ENT_QUOTES, 'UTF-8'); ?>" class="btn-wb-outline">Read Article</a>
                         </article>
                     </div>
+<?php endforeach; ?>
                     <div class="col-md-6 col-xl-4">
                         <article class="blog-article-card">
                             <div class="blog-card-meta">
