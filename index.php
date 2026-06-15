@@ -1,6 +1,48 @@
 <?php
 $pageTitle = 'Signage SG | Premium Architectural Fabricators Singapore';
 $navPage = 'home';
+$metaDescription = 'Signage SG delivers commercial signage fabrication and installation in Singapore, from 3D lettering and acrylic signs to lightboxes, decals, and site-ready project coordination.';
+$siteBaseUrl = 'https://signages.com.sg';
+$canonicalPath = '/';
+$ogImage = 'assets/images/logo.png';
+$structuredData = [
+    '@context' => 'https://schema.org',
+    '@type' => 'LocalBusiness',
+    'name' => 'Signage SG',
+    'description' => $metaDescription,
+    'url' => $siteBaseUrl . '/',
+    'logo' => $siteBaseUrl . '/assets/images/logo.png',
+    'image' => $siteBaseUrl . '/assets/images/logo.png',
+    'telephone' => '+65 8286 1600',
+    'email' => 'antadv.gan@gmail.com',
+    'priceRange' => '$$',
+    'address' => [
+        '@type' => 'PostalAddress',
+        'streetAddress' => '601 Ang Mo Kio Avenue 5',
+        'addressLocality' => 'Singapore',
+        'postalCode' => '560601',
+        'addressCountry' => 'SG'
+    ],
+    'openingHoursSpecification' => [[
+        '@type' => 'OpeningHoursSpecification',
+        'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        'opens' => '09:00',
+        'closes' => '18:00'
+    ]],
+    'areaServed' => [
+        '@type' => 'Country',
+        'name' => 'Singapore'
+    ],
+    'sameAs' => [
+        'https://wa.me/6582861600'
+    ],
+    'makesOffer' => [
+        ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => '3D signage fabrication']],
+        ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'Acrylic signage installation']],
+        ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'Lightbox signage production']],
+        ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'Vinyl decal and sticker installation']]
+    ]
+];
 require __DIR__ . '/includes/header.php';
 ?>
 
@@ -82,6 +124,8 @@ require __DIR__ . '/includes/header.php';
             </div>
         </div>
     </header>
+
+    <main class="flex-grow-1">
 
     <section id="video-showcase" class="video-showcase-section py-5 border-bottom border-technical">
         <div class="container py-4 py-lg-5">
@@ -591,5 +635,7 @@ require __DIR__ . '/includes/header.php';
             </div>
         </div>
     </section>
+
+    </main>
 
 <?php require __DIR__ . '/includes/footer.php'; ?>

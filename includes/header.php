@@ -1,6 +1,13 @@
 <?php
 $pageTitle = $pageTitle ?? 'Signage SG | Premium Architectural Fabricators Singapore';
 $navPage = $navPage ?? 'home';
+$metaDescription = $metaDescription ?? 'Signage SG designs, fabricates, and installs commercial signage in Singapore, including 3D lettering, lightboxes, acrylic signs, decals, and project coordination.';
+$metaRobots = $metaRobots ?? 'index,follow';
+$canonicalPath = $canonicalPath ?? ($_SERVER['PHP_SELF'] ?? '/');
+$ogType = $ogType ?? 'website';
+$ogImage = $ogImage ?? 'assets/images/logo.png';
+$siteBaseUrl = $siteBaseUrl ?? 'https://signages.com.sg';
+$structuredData = $structuredData ?? null;
 $extraHead = $extraHead ?? '';
 
 $isHomePage = $navPage === 'home';
@@ -8,6 +15,8 @@ $homeHref = $isHomePage ? '#hero' : 'index.php#hero';
 $quoteHref = $isHomePage ? '#quote-form' : 'index.php#quote-form';
 $estimatorHref = $isHomePage ? '#estimator' : 'index.php#estimator';
 $contactHref = $isHomePage ? '#location-map' : 'index.php#location-map';
+$canonicalUrl = preg_match('#^https?://#i', $canonicalPath) ? $canonicalPath : rtrim($siteBaseUrl, '/') . '/' . ltrim($canonicalPath, '/');
+$ogImageUrl = preg_match('#^https?://#i', $ogImage) ? $ogImage : rtrim($siteBaseUrl, '/') . '/' . ltrim($ogImage, '/');
 ?>
 <!DOCTYPE html>
 <html lang="en" class="h-full">
@@ -15,6 +24,22 @@ $contactHref = $isHomePage ? '#location-map' : 'index.php#location-map';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($pageTitle, ENT_QUOTES, 'UTF-8'); ?></title>
+    <meta name="description" content="<?php echo htmlspecialchars($metaDescription, ENT_QUOTES, 'UTF-8'); ?>">
+    <meta name="robots" content="<?php echo htmlspecialchars($metaRobots, ENT_QUOTES, 'UTF-8'); ?>">
+    <link rel="canonical" href="<?php echo htmlspecialchars($canonicalUrl, ENT_QUOTES, 'UTF-8'); ?>">
+
+    <meta property="og:locale" content="en_SG">
+    <meta property="og:type" content="<?php echo htmlspecialchars($ogType, ENT_QUOTES, 'UTF-8'); ?>">
+    <meta property="og:title" content="<?php echo htmlspecialchars($pageTitle, ENT_QUOTES, 'UTF-8'); ?>">
+    <meta property="og:description" content="<?php echo htmlspecialchars($metaDescription, ENT_QUOTES, 'UTF-8'); ?>">
+    <meta property="og:url" content="<?php echo htmlspecialchars($canonicalUrl, ENT_QUOTES, 'UTF-8'); ?>">
+    <meta property="og:image" content="<?php echo htmlspecialchars($ogImageUrl, ENT_QUOTES, 'UTF-8'); ?>">
+    <meta property="og:site_name" content="Signage SG">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<?php echo htmlspecialchars($pageTitle, ENT_QUOTES, 'UTF-8'); ?>">
+    <meta name="twitter:description" content="<?php echo htmlspecialchars($metaDescription, ENT_QUOTES, 'UTF-8'); ?>">
+    <meta name="twitter:image" content="<?php echo htmlspecialchars($ogImageUrl, ENT_QUOTES, 'UTF-8'); ?>">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -26,6 +51,9 @@ $contactHref = $isHomePage ? '#location-map' : 'index.php#location-map';
 
     <link rel="icon" type="image/png" href="assets/images/logo.png">
     <link rel="stylesheet" href="assets/css/style.css">
+<?php if ($structuredData !== null): ?>
+    <script type="application/ld+json"><?php echo json_encode($structuredData, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT); ?></script>
+<?php endif; ?>
 <?php echo $extraHead; ?>
 </head>
 <body class="d-flex flex-column h-full">

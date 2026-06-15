@@ -1,6 +1,32 @@
 <?php
 $pageTitle = 'Signage SG Blog | Signage Strategy, Compliance and Build Insights';
 $navPage = 'blog';
+$metaDescription = 'Read Signage SG insights on signage planning, compliance, fabrication timing, material choices, and rollout coordination for commercial projects in Singapore.';
+$siteBaseUrl = 'https://signages.com.sg';
+$canonicalPath = '/blog.php';
+$ogType = 'article';
+$ogImage = 'assets/images/logo.png';
+$structuredData = [
+    '@context' => 'https://schema.org',
+    '@type' => 'Blog',
+    'name' => 'Signage SG Blog',
+    'description' => $metaDescription,
+    'url' => $siteBaseUrl . '/blog.php',
+    'publisher' => [
+        '@type' => 'Organization',
+        'name' => 'Signage SG',
+        'logo' => [
+            '@type' => 'ImageObject',
+            'url' => $siteBaseUrl . '/assets/images/logo.png'
+        ]
+    ],
+    'inLanguage' => 'en-SG',
+    'about' => [
+        ['@type' => 'Thing', 'name' => 'Signage fabrication'],
+        ['@type' => 'Thing', 'name' => 'Commercial signage compliance'],
+        ['@type' => 'Thing', 'name' => 'Retail signage planning']
+    ]
+];
 $extraHead = <<<'HTML'
     <style>
         .blog-hero {
