@@ -1,7 +1,7 @@
 <?php
 $pageTitle = 'Signboard and Signage Products in Singapore | Signage SG';
 $navPage = 'products';
-$metaDescription = 'Explore custom signboard and signage products in Singapore, including 3D signboards, LED neon signs, lightboxes, window stickers, vehicle decals, and print essentials.';
+$metaDescription = 'Explore custom signboard and signage products in Singapore, including 3D lighted signboards, front-lit, back-lit, whole-lit, lightbox, LED neon, stickers, and decals.';
 $siteBaseUrl = 'https://signages.com.sg';
 $canonicalPath = '/signboard-and-signage-products-in-singapore-sg';
 $ogImage = 'assets/images/products/aluminium-3d-box-up-signboard.jpeg';
@@ -27,6 +27,11 @@ $structuredData = [
         '@type' => 'ItemList',
         'itemListElement' => [
             ['@type' => 'Service', 'name' => '3D signboard fabrication'],
+            ['@type' => 'Service', 'name' => '3D signboard with lighting'],
+            ['@type' => 'Service', 'name' => 'Back-lit signboard fabrication'],
+            ['@type' => 'Service', 'name' => 'Whole-lit signboard fabrication'],
+            ['@type' => 'Service', 'name' => 'Punch-hole signboard fabrication'],
+            ['@type' => 'Service', 'name' => 'Aluminium casing lightbox fabrication'],
             ['@type' => 'Service', 'name' => 'LED neon signage'],
             ['@type' => 'Service', 'name' => 'Soft fabric lightbox signage'],
             ['@type' => 'Service', 'name' => 'Glass window sticker installation'],
@@ -230,7 +235,7 @@ require __DIR__ . '/../includes/header.php';
                     <span class="product-kicker">Singapore Signage Products</span>
                     <h1 class="product-title mt-4 mb-4">Signboard And Signage Products</h1>
                     <p class="product-lead fs-5 mb-4">
-                        Create signage that stands out. We design custom signboards, displays, stickers, and printed brand materials that grab attention, communicate clearly, and help your business stay memorable.
+                        Brighten up your business with custom signboards, 3D lighted lettering, lightboxes, stickers, decals, and printed brand materials that grab attention by day and night.
                     </p>
                     <div class="d-flex flex-wrap gap-3">
                         <a href="../index.php#quote-form" class="btn-wb-solid">Request Product Quote</a>
@@ -283,6 +288,28 @@ require __DIR__ . '/../includes/header.php';
 
                     <article class="product-card">
                         <div class="product-card-media">
+                            <img src="../assets/images/products/back-lit-signboard.jpeg" alt="Back-lit signboard manufacturer in Singapore">
+                        </div>
+                        <div class="product-card-body">
+                            <span class="product-tag">Illuminated Signage</span>
+                            <h3>Back-Lit Signboards</h3>
+                            <p class="product-copy mb-0">Halo-style illuminated lettering and panels that create a clean glow behind the signage for premium night-time visibility.</p>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="product-card-media">
+                            <img src="../assets/images/products/whole-lit-signboard.jpeg" alt="Whole-lit signboard manufacturer in Singapore">
+                        </div>
+                        <div class="product-card-body">
+                            <span class="product-tag">Illuminated Signage</span>
+                            <h3>Whole-Lit Signboards</h3>
+                            <p class="product-copy mb-0">Fully illuminated sign faces for storefronts and brand panels where bright, even visibility is the main requirement.</p>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="product-card-media">
                             <img src="../assets/images/products/led-neon-signage-pink.jpg" alt="Pink LED neon signage in Singapore">
                         </div>
                         <div class="product-card-body">
@@ -300,6 +327,83 @@ require __DIR__ . '/../includes/header.php';
                             <span class="product-tag">Lightbox</span>
                             <h3>Soft Fabric Lightboxes</h3>
                             <p class="product-copy mb-0">Large-format lightbox systems with replaceable fabric graphics for malls, showrooms, exhibitions, and promotional campaigns.</p>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="product-card-media">
+                            <img src="../assets/images/products/sided-lightbox-signboard.jpeg" alt="Sided lightbox signboard manufacturer in Singapore">
+                        </div>
+                        <div class="product-card-body">
+                            <span class="product-tag">Lightbox</span>
+                            <h3>Sided Lightboxes</h3>
+                            <p class="product-copy mb-0">Projecting or sided lightbox signboards for corridors, shopfronts, and walk-by visibility from multiple directions.</p>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="product-card-media">
+                            <img src="../assets/images/products/aluminium-casing-lightbox.jpeg" alt="Aluminium casing lightbox manufacturer in Singapore">
+                        </div>
+                        <div class="product-card-body">
+                            <span class="product-tag">Lightbox</span>
+                            <h3>Aluminium Casing Lightboxes</h3>
+                            <p class="product-copy mb-0">Durable framed lightbox systems with aluminium casing for cleaner edges, stronger structure, and long-term shopfront use.</p>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="product-card-media">
+                            <img src="../assets/images/products/crystal-wording-lightbox.jpeg" alt="Crystal wording lightbox manufactured in Singapore">
+                        </div>
+                        <div class="product-card-body">
+                            <span class="product-tag">Lightbox</span>
+                            <h3>Crystal Wording Lightboxes</h3>
+                            <p class="product-copy mb-0">Polished acrylic or crystal-effect wording paired with lighting for refined indoor brand walls and reception signage.</p>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="product-card-media">
+                            <img src="../assets/images/products/punch-hole-signboard.jpeg" alt="Punch hole signboard manufacturer in Singapore">
+                        </div>
+                        <div class="product-card-body">
+                            <span class="product-tag">Specialty Signboard</span>
+                            <h3>Punch-Hole Signboards</h3>
+                            <p class="product-copy mb-0">Perforated or punch-hole signboards that combine texture, light control, and a distinctive fabrication detail.</p>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="product-card-media">
+                            <img src="../assets/images/products/light-bulb-signboard.jpeg" alt="Light bulb signboard manufacturer in Singapore">
+                        </div>
+                        <div class="product-card-body">
+                            <span class="product-tag">Specialty Lighting</span>
+                            <h3>Light Bulb Signboards</h3>
+                            <p class="product-copy mb-0">Retro-style bulb signage for feature walls, entertainment venues, events, and high-impact decorative branding.</p>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="product-card-media">
+                            <img src="../assets/images/products/aluminium-strip-signboard-base.jpeg" alt="Aluminium strip signboard base manufacturer in Singapore">
+                        </div>
+                        <div class="product-card-body">
+                            <span class="product-tag">Signboard Base</span>
+                            <h3>Aluminium Strip Signboard Bases</h3>
+                            <p class="product-copy mb-0">Structured aluminium strip bases used as the foundation for durable exterior signboards and layered signage builds.</p>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="product-card-media">
+                            <img src="../assets/images/products/2d-signboard.jpeg" alt="2D signboard maker in Singapore">
+                        </div>
+                        <div class="product-card-body">
+                            <span class="product-tag">Flat Signage</span>
+                            <h3>2D Signboards</h3>
+                            <p class="product-copy mb-0">Clean flat signboards for budget-conscious projects, directional signs, wall-mounted panels, and simple business identification.</p>
                         </div>
                     </article>
 
