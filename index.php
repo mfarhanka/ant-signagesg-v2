@@ -138,12 +138,12 @@ require __DIR__ . '/includes/header.php';
             <div class="video-showcase-grid">
                 <article class="video-showcase-card">
                     <video class="video-showcase-media" autoplay muted loop playsinline preload="metadata">
-                        <source src="assets/videos/signage-showcase-01.mp4" type="video/mp4">
+                        <source src="assets/videos/signage-showcase-05.mp4" type="video/mp4">
                     </video>
                 </article>
                 <article class="video-showcase-card">
                     <video class="video-showcase-media" autoplay muted loop playsinline preload="metadata">
-                        <source src="assets/videos/signage-showcase-02.mp4" type="video/mp4">
+                        <source src="assets/videos/signage-showcase-06.mp4" type="video/mp4">
                     </video>
                 </article>
                 <article class="video-showcase-card">

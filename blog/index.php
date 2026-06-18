@@ -29,6 +29,7 @@ $ogImage = '../assets/images/logo.png';
 $assetBase = '../assets';
 $homePagePath = '../index.php';
 $blogPath = '../blog';
+$productPath = '../signboard-and-signage-products-in-singapore-sg';
 $structuredData = [
     '@context' => 'https://schema.org',
     '@type' => 'Blog',
@@ -270,7 +271,7 @@ require __DIR__ . '/../includes/header.php';
                     </p>
                     <div class="d-flex flex-wrap gap-3">
                         <a href="../index.php#quote-form" class="btn-wb-solid">Request A Quote</a>
-                        <a href="https://wa.me/6582861600" class="btn-wb-outline" target="_blank" rel="noopener noreferrer">Chat On WhatsApp</a>
+                        <a href="https://wa.me/6582861600" class="btn-wb-outline" target="_blank" rel="noopener noreferrer">WhatsApp Mr. Gan (+65 8286 1600)</a>
                     </div>
                 </div>
             </div>

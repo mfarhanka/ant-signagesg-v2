@@ -10,6 +10,7 @@ $siteBaseUrl = $siteBaseUrl ?? 'https://signages.com.sg';
 $assetBase = $assetBase ?? 'assets';
 $homePagePath = $homePagePath ?? 'index.php';
 $blogPath = $blogPath ?? 'blog';
+$productPath = $productPath ?? 'signboard-and-signage-products-in-singapore-sg';
 $structuredData = $structuredData ?? null;
 $extraHead = $extraHead ?? '';
 
@@ -82,6 +83,7 @@ $ogImageUrl = preg_match('#^https?://#i', $ogImage) ? $ogImage : rtrim($siteBase
             <div class="collapse navbar-collapse" id="navbarContent">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-1 gap-lg-4">
                     <li class="nav-item"><a class="nav-link<?php echo $isHomePage ? ' active' : ''; ?>" href="<?php echo htmlspecialchars($homeHref, ENT_QUOTES, 'UTF-8'); ?>">Home</a></li>
+                    <li class="nav-item"><a class="nav-link<?php echo $navPage === 'products' ? ' active' : ''; ?>" href="<?php echo htmlspecialchars($productPath, ENT_QUOTES, 'UTF-8'); ?>">Products</a></li>
                     <li class="nav-item"><a class="nav-link<?php echo $navPage === 'blog' ? ' active' : ''; ?>" href="<?php echo htmlspecialchars($blogPath, ENT_QUOTES, 'UTF-8'); ?>">Blog</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?php echo htmlspecialchars($estimatorHref, ENT_QUOTES, 'UTF-8'); ?>">Cost Calculator</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?php echo htmlspecialchars($contactHref, ENT_QUOTES, 'UTF-8'); ?>">Contact</a></li>

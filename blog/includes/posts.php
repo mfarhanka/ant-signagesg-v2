@@ -152,14 +152,9 @@ return [
             'copy' => 'A&T has been making signboards in Johor Bahru for years. WhatsApp the team for a free consultation and quotation.',
             'buttons' => [
                 [
-                    'href' => 'https://wa.me/60167891110',
-                    'label' => 'WhatsApp Mr. Tan (+6016-789 1110)',
+                    'href' => 'https://wa.me/6582861600',
+                    'label' => 'WhatsApp Mr. Gan (+65 8286 1600)',
                     'class' => 'btn-wb-solid'
-                ],
-                [
-                    'href' => 'https://wa.me/60167755815',
-                    'label' => 'WhatsApp Mr. Albert (+6016-775 5815)',
-                    'class' => 'btn-wb-outline'
                 ]
             ]
         ]
@@ -321,14 +316,9 @@ return [
             'copy' => 'Prices vary based on size, material, and site conditions. WhatsApp your requirements and A&T will provide a detailed quotation, usually within the same business day.',
             'buttons' => [
                 [
-                    'href' => 'https://api.whatsapp.com/send?phone=60167891110',
-                    'label' => 'WhatsApp Mr. Tan (+6016-789 1110)',
+                    'href' => 'https://wa.me/6582861600',
+                    'label' => 'WhatsApp Mr. Gan (+65 8286 1600)',
                     'class' => 'btn-wb-solid'
-                ],
-                [
-                    'href' => 'https://api.whatsapp.com/send?phone=60167755815',
-                    'label' => 'WhatsApp Mr. Albert (+6016-775 5815)',
-                    'class' => 'btn-wb-outline'
                 ]
             ]
         ]
@@ -532,14 +522,9 @@ return [
             'copy' => 'A&T fabricates signboards in acrylic, aluminium, and stainless steel, with over 10 years of experience advising businesses in Johor Bahru on the right choice for their brand. WhatsApp for a free consultation.',
             'buttons' => [
                 [
-                    'href' => 'https://api.whatsapp.com/send?phone=60167891110',
-                    'label' => 'WhatsApp Mr. Tan (+6016-789 1110)',
+                    'href' => 'https://wa.me/6582861600',
+                    'label' => 'WhatsApp Mr. Gan (+65 8286 1600)',
                     'class' => 'btn-wb-solid'
-                ],
-                [
-                    'href' => 'https://api.whatsapp.com/send?phone=60167755815',
-                    'label' => 'WhatsApp Mr. Albert (+6016-775 5815)',
-                    'class' => 'btn-wb-outline'
                 ]
             ]
         ]
