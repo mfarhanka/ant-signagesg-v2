@@ -88,6 +88,7 @@ $extraHead = <<<'HTML'
         .product-hero-photo,
         .product-card,
         .process-card,
+        .category-group-card,
         .definition-panel {
             border: 1px solid var(--color-pure-black);
             background: var(--color-pure-white);
@@ -129,6 +130,60 @@ $extraHead = <<<'HTML'
         .product-section-heading {
             max-width: 52rem;
             margin-bottom: 2rem;
+        }
+
+        .category-group-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.25rem;
+        }
+
+        .category-group-card {
+            padding: 1.35rem;
+            min-height: 100%;
+        }
+
+        .category-group-title {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .category-group-title h3 {
+            margin-bottom: 0;
+            font-size: 1.08rem;
+            line-height: 1.2;
+        }
+
+        .category-count {
+            flex-shrink: 0;
+            min-width: 2.2rem;
+            padding: 0.25rem 0.4rem;
+            border: 1px solid var(--color-pure-black);
+            text-align: center;
+            font-family: monospace;
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+
+        .category-sub-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.55rem;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .category-sub-list li {
+            padding: 0.45rem 0.6rem;
+            background: var(--color-light-gray);
+            border: 1px solid var(--color-subtle-border);
+            color: var(--color-dark-gray);
+            font-size: 0.78rem;
+            line-height: 1.25;
         }
 
         .product-grid {
@@ -208,6 +263,7 @@ $extraHead = <<<'HTML'
             }
 
             .product-grid,
+            .category-group-grid,
             .process-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
@@ -215,6 +271,7 @@ $extraHead = <<<'HTML'
 
         @media (max-width: 575.98px) {
             .product-grid,
+            .category-group-grid,
             .process-grid {
                 grid-template-columns: 1fr;
             }
@@ -253,11 +310,180 @@ require __DIR__ . '/../includes/header.php';
     </header>
 
     <main class="flex-grow-1">
+        <section id="product-menu-structure" class="product-section bg-light">
+            <div class="container">
+                <div class="product-section-heading">
+                    <span class="text-uppercase tracking-wider text-muted fw-bold" style="font-size: 0.78rem; letter-spacing: 2px;">Menu Structure</span>
+                    <h2 class="display-5 text-black mt-2 mb-3">Products Rearranged By Parent And Subcategory</h2>
+                    <p class="product-copy mb-0">
+                        The source menu groups products into these parent categories, with each card showing the subcategories customers would expect to browse under that heading.
+                    </p>
+                </div>
+
+                <div class="category-group-grid">
+                    <article class="category-group-card">
+                        <div class="category-group-title">
+                            <h3>3D Signboard With Lighting</h3>
+                            <span class="category-count">05</span>
+                        </div>
+                        <ul class="category-sub-list">
+                            <li>Front-lit Signboard</li>
+                            <li>Back-lit Signboard</li>
+                            <li>Whole-lit Signboard</li>
+                            <li>Punch Hole Signboard</li>
+                            <li>Light Bulb Signboard</li>
+                        </ul>
+                    </article>
+
+                    <article class="category-group-card">
+                        <div class="category-group-title">
+                            <h3>3D Signboard With Non-Lighting</h3>
+                            <span class="category-count">03</span>
+                        </div>
+                        <ul class="category-sub-list">
+                            <li>Foamboard 3D Wording</li>
+                            <li>Aluminium Box-Up 3D Wording</li>
+                            <li>Acrylic 3D Wording</li>
+                        </ul>
+                    </article>
+
+                    <article class="category-group-card">
+                        <div class="category-group-title">
+                            <h3>Lightbox</h3>
+                            <span class="category-count">04</span>
+                        </div>
+                        <ul class="category-sub-list">
+                            <li>Normal Lightbox</li>
+                            <li>Aluminium Casing Lightbox</li>
+                            <li>Soft Fabric Lightbox</li>
+                            <li>Crystal Wording Lightbox</li>
+                        </ul>
+                    </article>
+
+                    <article class="category-group-card">
+                        <div class="category-group-title">
+                            <h3>2D Signboard</h3>
+                            <span class="category-count">03</span>
+                        </div>
+                        <ul class="category-sub-list">
+                            <li>Normal Signboard</li>
+                            <li>Aluminium Strip Signboard Base</li>
+                            <li>Banner Signboard</li>
+                        </ul>
+                    </article>
+
+                    <article class="category-group-card">
+                        <div class="category-group-title">
+                            <h3>Indoor Signage</h3>
+                            <span class="category-count">05</span>
+                        </div>
+                        <ul class="category-sub-list">
+                            <li>Foamboard 3D Wording Signage</li>
+                            <li>Stainless Steel 3D Wording Signage</li>
+                            <li>Acrylic 3D Wording</li>
+                            <li>Acrylic Signage</li>
+                            <li>Foamboard Signage</li>
+                        </ul>
+                    </article>
+
+                    <article class="category-group-card">
+                        <div class="category-group-title">
+                            <h3>LED Displays</h3>
+                            <span class="category-count">03</span>
+                        </div>
+                        <ul class="category-sub-list">
+                            <li>LED Banner and Signage</li>
+                            <li>LED Neon Signage</li>
+                            <li>Pylon and Directional Signage</li>
+                        </ul>
+                    </article>
+
+                    <article class="category-group-card">
+                        <div class="category-group-title">
+                            <h3>Billboard</h3>
+                            <span class="category-count">03</span>
+                        </div>
+                        <ul class="category-sub-list">
+                            <li>Billboard</li>
+                            <li>Hoarding</li>
+                            <li>Construction Board</li>
+                        </ul>
+                    </article>
+
+                    <article class="category-group-card">
+                        <div class="category-group-title">
+                            <h3>Road Sign</h3>
+                            <span class="category-count">02</span>
+                        </div>
+                        <ul class="category-sub-list">
+                            <li>Roadsign Safety Signage</li>
+                            <li>Directional Roadsign</li>
+                        </ul>
+                    </article>
+
+                    <article class="category-group-card">
+                        <div class="category-group-title">
+                            <h3>Printing Services</h3>
+                            <span class="category-count">04</span>
+                        </div>
+                        <ul class="category-sub-list">
+                            <li>Label Sticker</li>
+                            <li>Glass Window Sticker</li>
+                            <li>Wall Sticker</li>
+                            <li>Vehicle Sticker Wrapping</li>
+                        </ul>
+                    </article>
+
+                    <article class="category-group-card">
+                        <div class="category-group-title">
+                            <h3>Exhibition Booth</h3>
+                            <span class="category-count">05</span>
+                        </div>
+                        <ul class="category-sub-list">
+                            <li>PVC Table Booth</li>
+                            <li>Backdrop</li>
+                            <li>Jumbo Banner</li>
+                            <li>Pop-Up Backdrop Display System</li>
+                            <li>Pop-Up Promotion Counter</li>
+                        </ul>
+                    </article>
+
+                    <article class="category-group-card">
+                        <div class="category-group-title">
+                            <h3>Display Set</h3>
+                            <span class="category-count">08</span>
+                        </div>
+                        <ul class="category-sub-list">
+                            <li>Banner</li>
+                            <li>Normal Roll-Up Bunting</li>
+                            <li>Deluxe Roll-Up Bunting</li>
+                            <li>Tripod/Round Plate Bunting</li>
+                            <li>Human Stand</li>
+                            <li>Easel Stand / Wood Stand</li>
+                            <li>X-Stand</li>
+                            <li>Door Bunting</li>
+                        </ul>
+                    </article>
+
+                    <article class="category-group-card">
+                        <div class="category-group-title">
+                            <h3>Marketing Essential</h3>
+                            <span class="category-count">02</span>
+                        </div>
+                        <ul class="category-sub-list">
+                            <li>Namecard</li>
+                            <li>Leaflet</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
         <section id="product-range" class="product-section">
             <div class="container">
                 <div class="product-section-heading">
-                    <span class="text-uppercase tracking-wider text-muted fw-bold" style="font-size: 0.78rem; letter-spacing: 2px;">Product Range</span>
-                    <h2 class="display-5 text-black mt-2 mb-3">Custom Solutions For Shopfronts, Offices, Events And Fleets</h2>
+                    <span class="text-uppercase tracking-wider text-muted fw-bold" style="font-size: 0.78rem; letter-spacing: 2px;">Featured Product Cards</span>
+                    <h2 class="display-5 text-black mt-2 mb-3">Visual Examples From Core Signage Categories</h2>
                     <p class="product-copy mb-0">
                         From 3D signs to LED displays, every product can be adapted by size, shape, material, lighting, finish, and mounting method to suit your brand and installation site.
                     </p>
