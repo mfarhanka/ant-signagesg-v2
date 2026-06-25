@@ -232,6 +232,80 @@ if ($isLoggedIn && $requestMethod === 'POST') {
             $message = 'Subcategory removed.';
         }
 
+        if ($action === 'add_product_entry') {
+            $group = (string) ($_POST['group'] ?? '');
+            $title = (string) ($_POST['title'] ?? '');
+            $entryTitle = trim((string) ($_POST['entry_title'] ?? ''));
+            $entryDescription = trim((string) ($_POST['entry_description'] ?? ''));
+
+            if ($group === '' || $title === '' || $entryTitle === '') {
+                throw new RuntimeException('Item title is required.');
+            }
+
+            $entryImage = signage_admin_upload_product_image('entry_image_upload');
+
+            foreach ($items as &$item) {
+                if (($item['group'] ?? '') === $group && ($item['title'] ?? '') === $title) {
+                    if (!isset($item['entries']) || !is_array($item['entries'])) {
+                        $item['entries'] = [];
+                    }
+
+                    $item['entries'][] = [
+                        'title' => $entryTitle,
+                        'image' => $entryImage,
+                        'description' => $entryDescription,
+                    ];
+                    break;
+                }
+            }
+            unset($item);
+
+            $message = 'Item added.';
+        }
+
+        if ($action === 'update_product_entry') {
+            $group = (string) ($_POST['group'] ?? '');
+            $title = (string) ($_POST['title'] ?? '');
+            $entryIndex = (int) ($_POST['entry_index'] ?? -1);
+            $entryTitle = trim((string) ($_POST['entry_title'] ?? ''));
+            $entryDescription = trim((string) ($_POST['entry_description'] ?? ''));
+
+            if ($group === '' || $title === '' || $entryIndex < 0 || $entryTitle === '') {
+                throw new RuntimeException('Valid item details are required.');
+            }
+
+            foreach ($items as &$item) {
+                if (($item['group'] ?? '') === $group && ($item['title'] ?? '') === $title && isset($item['entries'][$entryIndex])) {
+                    $existingImage = trim((string) ($_POST['existing_entry_image'] ?? '')) ?: ($item['entries'][$entryIndex]['image'] ?? 'foamboard-signage-singapore.jpeg');
+                    $item['entries'][$entryIndex] = [
+                        'title' => $entryTitle,
+                        'image' => signage_admin_upload_product_image('entry_image_upload', $existingImage),
+                        'description' => $entryDescription,
+                    ];
+                    break;
+                }
+            }
+            unset($item);
+
+            $message = 'Item updated.';
+        }
+
+        if ($action === 'delete_product_entry') {
+            $group = (string) ($_POST['group'] ?? '');
+            $title = (string) ($_POST['title'] ?? '');
+            $entryIndex = (int) ($_POST['entry_index'] ?? -1);
+
+            foreach ($items as &$item) {
+                if (($item['group'] ?? '') === $group && ($item['title'] ?? '') === $title && isset($item['entries'][$entryIndex])) {
+                    array_splice($item['entries'], $entryIndex, 1);
+                    break;
+                }
+            }
+            unset($item);
+
+            $message = 'Item removed.';
+        }
+
         if ($message !== '') {
             signage_save_catalog_for_admin($groups, $items);
             signage_rebuild_product_folders($groups, $items);
@@ -269,15 +343,29 @@ $items = $catalog['items'];
         .category-count { flex-shrink: 0; border: 1px solid #111; padding: 5px 8px; font-size: 12px; font-family: monospace; }
         .category-body { padding: 0 14px 14px; border-top: 1px solid #ddd; }
         .item { border-top: 1px solid #ddd; padding-top: 12px; margin-top: 12px; }
+        .subitem-panel { margin-top: 12px; border: 1px solid #ddd; background: #fafafa; }
+        .subitem-panel summary { padding: 10px 12px; cursor: pointer; font-weight: 700; }
+        .subitem-panel-body { padding: 0 12px 12px; border-top: 1px solid #ddd; }
+        .entry { padding-top: 12px; margin-top: 12px; border-top: 1px solid #ddd; }
         .row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; align-items: end; }
         label { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 4px; }
-        input, select { width: 100%; box-sizing: border-box; padding: 10px; border: 1px solid #999; }
+        input, select, textarea { width: 100%; box-sizing: border-box; padding: 10px; border: 1px solid #999; }
+        textarea { min-height: 84px; resize: vertical; }
         button { padding: 10px 14px; border: 1px solid #111; background: #111; color: #fff; cursor: pointer; }
+        button.link-button { padding: 0; border: 0; background: transparent; color: #555; text-decoration: underline; font-size: 13px; }
         button.secondary { background: #fff; color: #111; }
         button.danger { background: #a40000; border-color: #a40000; }
         .message { border: 1px solid #187a35; background: #e9f8ee; padding: 12px; margin-bottom: 16px; }
         .error { border: 1px solid #a40000; background: #fff0f0; padding: 12px; margin-bottom: 16px; }
         .muted { color: #555; font-size: 13px; }
+        .image-modal { position: fixed; inset: 0; z-index: 1000; display: none; align-items: center; justify-content: center; padding: 24px; background: rgba(0, 0, 0, .72); }
+        .image-modal.is-open { display: flex; }
+        .image-modal-dialog { width: min(920px, 100%); max-height: 92vh; background: #fff; border: 1px solid #111; overflow: hidden; }
+        .image-modal-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; border-bottom: 1px solid #111; }
+        .image-modal-title { margin: 0; font-size: 16px; }
+        .image-modal-close { background: #fff; color: #111; }
+        .image-modal-body { padding: 14px; background: #f6f6f6; }
+        .image-modal-body img { display: block; width: 100%; max-height: 74vh; object-fit: contain; background: #fff; border: 1px solid #ddd; }
         @media (max-width: 900px) { .grid, .row { grid-template-columns: 1fr; } header { align-items: flex-start; flex-direction: column; } }
     </style>
 </head>
@@ -368,6 +456,7 @@ $items = $catalog['items'];
 
 <?php foreach ($groupItemTitles as $itemTitle): ?>
 <?php $productItem = signage_catalog_find_item($items, $groupTitle, $itemTitle) ?? ['title' => $itemTitle, 'group' => $groupTitle, 'image' => '', 'source_url' => '']; ?>
+<?php $productEntries = isset($productItem['entries']) && is_array($productItem['entries']) ? $productItem['entries'] : []; ?>
                 <div class="item">
                     <form method="post" class="row" enctype="multipart/form-data">
                         <input type="hidden" name="action" value="update_product">
@@ -375,7 +464,14 @@ $items = $catalog['items'];
                         <input type="hidden" name="old_title" value="<?php echo htmlspecialchars($itemTitle, ENT_QUOTES, 'UTF-8'); ?>">
                         <input type="hidden" name="existing_image" value="<?php echo htmlspecialchars($productItem['image'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                         <div><label>Subcategory</label><input name="title" value="<?php echo htmlspecialchars($itemTitle, ENT_QUOTES, 'UTF-8'); ?>" required></div>
-                        <div><label>Replace Image</label><input type="file" name="image_upload" accept="image/jpeg,image/png,image/webp,image/gif"><span class="muted">Current: <?php echo htmlspecialchars($productItem['image'] ?? 'none', ENT_QUOTES, 'UTF-8'); ?></span></div>
+                        <div>
+                            <label>Replace Image</label>
+                            <input type="file" name="image_upload" accept="image/jpeg,image/png,image/webp,image/gif">
+                            <span class="muted">Current: <?php echo htmlspecialchars($productItem['image'] ?? 'none', ENT_QUOTES, 'UTF-8'); ?></span>
+<?php if (!empty($productItem['image'])): ?>
+                            <br><button type="button" class="link-button" data-image-preview="../assets/images/products/<?php echo rawurlencode((string) $productItem['image']); ?>" data-image-title="<?php echo htmlspecialchars($productItem['image'], ENT_QUOTES, 'UTF-8'); ?>">View current image</button>
+<?php endif; ?>
+                        </div>
                         <div><label>Reference URL</label><input name="source_url" value="<?php echo htmlspecialchars($productItem['source_url'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"></div>
                         <div><button type="submit" class="secondary">Save Subcategory</button></div>
                     </form>
@@ -385,6 +481,50 @@ $items = $catalog['items'];
                         <input type="hidden" name="title" value="<?php echo htmlspecialchars($itemTitle, ENT_QUOTES, 'UTF-8'); ?>">
                         <button type="submit" class="danger">Delete Subcategory</button>
                     </form>
+                    <details class="subitem-panel">
+                        <summary><?php echo count($productEntries); ?> items under <?php echo htmlspecialchars($itemTitle, ENT_QUOTES, 'UTF-8'); ?></summary>
+                        <div class="subitem-panel-body">
+                            <form method="post" class="row" enctype="multipart/form-data">
+                                <input type="hidden" name="action" value="add_product_entry">
+                                <input type="hidden" name="group" value="<?php echo htmlspecialchars($groupTitle, ENT_QUOTES, 'UTF-8'); ?>">
+                                <input type="hidden" name="title" value="<?php echo htmlspecialchars($itemTitle, ENT_QUOTES, 'UTF-8'); ?>">
+                                <div><label>Item Title</label><input name="entry_title" required></div>
+                                <div><label>Upload Item Image</label><input type="file" name="entry_image_upload" accept="image/jpeg,image/png,image/webp,image/gif"></div>
+                                <div><label>Description</label><textarea name="entry_description"></textarea></div>
+                                <div><button type="submit">Add Item</button></div>
+                            </form>
+
+<?php foreach ($productEntries as $entryIndex => $entry): ?>
+                            <div class="entry">
+                                <form method="post" class="row" enctype="multipart/form-data">
+                                    <input type="hidden" name="action" value="update_product_entry">
+                                    <input type="hidden" name="group" value="<?php echo htmlspecialchars($groupTitle, ENT_QUOTES, 'UTF-8'); ?>">
+                                    <input type="hidden" name="title" value="<?php echo htmlspecialchars($itemTitle, ENT_QUOTES, 'UTF-8'); ?>">
+                                    <input type="hidden" name="entry_index" value="<?php echo (int) $entryIndex; ?>">
+                                    <input type="hidden" name="existing_entry_image" value="<?php echo htmlspecialchars($entry['image'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
+                                    <div><label>Item Title</label><input name="entry_title" value="<?php echo htmlspecialchars($entry['title'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" required></div>
+                                    <div>
+                                        <label>Replace Item Image</label>
+                                        <input type="file" name="entry_image_upload" accept="image/jpeg,image/png,image/webp,image/gif">
+                                        <span class="muted">Current: <?php echo htmlspecialchars($entry['image'] ?? 'none', ENT_QUOTES, 'UTF-8'); ?></span>
+<?php if (!empty($entry['image'])): ?>
+                                        <br><button type="button" class="link-button" data-image-preview="../assets/images/products/<?php echo rawurlencode((string) $entry['image']); ?>" data-image-title="<?php echo htmlspecialchars($entry['image'], ENT_QUOTES, 'UTF-8'); ?>">View item image</button>
+<?php endif; ?>
+                                    </div>
+                                    <div><label>Description</label><textarea name="entry_description"><?php echo htmlspecialchars($entry['description'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea></div>
+                                    <div><button type="submit" class="secondary">Save Item</button></div>
+                                </form>
+                                <form method="post" onsubmit="return confirm('Delete this item?');" style="margin-top: 8px;">
+                                    <input type="hidden" name="action" value="delete_product_entry">
+                                    <input type="hidden" name="group" value="<?php echo htmlspecialchars($groupTitle, ENT_QUOTES, 'UTF-8'); ?>">
+                                    <input type="hidden" name="title" value="<?php echo htmlspecialchars($itemTitle, ENT_QUOTES, 'UTF-8'); ?>">
+                                    <input type="hidden" name="entry_index" value="<?php echo (int) $entryIndex; ?>">
+                                    <button type="submit" class="danger">Delete Item</button>
+                                </form>
+                            </div>
+<?php endforeach; ?>
+                        </div>
+                    </details>
                 </div>
 <?php endforeach; ?>
                 </div>
@@ -393,5 +533,48 @@ $items = $catalog['items'];
         </section>
     </main>
 <?php endif; ?>
+    <div class="image-modal" id="imagePreviewModal" aria-hidden="true">
+        <div class="image-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="imagePreviewTitle">
+            <div class="image-modal-header">
+                <h2 class="image-modal-title" id="imagePreviewTitle">Image Preview</h2>
+                <button type="button" class="image-modal-close" data-image-preview-close>Close</button>
+            </div>
+            <div class="image-modal-body">
+                <img src="" alt="" id="imagePreviewImg">
+            </div>
+        </div>
+    </div>
+    <script>
+        const imageModal = document.getElementById('imagePreviewModal');
+        const imagePreview = document.getElementById('imagePreviewImg');
+        const imageTitle = document.getElementById('imagePreviewTitle');
+
+        document.addEventListener('click', (event) => {
+            const trigger = event.target.closest('[data-image-preview]');
+
+            if (trigger) {
+                imagePreview.src = trigger.dataset.imagePreview;
+                imagePreview.alt = trigger.dataset.imageTitle || 'Product image preview';
+                imageTitle.textContent = trigger.dataset.imageTitle || 'Image Preview';
+                imageModal.classList.add('is-open');
+                imageModal.setAttribute('aria-hidden', 'false');
+                return;
+            }
+
+            if (event.target.matches('[data-image-preview-close]') || event.target === imageModal) {
+                imageModal.classList.remove('is-open');
+                imageModal.setAttribute('aria-hidden', 'true');
+                imagePreview.src = '';
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && imageModal.classList.contains('is-open')) {
+                imageModal.classList.remove('is-open');
+                imageModal.setAttribute('aria-hidden', 'true');
+                imagePreview.src = '';
+            }
+        });
+    </script>
 </body>
 </html>

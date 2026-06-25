@@ -147,6 +147,10 @@ $extraHead = <<<'HTML'
             line-height: 1.25;
         }
 
+        .product-entry-description {
+            white-space: pre-line;
+        }
+
         @media (max-width: 991.98px) {
             .product-detail-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -254,6 +258,35 @@ require __DIR__ . '/header.php';
                 </div>
             </div>
         </section>
+<?php $productEntries = isset($currentItem['entries']) && is_array($currentItem['entries']) ? $currentItem['entries'] : []; ?>
+<?php if ($productEntries !== []): ?>
+        <section class="product-detail-section bg-light">
+            <div class="container">
+                <div class="mb-4">
+                    <span class="text-uppercase tracking-wider text-muted fw-bold" style="font-size: 0.78rem; letter-spacing: 2px;">Items</span>
+                    <h2 class="display-5 text-black mt-2 mb-3"><?php echo htmlspecialchars($currentItem['title'], ENT_QUOTES, 'UTF-8'); ?> Items</h2>
+                </div>
+                <div class="product-detail-grid">
+<?php foreach ($productEntries as $entry): ?>
+                    <article class="product-detail-card">
+                        <a class="product-detail-card-media" href="<?php echo htmlspecialchars($assetBase, ENT_QUOTES, 'UTF-8'); ?>/images/products/<?php echo htmlspecialchars($entry['image'] ?? $currentItem['image'], ENT_QUOTES, 'UTF-8'); ?>" target="_blank" rel="noopener noreferrer">
+                            <img loading="lazy" src="<?php echo htmlspecialchars($assetBase, ENT_QUOTES, 'UTF-8'); ?>/images/products/<?php echo htmlspecialchars($entry['image'] ?? $currentItem['image'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($entry['title'] ?? $currentItem['title'], ENT_QUOTES, 'UTF-8'); ?>">
+                        </a>
+                        <div class="product-detail-card-body">
+                            <span class="product-tag"><?php echo htmlspecialchars($currentItem['title'], ENT_QUOTES, 'UTF-8'); ?></span>
+                            <h3><?php echo htmlspecialchars($entry['title'] ?? 'Product Item', ENT_QUOTES, 'UTF-8'); ?></h3>
+<?php if (!empty($entry['description'])): ?>
+                            <p class="product-detail-copy product-entry-description mb-0"><?php echo htmlspecialchars($entry['description'], ENT_QUOTES, 'UTF-8'); ?></p>
+<?php else: ?>
+                            <p class="product-detail-copy mb-0">Reference item for <?php echo htmlspecialchars(strtolower($currentItem['title']), ENT_QUOTES, 'UTF-8'); ?> fabrication and installation planning.</p>
+<?php endif; ?>
+                        </div>
+                    </article>
+<?php endforeach; ?>
+                </div>
+            </div>
+        </section>
+<?php endif; ?>
 <?php endif; ?>
 
         <section class="product-detail-section bg-black text-white">
