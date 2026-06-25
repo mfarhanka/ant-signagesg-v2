@@ -9,8 +9,9 @@ require __DIR__ . '/../includes/product-admin-functions.php';
 
 $adminPassword = getenv('SIGNAGE_ADMIN_PASSWORD') ?: 'admin123';
 $requestMethod = $_SERVER['REQUEST_METHOD'] ?? 'GET';
-$message = '';
-$error = '';
+$message = (string) ($_SESSION['product_admin_message'] ?? '');
+$error = (string) ($_SESSION['product_admin_error'] ?? '');
+unset($_SESSION['product_admin_message'], $_SESSION['product_admin_error']);
 
 function signage_admin_upload_product_image(string $fieldName, ?string $fallback = null): string
 {
@@ -309,9 +310,14 @@ if ($isLoggedIn && $requestMethod === 'POST') {
         if ($message !== '') {
             signage_save_catalog_for_admin($groups, $items);
             signage_rebuild_product_folders($groups, $items);
+            $_SESSION['product_admin_message'] = $message;
+            header('Location: products.php');
+            exit;
         }
     } catch (Throwable $exception) {
-        $error = $exception->getMessage();
+        $_SESSION['product_admin_error'] = $exception->getMessage();
+        header('Location: products.php');
+        exit;
     }
 }
 

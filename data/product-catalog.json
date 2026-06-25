@@ -2,10 +2,10 @@
     "groups": {
         "3D Signboard With Lighting": [
             "Front-lit Signboard",
-            "Back-lit Signboard",
-            "Whole-lit Signboard",
-            "Punch Hole Signboard",
-            "Light Bulb Signboard"
+            "Back-lit Signboar",
+            "Whole-lit Signboardd",
+            "Punch Hole Signboardd",
+            "Light Bulb Signboardd"
         ],
         "3D Signboard With Non-Lighting": [
             "Foamboard 3D Wording",
@@ -80,25 +80,25 @@
             "source_url": "https://signages.com.sg/3d-signboard-front-lit-signboard/"
         },
         {
-            "title": "Back-lit Signboard",
+            "title": "Back-lit Signboar",
             "group": "3D Signboard With Lighting",
             "image": "back-lit-signboard.jpeg",
             "source_url": "https://signages.com.sg/3d-signboard-back-lit-signboard/"
         },
         {
-            "title": "Whole-lit Signboard",
+            "title": "Whole-lit Signboardd",
             "group": "3D Signboard With Lighting",
             "image": "whole-lit-signboard.jpeg",
             "source_url": "https://signages.com.sg/3d-signboard-whole-lit-signboard/"
         },
         {
-            "title": "Punch Hole Signboard",
+            "title": "Punch Hole Signboardd",
             "group": "3D Signboard With Lighting",
             "image": "punch-hole-signboard.jpeg",
             "source_url": "https://signages.com.sg/3d-signboard-punch-hole-signboard/"
         },
         {
-            "title": "Light Bulb Signboard",
+            "title": "Light Bulb Signboardd",
             "group": "3D Signboard With Lighting",
             "image": "light-bulb-signboard.jpeg",
             "source_url": "https://signages.com.sg/3d-signboard-light-bulb-signboard/"
