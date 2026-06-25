@@ -319,6 +319,17 @@ $productItems = [
     ],
 ];
 
+$productCatalogJsonPath = __DIR__ . '/../data/product-catalog.json';
+
+if (is_file($productCatalogJsonPath)) {
+    $productCatalogJson = json_decode((string) file_get_contents($productCatalogJsonPath), true);
+
+    if (is_array($productCatalogJson) && isset($productCatalogJson['groups'], $productCatalogJson['items']) && is_array($productCatalogJson['groups']) && is_array($productCatalogJson['items'])) {
+        $productMenuGroups = $productCatalogJson['groups'];
+        $productItems = $productCatalogJson['items'];
+    }
+}
+
 $productPagePaths = [];
 $productGroupPaths = [];
 

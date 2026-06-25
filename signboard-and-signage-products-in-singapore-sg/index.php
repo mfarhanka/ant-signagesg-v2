@@ -11,6 +11,8 @@ $blogPath = '../blog';
 $productPath = '.';
 $industryPath = '../industry-solutions';
 require __DIR__ . '/../includes/product-catalog.php';
+$productScriptName = str_replace('\\', '/', $_SERVER['SCRIPT_NAME'] ?? '');
+$productDetailHrefPrefix = str_contains($productScriptName, '/products/') ? '' : '../products/';
 $structuredData = [
     '@context' => 'https://schema.org',
     '@type' => 'CollectionPage',
@@ -353,7 +355,7 @@ require __DIR__ . '/../includes/header.php';
                         </div>
                         <ul class="category-sub-list">
 <?php foreach ($groupItems as $groupItem): ?>
-<?php $groupItemHref = isset($productPagePaths[$groupTitle . '|' . $groupItem]) ? '../' . $productPagePaths[$groupTitle . '|' . $groupItem] : '#product-' . signage_product_anchor($groupTitle . '-' . $groupItem); ?>
+<?php $groupItemHref = isset($productPagePaths[$groupTitle . '|' . $groupItem]) ? $productDetailHrefPrefix . $productPagePaths[$groupTitle . '|' . $groupItem] : '#product-' . signage_product_anchor($groupTitle . '-' . $groupItem); ?>
                             <li><a href="<?php echo htmlspecialchars($groupItemHref, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($groupItem, ENT_QUOTES, 'UTF-8'); ?></a></li>
 <?php endforeach; ?>
                         </ul>
@@ -385,7 +387,7 @@ require __DIR__ . '/../includes/header.php';
                             <h3><?php echo htmlspecialchars($productItem['title'], ENT_QUOTES, 'UTF-8'); ?></h3>
                             <p class="product-copy mb-0">Custom <?php echo htmlspecialchars(strtolower($productItem['title']), ENT_QUOTES, 'UTF-8'); ?> solutions can be tailored by size, material, finish, lighting, print, and installation method for Singapore commercial spaces.</p>
 <?php if ($productItemHref !== null): ?>
-                            <a class="d-inline-flex mt-3 fw-bold text-black text-uppercase text-decoration-none" style="font-size: 0.72rem; letter-spacing: 0.12em;" href="../<?php echo htmlspecialchars($productItemHref, ENT_QUOTES, 'UTF-8'); ?>">View Items</a>
+                            <a class="d-inline-flex mt-3 fw-bold text-black text-uppercase text-decoration-none" style="font-size: 0.72rem; letter-spacing: 0.12em;" href="<?php echo htmlspecialchars($productDetailHrefPrefix . $productItemHref, ENT_QUOTES, 'UTF-8'); ?>">View Items</a>
 <?php endif; ?>
                         </div>
                     </article>
