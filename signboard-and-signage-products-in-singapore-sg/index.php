@@ -10,6 +10,7 @@ $homePagePath = '../index.php';
 $blogPath = '../blog';
 $productPath = '.';
 $industryPath = '../industry-solutions';
+require __DIR__ . '/../includes/product-catalog.php';
 $structuredData = [
     '@context' => 'https://schema.org',
     '@type' => 'CollectionPage',
@@ -322,160 +323,19 @@ require __DIR__ . '/../includes/header.php';
                 </div>
 
                 <div class="category-group-grid">
+<?php foreach ($productMenuGroups as $groupTitle => $groupItems): ?>
                     <article class="category-group-card">
                         <div class="category-group-title">
-                            <h3>3D Signboard With Lighting</h3>
-                            <span class="category-count">05</span>
+                            <h3><?php echo htmlspecialchars($groupTitle, ENT_QUOTES, 'UTF-8'); ?></h3>
+                            <span class="category-count"><?php echo str_pad((string) count($groupItems), 2, '0', STR_PAD_LEFT); ?></span>
                         </div>
                         <ul class="category-sub-list">
-                            <li>Front-lit Signboard</li>
-                            <li>Back-lit Signboard</li>
-                            <li>Whole-lit Signboard</li>
-                            <li>Punch Hole Signboard</li>
-                            <li>Light Bulb Signboard</li>
+<?php foreach ($groupItems as $groupItem): ?>
+                            <li><?php echo htmlspecialchars($groupItem, ENT_QUOTES, 'UTF-8'); ?></li>
+<?php endforeach; ?>
                         </ul>
                     </article>
-
-                    <article class="category-group-card">
-                        <div class="category-group-title">
-                            <h3>3D Signboard With Non-Lighting</h3>
-                            <span class="category-count">03</span>
-                        </div>
-                        <ul class="category-sub-list">
-                            <li>Foamboard 3D Wording</li>
-                            <li>Aluminium Box-Up 3D Wording</li>
-                            <li>Acrylic 3D Wording</li>
-                        </ul>
-                    </article>
-
-                    <article class="category-group-card">
-                        <div class="category-group-title">
-                            <h3>Lightbox</h3>
-                            <span class="category-count">04</span>
-                        </div>
-                        <ul class="category-sub-list">
-                            <li>Normal Lightbox</li>
-                            <li>Aluminium Casing Lightbox</li>
-                            <li>Soft Fabric Lightbox</li>
-                            <li>Crystal Wording Lightbox</li>
-                        </ul>
-                    </article>
-
-                    <article class="category-group-card">
-                        <div class="category-group-title">
-                            <h3>2D Signboard</h3>
-                            <span class="category-count">03</span>
-                        </div>
-                        <ul class="category-sub-list">
-                            <li>Normal Signboard</li>
-                            <li>Aluminium Strip Signboard Base</li>
-                            <li>Banner Signboard</li>
-                        </ul>
-                    </article>
-
-                    <article class="category-group-card">
-                        <div class="category-group-title">
-                            <h3>Indoor Signage</h3>
-                            <span class="category-count">05</span>
-                        </div>
-                        <ul class="category-sub-list">
-                            <li>Foamboard 3D Wording Signage</li>
-                            <li>Stainless Steel 3D Wording Signage</li>
-                            <li>Acrylic 3D Wording</li>
-                            <li>Acrylic Signage</li>
-                            <li>Foamboard Signage</li>
-                        </ul>
-                    </article>
-
-                    <article class="category-group-card">
-                        <div class="category-group-title">
-                            <h3>LED Displays</h3>
-                            <span class="category-count">03</span>
-                        </div>
-                        <ul class="category-sub-list">
-                            <li>LED Banner and Signage</li>
-                            <li>LED Neon Signage</li>
-                            <li>Pylon and Directional Signage</li>
-                        </ul>
-                    </article>
-
-                    <article class="category-group-card">
-                        <div class="category-group-title">
-                            <h3>Billboard</h3>
-                            <span class="category-count">03</span>
-                        </div>
-                        <ul class="category-sub-list">
-                            <li>Billboard</li>
-                            <li>Hoarding</li>
-                            <li>Construction Board</li>
-                        </ul>
-                    </article>
-
-                    <article class="category-group-card">
-                        <div class="category-group-title">
-                            <h3>Road Sign</h3>
-                            <span class="category-count">02</span>
-                        </div>
-                        <ul class="category-sub-list">
-                            <li>Roadsign Safety Signage</li>
-                            <li>Directional Roadsign</li>
-                        </ul>
-                    </article>
-
-                    <article class="category-group-card">
-                        <div class="category-group-title">
-                            <h3>Printing Services</h3>
-                            <span class="category-count">04</span>
-                        </div>
-                        <ul class="category-sub-list">
-                            <li>Label Sticker</li>
-                            <li>Glass Window Sticker</li>
-                            <li>Wall Sticker</li>
-                            <li>Vehicle Sticker Wrapping</li>
-                        </ul>
-                    </article>
-
-                    <article class="category-group-card">
-                        <div class="category-group-title">
-                            <h3>Exhibition Booth</h3>
-                            <span class="category-count">05</span>
-                        </div>
-                        <ul class="category-sub-list">
-                            <li>PVC Table Booth</li>
-                            <li>Backdrop</li>
-                            <li>Jumbo Banner</li>
-                            <li>Pop-Up Backdrop Display System</li>
-                            <li>Pop-Up Promotion Counter</li>
-                        </ul>
-                    </article>
-
-                    <article class="category-group-card">
-                        <div class="category-group-title">
-                            <h3>Display Set</h3>
-                            <span class="category-count">08</span>
-                        </div>
-                        <ul class="category-sub-list">
-                            <li>Banner</li>
-                            <li>Normal Roll-Up Bunting</li>
-                            <li>Deluxe Roll-Up Bunting</li>
-                            <li>Tripod/Round Plate Bunting</li>
-                            <li>Human Stand</li>
-                            <li>Easel Stand / Wood Stand</li>
-                            <li>X-Stand</li>
-                            <li>Door Bunting</li>
-                        </ul>
-                    </article>
-
-                    <article class="category-group-card">
-                        <div class="category-group-title">
-                            <h3>Marketing Essential</h3>
-                            <span class="category-count">02</span>
-                        </div>
-                        <ul class="category-sub-list">
-                            <li>Namecard</li>
-                            <li>Leaflet</li>
-                        </ul>
-                    </article>
+<?php endforeach; ?>
                 </div>
             </div>
         </section>
@@ -491,170 +351,18 @@ require __DIR__ . '/../includes/header.php';
                 </div>
 
                 <div class="product-grid">
+<?php foreach ($productItems as $productItem): ?>
                     <article class="product-card">
                         <div class="product-card-media">
-                            <img src="../assets/images/products/aluminium-3d-box-up-signboard.jpeg" alt="Aluminium 3D box-up signboard in Singapore">
+                            <img src="../assets/images/products/<?php echo htmlspecialchars($productItem['image'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($productItem['title'] . ' signage product in Singapore', ENT_QUOTES, 'UTF-8'); ?>">
                         </div>
                         <div class="product-card-body">
-                            <span class="product-tag">Dimensional Signage</span>
-                            <h3>3D Box-Up Signboards</h3>
-                            <p class="product-copy mb-0">Raised aluminium or stainless steel letters and logos for shopfronts, office entrances, and brand walls that need a premium physical presence.</p>
+                            <span class="product-tag"><?php echo htmlspecialchars($productItem['group'], ENT_QUOTES, 'UTF-8'); ?></span>
+                            <h3><?php echo htmlspecialchars($productItem['title'], ENT_QUOTES, 'UTF-8'); ?></h3>
+                            <p class="product-copy mb-0">Custom <?php echo htmlspecialchars(strtolower($productItem['title']), ENT_QUOTES, 'UTF-8'); ?> solutions can be tailored by size, material, finish, lighting, print, and installation method for Singapore commercial spaces.</p>
                         </div>
                     </article>
-
-                    <article class="product-card">
-                        <div class="product-card-media">
-                            <img src="../assets/images/products/front-lit-3d-signboard.jpeg" alt="Front-lit 3D signboard manufacturer in Singapore">
-                        </div>
-                        <div class="product-card-body">
-                            <span class="product-tag">Illuminated Signage</span>
-                            <h3>Front-Lit Signboards</h3>
-                            <p class="product-copy mb-0">Eye-catching illuminated signboards built to improve night visibility and make storefront branding easier to spot from a distance.</p>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-card-media">
-                            <img src="../assets/images/products/back-lit-signboard.jpeg" alt="Back-lit signboard manufacturer in Singapore">
-                        </div>
-                        <div class="product-card-body">
-                            <span class="product-tag">Illuminated Signage</span>
-                            <h3>Back-Lit Signboards</h3>
-                            <p class="product-copy mb-0">Halo-style illuminated lettering and panels that create a clean glow behind the signage for premium night-time visibility.</p>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-card-media">
-                            <img src="../assets/images/products/whole-lit-signboard.jpeg" alt="Whole-lit signboard manufacturer in Singapore">
-                        </div>
-                        <div class="product-card-body">
-                            <span class="product-tag">Illuminated Signage</span>
-                            <h3>Whole-Lit Signboards</h3>
-                            <p class="product-copy mb-0">Fully illuminated sign faces for storefronts and brand panels where bright, even visibility is the main requirement.</p>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-card-media">
-                            <img src="../assets/images/products/led-neon-signage-pink.jpg" alt="Pink LED neon signage in Singapore">
-                        </div>
-                        <div class="product-card-body">
-                            <span class="product-tag">LED Display</span>
-                            <h3>LED Neon Signage</h3>
-                            <p class="product-copy mb-0">Flexible LED neon signs for retail displays, cafes, photo walls, event branding, and decorative statement pieces.</p>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-card-media">
-                            <img src="../assets/images/products/soft-fabric-lightbox.jpeg" alt="Soft fabric lightbox signage manufacturer in Singapore">
-                        </div>
-                        <div class="product-card-body">
-                            <span class="product-tag">Lightbox</span>
-                            <h3>Soft Fabric Lightboxes</h3>
-                            <p class="product-copy mb-0">Large-format lightbox systems with replaceable fabric graphics for malls, showrooms, exhibitions, and promotional campaigns.</p>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-card-media">
-                            <img src="../assets/images/products/sided-lightbox-signboard.jpeg" alt="Sided lightbox signboard manufacturer in Singapore">
-                        </div>
-                        <div class="product-card-body">
-                            <span class="product-tag">Lightbox</span>
-                            <h3>Sided Lightboxes</h3>
-                            <p class="product-copy mb-0">Projecting or sided lightbox signboards for corridors, shopfronts, and walk-by visibility from multiple directions.</p>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-card-media">
-                            <img src="../assets/images/products/aluminium-casing-lightbox.jpeg" alt="Aluminium casing lightbox manufacturer in Singapore">
-                        </div>
-                        <div class="product-card-body">
-                            <span class="product-tag">Lightbox</span>
-                            <h3>Aluminium Casing Lightboxes</h3>
-                            <p class="product-copy mb-0">Durable framed lightbox systems with aluminium casing for cleaner edges, stronger structure, and long-term shopfront use.</p>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-card-media">
-                            <img src="../assets/images/products/crystal-wording-lightbox.jpeg" alt="Crystal wording lightbox manufactured in Singapore">
-                        </div>
-                        <div class="product-card-body">
-                            <span class="product-tag">Lightbox</span>
-                            <h3>Crystal Wording Lightboxes</h3>
-                            <p class="product-copy mb-0">Polished acrylic or crystal-effect wording paired with lighting for refined indoor brand walls and reception signage.</p>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-card-media">
-                            <img src="../assets/images/products/punch-hole-signboard.jpeg" alt="Punch hole signboard manufacturer in Singapore">
-                        </div>
-                        <div class="product-card-body">
-                            <span class="product-tag">Specialty Signboard</span>
-                            <h3>Punch-Hole Signboards</h3>
-                            <p class="product-copy mb-0">Perforated or punch-hole signboards that combine texture, light control, and a distinctive fabrication detail.</p>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-card-media">
-                            <img src="../assets/images/products/light-bulb-signboard.jpeg" alt="Light bulb signboard manufacturer in Singapore">
-                        </div>
-                        <div class="product-card-body">
-                            <span class="product-tag">Specialty Lighting</span>
-                            <h3>Light Bulb Signboards</h3>
-                            <p class="product-copy mb-0">Retro-style bulb signage for feature walls, entertainment venues, events, and high-impact decorative branding.</p>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-card-media">
-                            <img src="../assets/images/products/aluminium-strip-signboard-base.jpeg" alt="Aluminium strip signboard base manufacturer in Singapore">
-                        </div>
-                        <div class="product-card-body">
-                            <span class="product-tag">Signboard Base</span>
-                            <h3>Aluminium Strip Signboard Bases</h3>
-                            <p class="product-copy mb-0">Structured aluminium strip bases used as the foundation for durable exterior signboards and layered signage builds.</p>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-card-media">
-                            <img src="../assets/images/products/2d-signboard.jpeg" alt="2D signboard maker in Singapore">
-                        </div>
-                        <div class="product-card-body">
-                            <span class="product-tag">Flat Signage</span>
-                            <h3>2D Signboards</h3>
-                            <p class="product-copy mb-0">Clean flat signboards for budget-conscious projects, directional signs, wall-mounted panels, and simple business identification.</p>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-card-media">
-                            <img src="../assets/images/products/glass-window-sticker.jpeg" alt="Glass window sticker installed in Singapore">
-                        </div>
-                        <div class="product-card-body">
-                            <span class="product-tag">Window Graphics</span>
-                            <h3>Glass Window Stickers</h3>
-                            <p class="product-copy mb-0">Vibrant printed graphics, frosted decals, and privacy films that turn windows and glass partitions into branded communication surfaces.</p>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-card-media">
-                            <img src="../assets/images/products/vehicle-sticker-singapore.jpeg" alt="Vehicle sticker manufacturer in Singapore">
-                        </div>
-                        <div class="product-card-body">
-                            <span class="product-tag">Mobile Branding</span>
-                            <h3>Vehicle Stickers</h3>
-                            <p class="product-copy mb-0">Custom vehicle decals and fleet graphics that carry your brand across Singapore with durable print and clean installation.</p>
-                        </div>
-                    </article>
+<?php endforeach; ?>
                 </div>
             </div>
         </section>

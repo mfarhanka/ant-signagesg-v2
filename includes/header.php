@@ -14,6 +14,7 @@ $productPath = $productPath ?? 'signboard-and-signage-products-in-singapore-sg';
 $industryPath = $industryPath ?? 'industry-solutions';
 $structuredData = $structuredData ?? null;
 $extraHead = $extraHead ?? '';
+require_once __DIR__ . '/product-catalog.php';
 
 $isHomePage = $navPage === 'home';
 $homeHref = $isHomePage ? '#hero' : $homePagePath . '#hero';
@@ -24,7 +25,7 @@ $contactHref = $isHomePage ? '#location-map' : $homePagePath . '#location-map';
 $industryHref = $industryPath === '.' ? '#industry-solutions' : $industryPath;
 $productMenuHref = $productPath === '.' ? '#product-menu-structure' : $productPath . '#product-menu-structure';
 $productFeaturedHref = $productPath === '.' ? '#product-range' : $productPath . '#product-range';
-$productMenuGroups = [
+$productMenuGroups = $productMenuGroups ?? [
     '3D Signboard With Lighting' => ['Front-lit Signboard', 'Back-lit Signboard', 'Whole-lit Signboard', 'Punch Hole Signboard', 'Light Bulb Signboard'],
     '3D Signboard With Non-Lighting' => ['Foamboard 3D Wording', 'Aluminium Box-Up 3D Wording', 'Acrylic 3D Wording'],
     'Lightbox' => ['Normal Lightbox', 'Aluminium Casing Lightbox', 'Soft Fabric Lightbox', 'Crystal Wording Lightbox'],
