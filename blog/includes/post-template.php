@@ -15,6 +15,7 @@ $assetBase = '../../assets';
 $homePagePath = '../../index.php';
 $blogPath = '..';
 $productPath = '../../signboard-and-signage-products-in-singapore-sg';
+$industryPath = '../../industry-solutions';
 $structuredData = [
     [
         '@context' => 'https://schema.org',

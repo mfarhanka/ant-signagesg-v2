@@ -11,6 +11,7 @@ $assetBase = $assetBase ?? 'assets';
 $homePagePath = $homePagePath ?? 'index.php';
 $blogPath = $blogPath ?? 'blog';
 $productPath = $productPath ?? 'signboard-and-signage-products-in-singapore-sg';
+$industryPath = $industryPath ?? 'industry-solutions';
 $structuredData = $structuredData ?? null;
 $extraHead = $extraHead ?? '';
 
@@ -18,7 +19,9 @@ $isHomePage = $navPage === 'home';
 $homeHref = $isHomePage ? '#hero' : $homePagePath . '#hero';
 $quoteHref = $isHomePage ? '#quote-form' : $homePagePath . '#quote-form';
 $estimatorHref = $isHomePage ? '#estimator' : $homePagePath . '#estimator';
+$portfolioHref = $isHomePage ? '#signboard-showcase' : $homePagePath . '#signboard-showcase';
 $contactHref = $isHomePage ? '#location-map' : $homePagePath . '#location-map';
+$industryHref = $industryPath === '.' ? '#industry-solutions' : $industryPath;
 $productMenuHref = $productPath === '.' ? '#product-menu-structure' : $productPath . '#product-menu-structure';
 $productFeaturedHref = $productPath === '.' ? '#product-range' : $productPath . '#product-range';
 $productMenuGroups = [
@@ -99,8 +102,9 @@ $ogImageUrl = preg_match('#^https?://#i', $ogImage) ? $ogImage : rtrim($siteBase
             <div class="collapse navbar-collapse" id="navbarContent">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-1 gap-lg-4">
                     <li class="nav-item"><a class="nav-link<?php echo $isHomePage ? ' active' : ''; ?>" href="<?php echo htmlspecialchars($homeHref, ENT_QUOTES, 'UTF-8'); ?>">Home</a></li>
+                    <li class="nav-item"><a class="nav-link<?php echo $navPage === 'industries' ? ' active' : ''; ?>" href="<?php echo htmlspecialchars($industryHref, ENT_QUOTES, 'UTF-8'); ?>">Industry Solutions</a></li>
                     <li class="nav-item dropdown product-nav-item">
-                        <a class="nav-link dropdown-toggle<?php echo $navPage === 'products' ? ' active' : ''; ?>" href="#" id="productsMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">Products</a>
+                        <a class="nav-link dropdown-toggle<?php echo $navPage === 'products' ? ' active' : ''; ?>" href="#" id="productsMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">Signage Categories</a>
                         <div class="dropdown-menu product-mega-menu" aria-labelledby="productsMenu">
                             <div class="product-mega-inner">
                                 <div class="product-mega-header">
@@ -128,9 +132,10 @@ $ogImageUrl = preg_match('#^https?://#i', $ogImage) ? $ogImage : rtrim($siteBase
                             </div>
                         </div>
                     </li>
+                    <li class="nav-item"><a class="nav-link" href="<?php echo htmlspecialchars($portfolioHref, ENT_QUOTES, 'UTF-8'); ?>">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?php echo htmlspecialchars($contactHref, ENT_QUOTES, 'UTF-8'); ?>">Contact</a></li>
                     <li class="nav-item"><a class="nav-link<?php echo $navPage === 'blog' ? ' active' : ''; ?>" href="<?php echo htmlspecialchars($blogPath, ENT_QUOTES, 'UTF-8'); ?>">Blog</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?php echo htmlspecialchars($estimatorHref, ENT_QUOTES, 'UTF-8'); ?>">Cost Calculator</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?php echo htmlspecialchars($contactHref, ENT_QUOTES, 'UTF-8'); ?>">Contact</a></li>
                 </ul>
                 <div class="d-flex align-items-center gap-3 navbar-cta-group">
                     <a href="https://wa.me/6582861600" class="text-black text-decoration-none d-none d-xl-inline-block fw-bold text-nowrap" style="font-size: 0.85rem;" target="_blank" rel="noopener noreferrer">

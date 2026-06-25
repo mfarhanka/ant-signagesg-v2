@@ -30,6 +30,7 @@ $assetBase = '../assets';
 $homePagePath = '../index.php';
 $blogPath = '../blog';
 $productPath = '../signboard-and-signage-products-in-singapore-sg';
+$industryPath = '../industry-solutions';
 $structuredData = [
     '@context' => 'https://schema.org',
     '@type' => 'Blog',

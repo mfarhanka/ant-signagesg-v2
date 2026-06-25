@@ -1,7 +1,7 @@
 <?php
 $pageTitle = 'Signage SG | Premium Architectural Fabricators Singapore';
 $navPage = 'home';
-$metaDescription = 'Signage SG delivers commercial signage fabrication and installation in Singapore, from 3D lettering and acrylic signs to lightboxes, decals, and site-ready project coordination.';
+$metaDescription = 'Signage SG delivers industry-based signage solutions in Singapore for F&B, retail, office, clinic, and industrial sites, from shopfront signs to interior branding and wayfinding.';
 $siteBaseUrl = 'https://signages.com.sg';
 $canonicalPath = '/';
 $ogImage = 'assets/images/logo.png';
@@ -40,7 +40,8 @@ $structuredData = [
         ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => '3D signage fabrication']],
         ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'Acrylic signage installation']],
         ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'Lightbox signage production']],
-        ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'Vinyl decal and sticker installation']]
+        ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'Vinyl decal and sticker installation']],
+        ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'Industry signage solution planning']]
     ]
 ];
 require __DIR__ . '/includes/header.php';
@@ -67,10 +68,11 @@ require __DIR__ . '/includes/header.php';
                     </h1>
                     
                     <p class="lead text-dark-gray mb-5 max-w-lg hero-subcopy" style="font-weight: 400; line-height: 1.8; font-size: 1.1rem;">
-                        Built for teams that need signage done right. Architects trust it, developers rely on it, and property owners are proud to display it.
+                        Built for teams that need signage done right. Restaurants, retailers, offices, clinics, and industrial sites can start with a complete signage solution matched to their business.
                     </p>
                     
                     <div class="d-flex flex-wrap gap-3">
+                        <a href="industry-solutions" class="btn-wb-outline">Choose Industry Solution</a>
                         <a href="#estimator" class="btn-wb-solid">Calculate Signage Cost</a>
                     </div>
                 </div>
@@ -187,6 +189,52 @@ require __DIR__ . '/includes/header.php';
                 <div class="trusted-brands-footer">
                     <div class="trusted-brands-dots" data-brand-dots aria-label="Trusted brand pages"></div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="industry-solutions" class="industry-solutions-preview py-5 border-bottom border-technical">
+        <div class="container py-4 py-lg-5">
+            <div class="row align-items-end justify-content-between g-4 mb-4 mb-lg-5">
+                <div class="col-lg-8">
+                    <span class="text-uppercase tracking-wider text-muted fw-bold" style="font-size: 0.78rem; letter-spacing: 2px;">Industry Solutions</span>
+                    <h2 class="display-5 text-black mt-2 mb-3">Select Your Industry, Then Build The Right Signage Package</h2>
+                    <p class="text-dark-gray mb-0" style="font-weight: 400; line-height: 1.8; max-width: 780px;">
+                        Customers do not always know whether they need a lightbox, acrylic logo, wall graphic, or wayfinding sign. Start with the business type and see the complete signage mix that fits the site.
+                    </p>
+                </div>
+                <div class="col-lg-auto">
+                    <a href="industry-solutions" class="btn-wb-solid">View All Industries</a>
+                </div>
+            </div>
+
+            <div class="industry-preview-grid">
+                <article class="industry-preview-card industry-preview-card-featured">
+                    <span class="industry-preview-kicker">F&B / Restaurant</span>
+                    <h3>Restaurant, Cafe, Food Court, Bakery, And Beverage Signage</h3>
+                    <p>Shopfront signboards, menu lightboxes, food promotion displays, neon walls, counter signage, hanging wayfinding, and wall graphics in one coordinated package.</p>
+                    <a href="industry-solutions#fnb-solutions" class="industry-preview-link">Explore F&B Package</a>
+                </article>
+                <article class="industry-preview-card">
+                    <span class="industry-preview-kicker">Retail</span>
+                    <h3>Retail Shop Signage</h3>
+                    <p>Shopfront signs, promotional lightboxes, window displays, and product display signage.</p>
+                </article>
+                <article class="industry-preview-card">
+                    <span class="industry-preview-kicker">Office</span>
+                    <h3>Office Branding</h3>
+                    <p>Reception logos, directory signs, meeting room labels, frosted glass, and wayfinding.</p>
+                </article>
+                <article class="industry-preview-card">
+                    <span class="industry-preview-kicker">Clinic</span>
+                    <h3>Healthcare & Clinic</h3>
+                    <p>Reception signage, room identification, directional signage, and patient information signs.</p>
+                </article>
+                <article class="industry-preview-card">
+                    <span class="industry-preview-kicker">Industrial</span>
+                    <h3>Factory & Warehouse</h3>
+                    <p>Factory signboards, safety signage, directional signs, and warehouse identification.</p>
+                </article>
             </div>
         </div>
     </section>

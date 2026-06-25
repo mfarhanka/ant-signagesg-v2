@@ -1,63 +1,65 @@
 Product
+Total parent categories: 12
+Total subcategory items: 47
 
-1. 3D Signboard With Lighting
+1. 3D Signboard With Lighting (5 items)
    - Front-lit Signboard
    - Back-lit Signboard
    - Whole-lit Signboard
    - Punch Hole Signboard
    - Light Bulb Signboard
 
-2. 3D Signboard With Non-Lighting
+2. 3D Signboard With Non-Lighting (3 items)
    - Foamboard 3D Wording
    - Aluminium Box-Up 3D Wording
    - Acrylic 3D Wording
 
-3. Lightbox
+3. Lightbox (4 items)
    - Normal Lightbox
    - Aluminium Casing Lightbox
    - Soft Fabric Lightbox
    - Crystal Wording Lightbox
 
-4. 2D Signboard
+4. 2D Signboard (3 items)
    - Normal Signboard
    - Aluminium Strip Signboard Base
    - Banner Signboard
 
-5. Indoor Signage
+5. Indoor Signage (5 items)
    - Foamboard 3D Wording Signage
    - Stainless Steel 3D Wording Signage
    - Acrylic 3D Wording
    - Acrylic Signage
    - Foamboard Signage
 
-6. LED Displays
+6. LED Displays (3 items)
    - LED Banner and Signage
    - LED Neon Signage
    - Pylon and Directional Signage
 
-7. Billboard
+7. Billboard (3 items)
    - Billboard
    - Hoarding
    - Construction Board
 
-8. Road Sign
+8. Road Sign (2 items)
    - Roadsign Safety Signage
    - Directional Roadsign
 
-9. Printing Services
+9. Printing Services (4 items)
    - Label Sticker
    - Glass Window Sticker
    - Wall Sticker
    - Vehicle Sticker Wrapping
 
-10. Exhibition Booth
+10. Exhibition Booth (5 items)
     - PVC Table Booth
     - Backdrop
     - Jumbo Banner
     - Pop-Up Backdrop Display System
     - Pop-Up Promotion Counter
 
-11. Display Set
+11. Display Set (8 items)
     - Banner
     - Normal Roll-Up Bunting
     - Deluxe Roll-Up Bunting
@@ -67,6 +69,6 @@ Product
     - X-Stand
     - Door Bunting
 
-12. Marketing Essential
+12. Marketing Essential (2 items)
     - Namecard
     - Leaflet

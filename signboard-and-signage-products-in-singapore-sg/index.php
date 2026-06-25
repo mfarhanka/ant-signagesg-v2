@@ -9,6 +9,7 @@ $assetBase = '../assets';
 $homePagePath = '../index.php';
 $blogPath = '../blog';
 $productPath = '.';
+$industryPath = '../industry-solutions';
 $structuredData = [
     '@context' => 'https://schema.org',
     '@type' => 'CollectionPage',
