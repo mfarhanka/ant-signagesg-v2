@@ -25,6 +25,7 @@ $productMenuGroups = [
 
 $productPagePaths = [
     '3D Signboard With Lighting|Front-lit Signboard' => '3d-signboard-front-lit-signboard',
+    '3D Signboard With Lighting|Back-lit Signboard' => '3d-signboard-back-lit-signboard',
 ];
 
 $productItems = [
