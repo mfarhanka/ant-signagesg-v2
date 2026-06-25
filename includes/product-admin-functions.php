@@ -131,7 +131,12 @@ function signage_rebuild_product_folders(array $groups, array $items): void
             continue;
         }
 
-        $itemSlug = signage_product_source_slug($item['source_url'] ?? '', $title);
+        $itemSlug = signage_product_anchor((string) ($item['slug'] ?? ''));
+
+        if ($itemSlug === '') {
+            $itemSlug = signage_product_source_slug($item['source_url'] ?? '', $title);
+        }
+
         $relativePath = $groupPaths[$groupTitle] . '/' . $itemSlug;
         $validDirs[] = $relativePath;
         $itemDir = signage_admin_safe_join($baseDir, $relativePath);

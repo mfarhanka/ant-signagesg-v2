@@ -163,6 +163,7 @@ if ($isLoggedIn && $requestMethod === 'POST') {
         if ($action === 'add_product') {
             $group = (string) ($_POST['group'] ?? '');
             $title = trim((string) ($_POST['title'] ?? ''));
+            $slug = signage_product_anchor(trim((string) ($_POST['slug'] ?? '')) ?: $title);
             $sourceUrl = trim((string) ($_POST['source_url'] ?? ''));
 
             if (!isset($groups[$group])) {
@@ -182,6 +183,7 @@ if ($isLoggedIn && $requestMethod === 'POST') {
             $items[] = [
                 'title' => $title,
                 'group' => $group,
+                'slug' => $slug,
                 'image' => $image,
                 'source_url' => $sourceUrl,
             ];
@@ -193,6 +195,7 @@ if ($isLoggedIn && $requestMethod === 'POST') {
             $oldTitle = (string) ($_POST['old_title'] ?? '');
             $newGroup = (string) ($_POST['group'] ?? $oldGroup);
             $newTitle = trim((string) ($_POST['title'] ?? ''));
+            $newSlug = signage_product_anchor(trim((string) ($_POST['slug'] ?? '')) ?: $newTitle);
 
             if (!isset($groups[$oldGroup], $groups[$newGroup]) || $newTitle === '') {
                 throw new RuntimeException('Valid category and subcategory title are required.');
@@ -207,16 +210,51 @@ if ($isLoggedIn && $requestMethod === 'POST') {
                 $groups[$newGroup][] = $newTitle;
             }
 
-            foreach ($items as &$item) {
+            $matchedIndex = null;
+
+            foreach ($items as $index => $item) {
                 if (($item['group'] ?? '') === $oldGroup && ($item['title'] ?? '') === $oldTitle) {
-                    $item['group'] = $newGroup;
-                    $item['title'] = $newTitle;
-                    $item['image'] = signage_admin_upload_product_image('image_upload', trim((string) ($_POST['existing_image'] ?? '')) ?: ($item['image'] ?? 'foamboard-signage-singapore.jpeg'));
-                    $item['source_url'] = trim((string) ($_POST['source_url'] ?? ''));
+                    $matchedIndex = $index;
                     break;
                 }
             }
-            unset($item);
+
+            if ($matchedIndex === null) {
+                foreach ($items as $index => $item) {
+                    if (($item['group'] ?? '') === $newGroup && ($item['title'] ?? '') === $newTitle) {
+                        $matchedIndex = $index;
+                        break;
+                    }
+                }
+            }
+
+            if ($matchedIndex === null) {
+                $items[] = [
+                    'title' => $newTitle,
+                    'group' => $newGroup,
+                    'slug' => $newSlug,
+                    'image' => signage_admin_upload_product_image('image_upload', trim((string) ($_POST['existing_image'] ?? '')) ?: 'foamboard-signage-singapore.jpeg'),
+                    'source_url' => trim((string) ($_POST['source_url'] ?? '')),
+                ];
+            } else {
+                $items[$matchedIndex]['group'] = $newGroup;
+                $items[$matchedIndex]['title'] = $newTitle;
+                $items[$matchedIndex]['slug'] = $newSlug;
+                $items[$matchedIndex]['image'] = signage_admin_upload_product_image('image_upload', trim((string) ($_POST['existing_image'] ?? '')) ?: ($items[$matchedIndex]['image'] ?? 'foamboard-signage-singapore.jpeg'));
+                $items[$matchedIndex]['source_url'] = trim((string) ($_POST['source_url'] ?? ''));
+            }
+
+            $seenProductKeys = [];
+            $items = array_values(array_filter($items, static function (array $item) use (&$seenProductKeys): bool {
+                $key = ($item['group'] ?? '') . '|' . ($item['title'] ?? '');
+
+                if (isset($seenProductKeys[$key])) {
+                    return false;
+                }
+
+                $seenProductKeys[$key] = true;
+                return true;
+            }));
 
             $message = 'Subcategory updated.';
         }
@@ -432,6 +470,7 @@ $items = $catalog['items'];
                     </select>
                 </div>
                 <div><label>Subcategory Title</label><input name="title" required></div>
+                <div><label>SEO Slug</label><input name="slug" placeholder="front-lit-signboard"></div>
                 <div><label>Upload Image</label><input type="file" name="image_upload" accept="image/jpeg,image/png,image/webp,image/gif"></div>
                 <div><label>Reference URL</label><input name="source_url" placeholder="https://..."></div>
                 <div><button type="submit">Add Subcategory</button></div>
@@ -463,13 +502,16 @@ $items = $catalog['items'];
 <?php foreach ($groupItemTitles as $itemTitle): ?>
 <?php $productItem = signage_catalog_find_item($items, $groupTitle, $itemTitle) ?? ['title' => $itemTitle, 'group' => $groupTitle, 'image' => '', 'source_url' => '']; ?>
 <?php $productEntries = isset($productItem['entries']) && is_array($productItem['entries']) ? $productItem['entries'] : []; ?>
+<?php $productSlug = signage_product_anchor((string) ($productItem['slug'] ?? '')) ?: signage_product_source_slug($productItem['source_url'] ?? '', $itemTitle); ?>
                 <div class="item">
                     <form method="post" class="row" enctype="multipart/form-data">
                         <input type="hidden" name="action" value="update_product">
                         <input type="hidden" name="old_group" value="<?php echo htmlspecialchars($groupTitle, ENT_QUOTES, 'UTF-8'); ?>">
                         <input type="hidden" name="old_title" value="<?php echo htmlspecialchars($itemTitle, ENT_QUOTES, 'UTF-8'); ?>">
+                        <input type="hidden" name="group" value="<?php echo htmlspecialchars($groupTitle, ENT_QUOTES, 'UTF-8'); ?>">
                         <input type="hidden" name="existing_image" value="<?php echo htmlspecialchars($productItem['image'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                         <div><label>Subcategory</label><input name="title" value="<?php echo htmlspecialchars($itemTitle, ENT_QUOTES, 'UTF-8'); ?>" required></div>
+                        <div><label>SEO Slug</label><input name="slug" value="<?php echo htmlspecialchars($productSlug, ENT_QUOTES, 'UTF-8'); ?>" required></div>
                         <div>
                             <label>Replace Image</label>
                             <input type="file" name="image_upload" accept="image/jpeg,image/png,image/webp,image/gif">

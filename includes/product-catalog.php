@@ -339,6 +339,11 @@ foreach (array_keys($productMenuGroups) as $groupTitle) {
 
 foreach ($productItems as $productItem) {
     $groupSlug = $productGroupPaths[$productItem['group']] ?? signage_product_anchor($productItem['group']);
-    $itemSlug = signage_product_source_slug($productItem['source_url'] ?? '', $productItem['title']);
+    $itemSlug = signage_product_anchor((string) ($productItem['slug'] ?? ''));
+
+    if ($itemSlug === '') {
+        $itemSlug = signage_product_source_slug($productItem['source_url'] ?? '', $productItem['title']);
+    }
+
     $productPagePaths[$productItem['group'] . '|' . $productItem['title']] = $groupSlug . '/' . $itemSlug;
 }

@@ -1,11 +1,11 @@
 {
     "groups": {
         "3D Signboard With Lighting": [
+            "Light Bulb Signboard",
             "Front-lit Signboard",
-            "Back-lit Signboar",
-            "Whole-lit Signboardd",
-            "Punch Hole Signboardd",
-            "Light Bulb Signboardd"
+            "Back-lit Signboard",
+            "Whole-lit Signboard",
+            "Punch Hole Signboard"
         ],
         "3D Signboard With Non-Lighting": [
             "Foamboard 3D Wording",
@@ -77,283 +77,330 @@
             "title": "Front-lit Signboard",
             "group": "3D Signboard With Lighting",
             "image": "front-lit-3d-signboard.jpeg",
-            "source_url": "https://signages.com.sg/3d-signboard-front-lit-signboard/"
+            "source_url": "https://signages.com.sg/3d-signboard-front-lit-signboard/",
+            "slug": "front-lit-signboard"
         },
         {
-            "title": "Back-lit Signboar",
+            "title": "Back-lit Signboard",
             "group": "3D Signboard With Lighting",
             "image": "back-lit-signboard.jpeg",
-            "source_url": "https://signages.com.sg/3d-signboard-back-lit-signboard/"
+            "source_url": "https://signages.com.sg/3d-signboard-back-lit-signboard/",
+            "slug": "back-lit-signboard"
         },
         {
-            "title": "Whole-lit Signboardd",
+            "title": "Whole-lit Signboard",
             "group": "3D Signboard With Lighting",
             "image": "whole-lit-signboard.jpeg",
-            "source_url": "https://signages.com.sg/3d-signboard-whole-lit-signboard/"
+            "source_url": "https://signages.com.sg/3d-signboard-whole-lit-signboard/",
+            "slug": "whole-lit-signboard"
         },
         {
-            "title": "Punch Hole Signboardd",
+            "title": "Punch Hole Signboard",
             "group": "3D Signboard With Lighting",
             "image": "punch-hole-signboard.jpeg",
-            "source_url": "https://signages.com.sg/3d-signboard-punch-hole-signboard/"
+            "source_url": "https://signages.com.sg/3d-signboard-punch-hole-signboard/",
+            "slug": "punch-hole-signboard"
         },
         {
-            "title": "Light Bulb Signboardd",
+            "title": "Light Bulb Signboard",
             "group": "3D Signboard With Lighting",
             "image": "light-bulb-signboard.jpeg",
-            "source_url": "https://signages.com.sg/3d-signboard-light-bulb-signboard/"
+            "source_url": "https://signages.com.sg/3d-signboard-light-bulb-signboard/",
+            "slug": "light-bulb-signboard"
         },
         {
             "title": "Foamboard 3D Wording",
             "group": "3D Signboard With Non-Lighting",
             "image": "foamboard-3d-wording.jpeg",
-            "source_url": "https://signages.com.sg/3d-signboard-with-non-lighting-foamboard-3d-wording/"
+            "source_url": "https://signages.com.sg/3d-signboard-with-non-lighting-foamboard-3d-wording/",
+            "slug": "foamboard-3d-wording"
         },
         {
             "title": "Aluminium Box-Up 3D Wording",
             "group": "3D Signboard With Non-Lighting",
             "image": "aluminium-3d-box-up-signboard.jpeg",
-            "source_url": "https://signages.com.sg/aluminium-box-up-3d-wording-3d-signboard-with-non-lighting/"
+            "source_url": "https://signages.com.sg/aluminium-box-up-3d-wording-3d-signboard-with-non-lighting/",
+            "slug": "aluminium-box-up-3d-wording"
         },
         {
             "title": "Acrylic 3D Wording",
             "group": "3D Signboard With Non-Lighting",
             "image": "acrylic-3d-wording.jpeg",
-            "source_url": "https://signages.com.sg/3d-signboard-with-non-lighting-acrylic/"
+            "source_url": "https://signages.com.sg/3d-signboard-with-non-lighting-acrylic/",
+            "slug": "acrylic-3d-wording"
         },
         {
             "title": "Normal Lightbox",
             "group": "Lightbox",
             "image": "normal-lightbox.jpeg",
-            "source_url": "https://signages.com.sg/lightbox-normal-lightbox/"
+            "source_url": "https://signages.com.sg/lightbox-normal-lightbox/",
+            "slug": "normal-lightbox"
         },
         {
             "title": "Aluminium Casing Lightbox",
             "group": "Lightbox",
             "image": "aluminium-casing-lightbox.jpeg",
-            "source_url": "https://signages.com.sg/lightbox-aluminium-casing-lightbox/"
+            "source_url": "https://signages.com.sg/lightbox-aluminium-casing-lightbox/",
+            "slug": "aluminium-casing-lightbox"
         },
         {
             "title": "Soft Fabric Lightbox",
             "group": "Lightbox",
             "image": "soft-fabric-lightbox.jpeg",
-            "source_url": "https://signages.com.sg/lightbox-soft-fabric-lightbox/"
+            "source_url": "https://signages.com.sg/lightbox-soft-fabric-lightbox/",
+            "slug": "soft-fabric-lightbox"
         },
         {
             "title": "Crystal Wording Lightbox",
             "group": "Lightbox",
             "image": "crystal-wording-lightbox.jpeg",
-            "source_url": "https://signages.com.sg/indoor-3d-signage-crystal-wording-lightbox/"
+            "source_url": "https://signages.com.sg/indoor-3d-signage-crystal-wording-lightbox/",
+            "slug": "crystal-wording-lightbox"
         },
         {
             "title": "Normal Signboard",
             "group": "2D Signboard",
             "image": "normal-signboard.jpeg",
-            "source_url": "https://signages.com.sg/signboard-normal-signboard/"
+            "source_url": "https://signages.com.sg/signboard-normal-signboard/",
+            "slug": "normal-signboard"
         },
         {
             "title": "Aluminium Strip Signboard Base",
             "group": "2D Signboard",
             "image": "aluminium-strip-signboard-base.jpeg",
-            "source_url": "https://signages.com.sg/signboard-aluminium-strip-signboard-base/"
+            "source_url": "https://signages.com.sg/signboard-aluminium-strip-signboard-base/",
+            "slug": "aluminium-strip-signboard-base"
         },
         {
             "title": "Banner Signboard",
             "group": "2D Signboard",
             "image": "banner-signboard.jpeg",
-            "source_url": "https://signages.com.sg/signboard-banner-signboard/"
+            "source_url": "https://signages.com.sg/signboard-banner-signboard/",
+            "slug": "banner-signboard"
         },
         {
             "title": "Foamboard 3D Wording Signage",
             "group": "Indoor Signage",
             "image": "foamboard-3d-wording-signage.jpeg",
-            "source_url": "https://signages.com.sg/indoor-3d-wording-foamboard-3d-wording-signage/"
+            "source_url": "https://signages.com.sg/indoor-3d-wording-foamboard-3d-wording-signage/",
+            "slug": "foamboard-3d-wording-signage"
         },
         {
             "title": "Stainless Steel 3D Wording Signage",
             "group": "Indoor Signage",
             "image": "stainless-steel-3d-wording-signage.jpeg",
-            "source_url": "https://signages.com.sg/indoor-3d-wording-stainless-steel-3d-wording-signage/"
+            "source_url": "https://signages.com.sg/indoor-3d-wording-stainless-steel-3d-wording-signage/",
+            "slug": "stainless-steel-3d-wording-signage"
         },
         {
             "title": "Acrylic 3D Wording",
             "group": "Indoor Signage",
             "image": "acrylic-3d-wording.jpeg",
-            "source_url": "https://signages.com.sg/indoor-3d-wording-acrylic-3d-wording-signage/"
+            "source_url": "https://signages.com.sg/indoor-3d-wording-acrylic-3d-wording-signage/",
+            "slug": "acrylic-3d-wording"
         },
         {
             "title": "Acrylic Signage",
             "group": "Indoor Signage",
             "image": "acrylic-signage.jpeg",
-            "source_url": "https://signages.com.sg/indoor-signage-acrylic-signage/"
+            "source_url": "https://signages.com.sg/indoor-signage-acrylic-signage/",
+            "slug": "acrylic-signage"
         },
         {
             "title": "Foamboard Signage",
             "group": "Indoor Signage",
             "image": "foamboard-signage.jpeg",
-            "source_url": "https://signages.com.sg/indoor-signage-foamboard-signage/"
+            "source_url": "https://signages.com.sg/indoor-signage-foamboard-signage/",
+            "slug": "foamboard-signage"
         },
         {
             "title": "LED Banner and Signage",
             "group": "LED Displays",
             "image": "led-banner-and-signage.jpeg",
-            "source_url": "https://signages.com.sg/signage-products-led-banner-and-signage/"
+            "source_url": "https://signages.com.sg/signage-products-led-banner-and-signage/",
+            "slug": "led-banner-and-signage"
         },
         {
             "title": "LED Neon Signage",
             "group": "LED Displays",
             "image": "led-neon-signage-pink.jpg",
-            "source_url": "https://signages.com.sg/signage-products-led-neon-signage/"
+            "source_url": "https://signages.com.sg/signage-products-led-neon-signage/",
+            "slug": "led-neon-signage"
         },
         {
             "title": "Pylon and Directional Signage",
             "group": "LED Displays",
             "image": "pylon-and-directional-signage.jpeg",
-            "source_url": "https://signages.com.sg/signage-product-pylon-and-directional-signage/"
+            "source_url": "https://signages.com.sg/signage-product-pylon-and-directional-signage/",
+            "slug": "pylon-and-directional-signage"
         },
         {
             "title": "Billboard",
             "group": "Billboard",
             "image": "billboard.jpeg",
-            "source_url": "https://signages.com.sg/billboard/"
+            "source_url": "https://signages.com.sg/billboard/",
+            "slug": "billboard"
         },
         {
             "title": "Hoarding",
             "group": "Billboard",
             "image": "hoarding.jpeg",
-            "source_url": "https://signages.com.sg/signage-product-hoarding/"
+            "source_url": "https://signages.com.sg/signage-product-hoarding/",
+            "slug": "hoarding"
         },
         {
             "title": "Construction Board",
             "group": "Billboard",
             "image": "construction-board.jpeg",
-            "source_url": "https://signages.com.sg/signage-product-construction-board/"
+            "source_url": "https://signages.com.sg/signage-product-construction-board/",
+            "slug": "construction-board"
         },
         {
             "title": "Roadsign Safety Signage",
             "group": "Road Sign",
             "image": "roadsign-safety-signage.jpeg",
-            "source_url": "https://signages.com.sg/roadsign-jkr-roadsign/"
+            "source_url": "https://signages.com.sg/roadsign-jkr-roadsign/",
+            "slug": "roadsign-safety-signage"
         },
         {
             "title": "Directional Roadsign",
             "group": "Road Sign",
             "image": "directional-roadsign.jpeg",
-            "source_url": "https://signages.com.sg/roadsign-directional-roadsign/"
+            "source_url": "https://signages.com.sg/roadsign-directional-roadsign/",
+            "slug": "directional-roadsign"
         },
         {
             "title": "Label Sticker",
             "group": "Printing Services",
             "image": "label-sticker.jpeg",
-            "source_url": "https://signages.com.sg/sticker-service-label-sticker/"
+            "source_url": "https://signages.com.sg/sticker-service-label-sticker/",
+            "slug": "label-sticker"
         },
         {
             "title": "Glass Window Sticker",
             "group": "Printing Services",
             "image": "glass-window-sticker.jpeg",
-            "source_url": "https://signages.com.sg/sticker-service-glass-window-sticker/"
+            "source_url": "https://signages.com.sg/sticker-service-glass-window-sticker/",
+            "slug": "glass-window-sticker"
         },
         {
             "title": "Wall Sticker",
             "group": "Printing Services",
             "image": "wall-sticker.jpeg",
-            "source_url": "https://signages.com.sg/sticker/"
+            "source_url": "https://signages.com.sg/sticker/",
+            "slug": "wall-sticker"
         },
         {
             "title": "Vehicle Sticker Wrapping",
             "group": "Printing Services",
             "image": "vehicle-sticker-singapore.jpeg",
-            "source_url": "https://signages.com.sg/sticker-service-vehicle-sticker-wrapping/"
+            "source_url": "https://signages.com.sg/sticker-service-vehicle-sticker-wrapping/",
+            "slug": "vehicle-sticker-wrapping"
         },
         {
             "title": "PVC Table Booth",
             "group": "Exhibition Booth",
             "image": "pvc-table-booth.jpeg",
-            "source_url": "https://signages.com.sg/exhibition-booth-pvc-table-booth/"
+            "source_url": "https://signages.com.sg/exhibition-booth-pvc-table-booth/",
+            "slug": "pvc-table-booth"
         },
         {
             "title": "Backdrop",
             "group": "Exhibition Booth",
             "image": "backdrop.jpeg",
-            "source_url": "https://signages.com.sg/exhibition-booth-backdrop/"
+            "source_url": "https://signages.com.sg/exhibition-booth-backdrop/",
+            "slug": "backdrop"
         },
         {
             "title": "Jumbo Banner",
             "group": "Exhibition Booth",
             "image": "jumbo-banner.jpeg",
-            "source_url": "https://signages.com.sg/exhibition-booth-jumbo-banner/"
+            "source_url": "https://signages.com.sg/exhibition-booth-jumbo-banner/",
+            "slug": "jumbo-banner"
         },
         {
             "title": "Pop-Up Backdrop Display System",
             "group": "Exhibition Booth",
             "image": "pop-up-backdrop-display-system.jpeg",
-            "source_url": "https://signages.com.sg/exhibition-booth-pop-up-backdrop-display-system/"
+            "source_url": "https://signages.com.sg/exhibition-booth-pop-up-backdrop-display-system/",
+            "slug": "pop-up-backdrop-display-system"
         },
         {
             "title": "Pop-Up Promotion Counter",
             "group": "Exhibition Booth",
             "image": "pop-up-promotion-counter.jpeg",
-            "source_url": "https://signages.com.sg/exhibition-booth-pop-up-promotion-counter/"
+            "source_url": "https://signages.com.sg/exhibition-booth-pop-up-promotion-counter/",
+            "slug": "pop-up-promotion-counter"
         },
         {
             "title": "Banner",
             "group": "Display Set",
             "image": "banner.jpeg",
-            "source_url": "https://signages.com.sg/banner/"
+            "source_url": "https://signages.com.sg/banner/",
+            "slug": "banner"
         },
         {
             "title": "Normal Roll-Up Bunting",
             "group": "Display Set",
             "image": "normal-roll-up-bunting.jpeg",
-            "source_url": "https://signages.com.sg/display-set-normal-roll-up-bunting/"
+            "source_url": "https://signages.com.sg/display-set-normal-roll-up-bunting/",
+            "slug": "normal-roll-up-bunting"
         },
         {
             "title": "Deluxe Roll-Up Bunting",
             "group": "Display Set",
             "image": "deluxe-roll-up-bunting.jpeg",
-            "source_url": "https://signages.com.sg/display-set-deluxe-roll-up-bunting/"
+            "source_url": "https://signages.com.sg/display-set-deluxe-roll-up-bunting/",
+            "slug": "deluxe-roll-up-bunting"
         },
         {
             "title": "Tripod/Round Plate Bunting",
             "group": "Display Set",
             "image": "tripod-round-plate-bunting.jpeg",
-            "source_url": "https://signages.com.sg/display-set-tripod-round-plate-bunting/"
+            "source_url": "https://signages.com.sg/display-set-tripod-round-plate-bunting/",
+            "slug": "tripod-round-plate-bunting"
         },
         {
             "title": "Human Stand",
             "group": "Display Set",
             "image": "human-stand.jpeg",
-            "source_url": "https://signages.com.sg/display-set-human-stand/"
+            "source_url": "https://signages.com.sg/display-set-human-stand/",
+            "slug": "human-stand"
         },
         {
             "title": "Easel Stand / Wood Stand",
             "group": "Display Set",
             "image": "easel-stand-wood-stand.jpeg",
-            "source_url": "https://signages.com.sg/easel-stand-wood-stand/"
+            "source_url": "https://signages.com.sg/easel-stand-wood-stand/",
+            "slug": "easel-stand-wood-stand"
         },
         {
             "title": "X-Stand",
             "group": "Display Set",
             "image": "x-stand.jpeg",
-            "source_url": "https://signages.com.sg/display-set/"
+            "source_url": "https://signages.com.sg/display-set/",
+            "slug": "x-stand"
         },
         {
             "title": "Door Bunting",
             "group": "Display Set",
             "image": "door-bunting.jpeg",
-            "source_url": "https://signages.com.sg/display-set-door-bunting/"
+            "source_url": "https://signages.com.sg/display-set-door-bunting/",
+            "slug": "door-bunting"
         },
         {
             "title": "Namecard",
             "group": "Marketing Essential",
             "image": "namecard.jpeg",
-            "source_url": "https://signages.com.sg/marketing-essential/"
+            "source_url": "https://signages.com.sg/marketing-essential/",
+            "slug": "namecard"
         },
         {
             "title": "Leaflet",
             "group": "Marketing Essential",
             "image": "leaflet.jpeg",
-            "source_url": "https://signages.com.sg/marketing-essential-leaflet/"
+            "source_url": "https://signages.com.sg/marketing-essential-leaflet/",
+            "slug": "leaflet"
         }
     ]
 }

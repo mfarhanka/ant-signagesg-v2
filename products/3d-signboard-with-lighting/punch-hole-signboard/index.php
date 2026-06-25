@@ -1,6 +1,6 @@
 <?php
 $productPageType = 'item';
 $productGroupTitle = '3D Signboard With Lighting';
-$productItemTitle = 'Light Bulb Signboardd';
+$productItemTitle = 'Punch Hole Signboard';
 $rootPrefix = '../../../';
 require __DIR__ . '/../../../includes/product-page-template.php';
