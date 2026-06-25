@@ -14,7 +14,7 @@ $ogImage = $post['og_image'];
 $assetBase = '../../assets';
 $homePagePath = '../../index.php';
 $blogPath = '..';
-$productPath = '../../signboard-and-signage-products-in-singapore-sg';
+$productPath = '../../products';
 $industryPath = '../../industry-solutions';
 $structuredData = [
     [

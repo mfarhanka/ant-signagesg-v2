@@ -8,6 +8,17 @@ if (!function_exists('signage_product_anchor')) {
     }
 }
 
+if (!function_exists('signage_product_source_slug')) {
+    function signage_product_source_slug(string $sourceUrl, string $fallback): string
+    {
+        $path = parse_url($sourceUrl, PHP_URL_PATH);
+        $slug = trim((string) $path, '/');
+        $slug = basename($slug);
+
+        return $slug !== '' ? signage_product_anchor($slug) : signage_product_anchor($fallback);
+    }
+}
+
 $productMenuGroups = [
     '3D Signboard With Lighting' => ['Front-lit Signboard', 'Back-lit Signboard', 'Whole-lit Signboard', 'Punch Hole Signboard', 'Light Bulb Signboard'],
     '3D Signboard With Non-Lighting' => ['Foamboard 3D Wording', 'Aluminium Box-Up 3D Wording', 'Acrylic 3D Wording'],
@@ -21,11 +32,6 @@ $productMenuGroups = [
     'Exhibition Booth' => ['PVC Table Booth', 'Backdrop', 'Jumbo Banner', 'Pop-Up Backdrop Display System', 'Pop-Up Promotion Counter'],
     'Display Set' => ['Banner', 'Normal Roll-Up Bunting', 'Deluxe Roll-Up Bunting', 'Tripod/Round Plate Bunting', 'Human Stand', 'Easel Stand / Wood Stand', 'X-Stand', 'Door Bunting'],
     'Marketing Essential' => ['Namecard', 'Leaflet'],
-];
-
-$productPagePaths = [
-    '3D Signboard With Lighting|Front-lit Signboard' => '3d-signboard-front-lit-signboard',
-    '3D Signboard With Lighting|Back-lit Signboard' => '3d-signboard-back-lit-signboard',
 ];
 
 $productItems = [
@@ -312,3 +318,16 @@ $productItems = [
         'source_url' => 'https://signages.com.sg/marketing-essential-leaflet/',
     ],
 ];
+
+$productPagePaths = [];
+$productGroupPaths = [];
+
+foreach (array_keys($productMenuGroups) as $groupTitle) {
+    $productGroupPaths[$groupTitle] = signage_product_anchor($groupTitle);
+}
+
+foreach ($productItems as $productItem) {
+    $groupSlug = $productGroupPaths[$productItem['group']] ?? signage_product_anchor($productItem['group']);
+    $itemSlug = signage_product_source_slug($productItem['source_url'] ?? '', $productItem['title']);
+    $productPagePaths[$productItem['group'] . '|' . $productItem['title']] = $groupSlug . '/' . $itemSlug;
+}

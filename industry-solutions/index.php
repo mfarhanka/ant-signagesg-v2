@@ -8,7 +8,7 @@ $ogImage = 'assets/images/lightbox/lightbox-ang-mo-kio-menu.jpg';
 $assetBase = '../assets';
 $homePagePath = '../index.php';
 $blogPath = '../blog';
-$productPath = '../signboard-and-signage-products-in-singapore-sg';
+$productPath = '../products';
 $industryPath = '.';
 
 $fnbPackages = [

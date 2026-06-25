@@ -10,7 +10,7 @@ $siteBaseUrl = $siteBaseUrl ?? 'https://signages.com.sg';
 $assetBase = $assetBase ?? 'assets';
 $homePagePath = $homePagePath ?? 'index.php';
 $blogPath = $blogPath ?? 'blog';
-$productPath = $productPath ?? 'signboard-and-signage-products-in-singapore-sg';
+$productPath = $productPath ?? 'products';
 $industryPath = $industryPath ?? 'industry-solutions';
 $structuredData = $structuredData ?? null;
 $extraHead = $extraHead ?? '';
@@ -20,13 +20,11 @@ $isHomePage = $navPage === 'home';
 $homeHref = $isHomePage ? '#hero' : $homePagePath . '#hero';
 $quoteHref = $isHomePage ? '#quote-form' : $homePagePath . '#quote-form';
 $estimatorHref = $isHomePage ? '#estimator' : $homePagePath . '#estimator';
-$portfolioHref = $isHomePage ? '#signboard-showcase' : $homePagePath . '#signboard-showcase';
 $contactHref = $isHomePage ? '#location-map' : $homePagePath . '#location-map';
 $industryHref = $industryPath === '.' ? '#industry-solutions' : $industryPath;
 $productMenuHref = $productPath === '.' ? '#product-menu-structure' : $productPath . '#product-menu-structure';
 $productFeaturedHref = $productPath === '.' ? '#product-range' : $productPath . '#product-range';
 $productAnchorBase = $productPath === '.' ? '' : $productPath;
-$productDetailPrefix = ($productPath === '.' || str_starts_with($productPath, '../')) ? '../' : '';
 $productMenuGroups = $productMenuGroups ?? [
     '3D Signboard With Lighting' => ['Front-lit Signboard', 'Back-lit Signboard', 'Whole-lit Signboard', 'Punch Hole Signboard', 'Light Bulb Signboard'],
     '3D Signboard With Non-Lighting' => ['Foamboard 3D Wording', 'Aluminium Box-Up 3D Wording', 'Acrylic 3D Wording'],
@@ -107,7 +105,7 @@ $ogImageUrl = preg_match('#^https?://#i', $ogImage) ? $ogImage : rtrim($siteBase
                     <li class="nav-item"><a class="nav-link<?php echo $isHomePage ? ' active' : ''; ?>" href="<?php echo htmlspecialchars($homeHref, ENT_QUOTES, 'UTF-8'); ?>">Home</a></li>
                     <li class="nav-item"><a class="nav-link<?php echo $navPage === 'industries' ? ' active' : ''; ?>" href="<?php echo htmlspecialchars($industryHref, ENT_QUOTES, 'UTF-8'); ?>">Industry Solutions</a></li>
                     <li class="nav-item dropdown product-nav-item">
-                        <a class="nav-link dropdown-toggle<?php echo $navPage === 'products' ? ' active' : ''; ?>" href="#" id="productsMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">Signage Categories</a>
+                        <a class="nav-link dropdown-toggle<?php echo $navPage === 'products' ? ' active' : ''; ?>" href="#" id="productsMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">Products</a>
                         <div class="dropdown-menu product-mega-menu" aria-labelledby="productsMenu">
                             <div class="product-mega-inner">
                                 <div class="product-mega-header">
@@ -122,11 +120,12 @@ $ogImageUrl = preg_match('#^https?://#i', $ogImage) ? $ogImage : rtrim($siteBase
                                 </div>
                                 <div class="product-mega-grid">
 <?php foreach ($productMenuGroups as $groupTitle => $groupItems): ?>
+<?php $groupPath = isset($productGroupPaths[$groupTitle]) ? ($productPath === '.' ? $productGroupPaths[$groupTitle] : rtrim($productPath, '/') . '/' . $productGroupPaths[$groupTitle]) : ($productAnchorBase . '#product-group-' . signage_product_anchor($groupTitle)); ?>
                                     <section class="product-mega-group">
-                                        <a class="product-mega-title" href="<?php echo htmlspecialchars($productAnchorBase . '#product-group-' . signage_product_anchor($groupTitle), ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($groupTitle, ENT_QUOTES, 'UTF-8'); ?></a>
+                                        <a class="product-mega-title" href="<?php echo htmlspecialchars($groupPath, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($groupTitle, ENT_QUOTES, 'UTF-8'); ?></a>
                                         <ul>
 <?php foreach ($groupItems as $groupItem): ?>
-<?php $groupItemPath = isset($productPagePaths[$groupTitle . '|' . $groupItem]) ? $productDetailPrefix . $productPagePaths[$groupTitle . '|' . $groupItem] : ($productAnchorBase . '#product-' . signage_product_anchor($groupTitle . '-' . $groupItem)); ?>
+<?php $groupItemPath = isset($productPagePaths[$groupTitle . '|' . $groupItem]) ? ($productPath === '.' ? $productPagePaths[$groupTitle . '|' . $groupItem] : rtrim($productPath, '/') . '/' . $productPagePaths[$groupTitle . '|' . $groupItem]) : ($productAnchorBase . '#product-' . signage_product_anchor($groupTitle . '-' . $groupItem)); ?>
                                             <li><a href="<?php echo htmlspecialchars($groupItemPath, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($groupItem, ENT_QUOTES, 'UTF-8'); ?></a></li>
 <?php endforeach; ?>
                                         </ul>
@@ -136,7 +135,6 @@ $ogImageUrl = preg_match('#^https?://#i', $ogImage) ? $ogImage : rtrim($siteBase
                             </div>
                         </div>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="<?php echo htmlspecialchars($portfolioHref, ENT_QUOTES, 'UTF-8'); ?>">Portfolio</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?php echo htmlspecialchars($contactHref, ENT_QUOTES, 'UTF-8'); ?>">Contact</a></li>
                     <li class="nav-item"><a class="nav-link<?php echo $navPage === 'blog' ? ' active' : ''; ?>" href="<?php echo htmlspecialchars($blogPath, ENT_QUOTES, 'UTF-8'); ?>">Blog</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?php echo htmlspecialchars($estimatorHref, ENT_QUOTES, 'UTF-8'); ?>">Cost Calculator</a></li>
