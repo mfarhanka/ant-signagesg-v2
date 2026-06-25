@@ -1,4 +1,13 @@
 <?php
+if (!function_exists('signage_product_anchor')) {
+    function signage_product_anchor(string $value): string
+    {
+        $anchor = strtolower($value);
+        $anchor = preg_replace('/[^a-z0-9]+/', '-', $anchor);
+        return trim($anchor ?? '', '-');
+    }
+}
+
 $productMenuGroups = [
     '3D Signboard With Lighting' => ['Front-lit Signboard', 'Back-lit Signboard', 'Whole-lit Signboard', 'Punch Hole Signboard', 'Light Bulb Signboard'],
     '3D Signboard With Non-Lighting' => ['Foamboard 3D Wording', 'Aluminium Box-Up 3D Wording', 'Acrylic 3D Wording'],
@@ -12,6 +21,10 @@ $productMenuGroups = [
     'Exhibition Booth' => ['PVC Table Booth', 'Backdrop', 'Jumbo Banner', 'Pop-Up Backdrop Display System', 'Pop-Up Promotion Counter'],
     'Display Set' => ['Banner', 'Normal Roll-Up Bunting', 'Deluxe Roll-Up Bunting', 'Tripod/Round Plate Bunting', 'Human Stand', 'Easel Stand / Wood Stand', 'X-Stand', 'Door Bunting'],
     'Marketing Essential' => ['Namecard', 'Leaflet'],
+];
+
+$productPagePaths = [
+    '3D Signboard With Lighting|Front-lit Signboard' => '3d-signboard-front-lit-signboard',
 ];
 
 $productItems = [

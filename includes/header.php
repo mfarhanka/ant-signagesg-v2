@@ -25,6 +25,8 @@ $contactHref = $isHomePage ? '#location-map' : $homePagePath . '#location-map';
 $industryHref = $industryPath === '.' ? '#industry-solutions' : $industryPath;
 $productMenuHref = $productPath === '.' ? '#product-menu-structure' : $productPath . '#product-menu-structure';
 $productFeaturedHref = $productPath === '.' ? '#product-range' : $productPath . '#product-range';
+$productAnchorBase = $productPath === '.' ? '' : $productPath;
+$productDetailPrefix = ($productPath === '.' || str_starts_with($productPath, '../')) ? '../' : '';
 $productMenuGroups = $productMenuGroups ?? [
     '3D Signboard With Lighting' => ['Front-lit Signboard', 'Back-lit Signboard', 'Whole-lit Signboard', 'Punch Hole Signboard', 'Light Bulb Signboard'],
     '3D Signboard With Non-Lighting' => ['Foamboard 3D Wording', 'Aluminium Box-Up 3D Wording', 'Acrylic 3D Wording'],
@@ -121,10 +123,11 @@ $ogImageUrl = preg_match('#^https?://#i', $ogImage) ? $ogImage : rtrim($siteBase
                                 <div class="product-mega-grid">
 <?php foreach ($productMenuGroups as $groupTitle => $groupItems): ?>
                                     <section class="product-mega-group">
-                                        <a class="product-mega-title" href="<?php echo htmlspecialchars($productMenuHref, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($groupTitle, ENT_QUOTES, 'UTF-8'); ?></a>
+                                        <a class="product-mega-title" href="<?php echo htmlspecialchars($productAnchorBase . '#product-group-' . signage_product_anchor($groupTitle), ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($groupTitle, ENT_QUOTES, 'UTF-8'); ?></a>
                                         <ul>
 <?php foreach ($groupItems as $groupItem): ?>
-                                            <li><a href="<?php echo htmlspecialchars($productMenuHref, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($groupItem, ENT_QUOTES, 'UTF-8'); ?></a></li>
+<?php $groupItemPath = isset($productPagePaths[$groupTitle . '|' . $groupItem]) ? $productDetailPrefix . $productPagePaths[$groupTitle . '|' . $groupItem] : ($productAnchorBase . '#product-' . signage_product_anchor($groupTitle . '-' . $groupItem)); ?>
+                                            <li><a href="<?php echo htmlspecialchars($groupItemPath, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($groupItem, ENT_QUOTES, 'UTF-8'); ?></a></li>
 <?php endforeach; ?>
                                         </ul>
                                     </section>

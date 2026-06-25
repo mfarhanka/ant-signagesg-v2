@@ -188,6 +188,17 @@ $extraHead = <<<'HTML'
             line-height: 1.25;
         }
 
+        .category-sub-list a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .category-sub-list a:hover {
+            color: var(--color-pure-black);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
         .product-grid {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -198,6 +209,17 @@ $extraHead = <<<'HTML'
             display: flex;
             flex-direction: column;
             min-height: 100%;
+            scroll-margin-top: 120px;
+        }
+
+        .category-group-card {
+            scroll-margin-top: 120px;
+        }
+
+        .product-card:target,
+        .category-group-card:target {
+            outline: 3px solid var(--color-pure-black);
+            outline-offset: 6px;
         }
 
         .product-card-media {
@@ -324,14 +346,15 @@ require __DIR__ . '/../includes/header.php';
 
                 <div class="category-group-grid">
 <?php foreach ($productMenuGroups as $groupTitle => $groupItems): ?>
-                    <article class="category-group-card">
+                    <article class="category-group-card" id="product-group-<?php echo htmlspecialchars(signage_product_anchor($groupTitle), ENT_QUOTES, 'UTF-8'); ?>">
                         <div class="category-group-title">
                             <h3><?php echo htmlspecialchars($groupTitle, ENT_QUOTES, 'UTF-8'); ?></h3>
                             <span class="category-count"><?php echo str_pad((string) count($groupItems), 2, '0', STR_PAD_LEFT); ?></span>
                         </div>
                         <ul class="category-sub-list">
 <?php foreach ($groupItems as $groupItem): ?>
-                            <li><?php echo htmlspecialchars($groupItem, ENT_QUOTES, 'UTF-8'); ?></li>
+<?php $groupItemHref = isset($productPagePaths[$groupTitle . '|' . $groupItem]) ? '../' . $productPagePaths[$groupTitle . '|' . $groupItem] : '#product-' . signage_product_anchor($groupTitle . '-' . $groupItem); ?>
+                            <li><a href="<?php echo htmlspecialchars($groupItemHref, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($groupItem, ENT_QUOTES, 'UTF-8'); ?></a></li>
 <?php endforeach; ?>
                         </ul>
                     </article>
@@ -352,7 +375,8 @@ require __DIR__ . '/../includes/header.php';
 
                 <div class="product-grid">
 <?php foreach ($productItems as $productItem): ?>
-                    <article class="product-card">
+<?php $productItemHref = $productPagePaths[$productItem['group'] . '|' . $productItem['title']] ?? null; ?>
+                    <article class="product-card" id="product-<?php echo htmlspecialchars(signage_product_anchor($productItem['group'] . '-' . $productItem['title']), ENT_QUOTES, 'UTF-8'); ?>">
                         <div class="product-card-media">
                             <img src="../assets/images/products/<?php echo htmlspecialchars($productItem['image'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($productItem['title'] . ' signage product in Singapore', ENT_QUOTES, 'UTF-8'); ?>">
                         </div>
@@ -360,6 +384,9 @@ require __DIR__ . '/../includes/header.php';
                             <span class="product-tag"><?php echo htmlspecialchars($productItem['group'], ENT_QUOTES, 'UTF-8'); ?></span>
                             <h3><?php echo htmlspecialchars($productItem['title'], ENT_QUOTES, 'UTF-8'); ?></h3>
                             <p class="product-copy mb-0">Custom <?php echo htmlspecialchars(strtolower($productItem['title']), ENT_QUOTES, 'UTF-8'); ?> solutions can be tailored by size, material, finish, lighting, print, and installation method for Singapore commercial spaces.</p>
+<?php if ($productItemHref !== null): ?>
+                            <a class="d-inline-flex mt-3 fw-bold text-black text-uppercase text-decoration-none" style="font-size: 0.72rem; letter-spacing: 0.12em;" href="../<?php echo htmlspecialchars($productItemHref, ENT_QUOTES, 'UTF-8'); ?>">View Items</a>
+<?php endif; ?>
                         </div>
                     </article>
 <?php endforeach; ?>
