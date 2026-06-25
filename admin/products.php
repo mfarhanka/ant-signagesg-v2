@@ -12,6 +12,67 @@ $requestMethod = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 $message = '';
 $error = '';
 
+function signage_admin_upload_product_image(string $fieldName, ?string $fallback = null): string
+{
+    if (!isset($_FILES[$fieldName]) || ($_FILES[$fieldName]['error'] ?? UPLOAD_ERR_NO_FILE) === UPLOAD_ERR_NO_FILE) {
+        return $fallback ?? 'foamboard-signage-singapore.jpeg';
+    }
+
+    if ($_FILES[$fieldName]['error'] !== UPLOAD_ERR_OK) {
+        throw new RuntimeException('Image upload failed. Please try another file.');
+    }
+
+    $tmpPath = (string) $_FILES[$fieldName]['tmp_name'];
+    $originalName = (string) $_FILES[$fieldName]['name'];
+    $extension = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
+    $allowedExtensions = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
+
+    if (!in_array($extension, $allowedExtensions, true)) {
+        throw new RuntimeException('Image must be JPG, PNG, WebP, or GIF.');
+    }
+
+    if (function_exists('finfo_open')) {
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        $mimeType = $finfo ? finfo_file($finfo, $tmpPath) : '';
+
+        if ($finfo) {
+            finfo_close($finfo);
+        }
+
+        if (!in_array($mimeType, ['image/jpeg', 'image/png', 'image/webp', 'image/gif'], true)) {
+            throw new RuntimeException('Uploaded file does not appear to be a valid image.');
+        }
+    }
+
+    $imageDir = __DIR__ . '/../assets/images/products';
+
+    if (!is_dir($imageDir)) {
+        mkdir($imageDir, 0777, true);
+    }
+
+    $baseName = signage_product_anchor(pathinfo($originalName, PATHINFO_FILENAME));
+
+    if ($baseName === '') {
+        $baseName = 'product-image';
+    }
+
+    $filename = $baseName . '.' . $extension;
+    $targetPath = $imageDir . '/' . $filename;
+    $counter = 2;
+
+    while (is_file($targetPath)) {
+        $filename = $baseName . '-' . $counter . '.' . $extension;
+        $targetPath = $imageDir . '/' . $filename;
+        $counter++;
+    }
+
+    if (!move_uploaded_file($tmpPath, $targetPath)) {
+        throw new RuntimeException('Unable to save uploaded image.');
+    }
+
+    return $filename;
+}
+
 if (isset($_GET['logout'])) {
     $_SESSION = [];
     session_destroy();
@@ -101,7 +162,6 @@ if ($isLoggedIn && $requestMethod === 'POST') {
         if ($action === 'add_product') {
             $group = (string) ($_POST['group'] ?? '');
             $title = trim((string) ($_POST['title'] ?? ''));
-            $image = trim((string) ($_POST['image'] ?? ''));
             $sourceUrl = trim((string) ($_POST['source_url'] ?? ''));
 
             if (!isset($groups[$group])) {
@@ -117,10 +177,11 @@ if ($isLoggedIn && $requestMethod === 'POST') {
             }
 
             $groups[$group][] = $title;
+            $image = signage_admin_upload_product_image('image_upload');
             $items[] = [
                 'title' => $title,
                 'group' => $group,
-                'image' => $image !== '' ? $image : 'foamboard-signage-singapore.jpeg',
+                'image' => $image,
                 'source_url' => $sourceUrl,
             ];
             $message = 'Subcategory added.';
@@ -129,7 +190,7 @@ if ($isLoggedIn && $requestMethod === 'POST') {
         if ($action === 'update_product') {
             $oldGroup = (string) ($_POST['old_group'] ?? '');
             $oldTitle = (string) ($_POST['old_title'] ?? '');
-            $newGroup = (string) ($_POST['group'] ?? '');
+            $newGroup = (string) ($_POST['group'] ?? $oldGroup);
             $newTitle = trim((string) ($_POST['title'] ?? ''));
 
             if (!isset($groups[$oldGroup], $groups[$newGroup]) || $newTitle === '') {
@@ -149,7 +210,7 @@ if ($isLoggedIn && $requestMethod === 'POST') {
                 if (($item['group'] ?? '') === $oldGroup && ($item['title'] ?? '') === $oldTitle) {
                     $item['group'] = $newGroup;
                     $item['title'] = $newTitle;
-                    $item['image'] = trim((string) ($_POST['image'] ?? '')) ?: 'foamboard-signage-singapore.jpeg';
+                    $item['image'] = signage_admin_upload_product_image('image_upload', trim((string) ($_POST['existing_image'] ?? '')) ?: ($item['image'] ?? 'foamboard-signage-singapore.jpeg'));
                     $item['source_url'] = trim((string) ($_POST['source_url'] ?? ''));
                     break;
                 }
@@ -183,8 +244,6 @@ if ($isLoggedIn && $requestMethod === 'POST') {
 $catalog = signage_load_catalog_for_admin();
 $groups = $catalog['groups'];
 $items = $catalog['items'];
-$imageFiles = array_map('basename', glob(__DIR__ . '/../assets/images/products/*') ?: []);
-sort($imageFiles);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -200,7 +259,15 @@ sort($imageFiles);
         a { color: #111; }
         .panel { background: #fff; border: 1px solid #111; padding: 18px; margin-bottom: 18px; }
         .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-        .category { border: 1px solid #ccc; padding: 14px; margin-top: 12px; }
+        .category { border: 1px solid #ccc; margin-top: 12px; background: #fff; }
+        .category summary { display: flex; justify-content: space-between; gap: 16px; align-items: center; padding: 14px; cursor: pointer; font-weight: 700; }
+        .category summary::-webkit-details-marker { display: none; }
+        .category summary::before { content: "+"; display: inline-flex; width: 26px; height: 26px; align-items: center; justify-content: center; border: 1px solid #111; margin-right: 10px; flex-shrink: 0; }
+        .category[open] summary::before { content: "-"; }
+        .category-summary-title { display: flex; align-items: center; min-width: 0; }
+        .category-summary-title span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .category-count { flex-shrink: 0; border: 1px solid #111; padding: 5px 8px; font-size: 12px; font-family: monospace; }
+        .category-body { padding: 0 14px 14px; border-top: 1px solid #ddd; }
         .item { border-top: 1px solid #ddd; padding-top: 12px; margin-top: 12px; }
         .row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; align-items: end; }
         label { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 4px; }
@@ -260,7 +327,7 @@ sort($imageFiles);
 
         <section class="panel">
             <h2>Add Subcategory</h2>
-            <form method="post" class="row">
+            <form method="post" class="row" enctype="multipart/form-data">
                 <input type="hidden" name="action" value="add_product">
                 <div>
                     <label>Parent Category</label>
@@ -271,22 +338,21 @@ sort($imageFiles);
                     </select>
                 </div>
                 <div><label>Subcategory Title</label><input name="title" required></div>
-                <div><label>Image Filename</label><input name="image" list="imageFiles" placeholder="example.jpeg"></div>
-                <div><label>Source URL</label><input name="source_url" placeholder="https://..."></div>
+                <div><label>Upload Image</label><input type="file" name="image_upload" accept="image/jpeg,image/png,image/webp,image/gif"></div>
+                <div><label>Reference URL</label><input name="source_url" placeholder="https://..."></div>
                 <div><button type="submit">Add Subcategory</button></div>
             </form>
         </section>
 
-        <datalist id="imageFiles">
-<?php foreach ($imageFiles as $imageFile): ?>
-            <option value="<?php echo htmlspecialchars($imageFile, ENT_QUOTES, 'UTF-8'); ?>"></option>
-<?php endforeach; ?>
-        </datalist>
-
         <section class="panel">
             <h2>Manage Categories</h2>
 <?php foreach ($groups as $groupTitle => $groupItemTitles): ?>
-            <article class="category">
+            <details class="category">
+                <summary>
+                    <span class="category-summary-title"><span><?php echo htmlspecialchars($groupTitle, ENT_QUOTES, 'UTF-8'); ?></span></span>
+                    <span class="category-count"><?php echo count($groupItemTitles); ?> items</span>
+                </summary>
+                <div class="category-body">
                 <form method="post" class="row">
                     <input type="hidden" name="action" value="rename_category">
                     <input type="hidden" name="old_title" value="<?php echo htmlspecialchars($groupTitle, ENT_QUOTES, 'UTF-8'); ?>">
@@ -303,21 +369,14 @@ sort($imageFiles);
 <?php foreach ($groupItemTitles as $itemTitle): ?>
 <?php $productItem = signage_catalog_find_item($items, $groupTitle, $itemTitle) ?? ['title' => $itemTitle, 'group' => $groupTitle, 'image' => '', 'source_url' => '']; ?>
                 <div class="item">
-                    <form method="post" class="row">
+                    <form method="post" class="row" enctype="multipart/form-data">
                         <input type="hidden" name="action" value="update_product">
                         <input type="hidden" name="old_group" value="<?php echo htmlspecialchars($groupTitle, ENT_QUOTES, 'UTF-8'); ?>">
                         <input type="hidden" name="old_title" value="<?php echo htmlspecialchars($itemTitle, ENT_QUOTES, 'UTF-8'); ?>">
-                        <div>
-                            <label>Parent</label>
-                            <select name="group">
-<?php foreach (array_keys($groups) as $selectGroupTitle): ?>
-                                <option value="<?php echo htmlspecialchars($selectGroupTitle, ENT_QUOTES, 'UTF-8'); ?>"<?php echo $selectGroupTitle === $groupTitle ? ' selected' : ''; ?>><?php echo htmlspecialchars($selectGroupTitle, ENT_QUOTES, 'UTF-8'); ?></option>
-<?php endforeach; ?>
-                            </select>
-                        </div>
+                        <input type="hidden" name="existing_image" value="<?php echo htmlspecialchars($productItem['image'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                         <div><label>Subcategory</label><input name="title" value="<?php echo htmlspecialchars($itemTitle, ENT_QUOTES, 'UTF-8'); ?>" required></div>
-                        <div><label>Image</label><input name="image" list="imageFiles" value="<?php echo htmlspecialchars($productItem['image'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"></div>
-                        <div><label>Source URL</label><input name="source_url" value="<?php echo htmlspecialchars($productItem['source_url'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"></div>
+                        <div><label>Replace Image</label><input type="file" name="image_upload" accept="image/jpeg,image/png,image/webp,image/gif"><span class="muted">Current: <?php echo htmlspecialchars($productItem['image'] ?? 'none', ENT_QUOTES, 'UTF-8'); ?></span></div>
+                        <div><label>Reference URL</label><input name="source_url" value="<?php echo htmlspecialchars($productItem['source_url'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"></div>
                         <div><button type="submit" class="secondary">Save Subcategory</button></div>
                     </form>
                     <form method="post" onsubmit="return confirm('Delete this subcategory?');" style="margin-top: 8px;">
@@ -328,7 +387,8 @@ sort($imageFiles);
                     </form>
                 </div>
 <?php endforeach; ?>
-            </article>
+                </div>
+            </details>
 <?php endforeach; ?>
         </section>
     </main>
