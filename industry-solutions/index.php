@@ -216,6 +216,15 @@ $extraHead = <<<'HTML'
             flex-direction: column;
             min-height: 100%;
             padding: 1.25rem;
+            box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+            transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+        }
+
+        .industry-card:hover,
+        .industry-card:focus-within {
+            border-color: #25d366;
+            transform: translateY(-8px);
+            box-shadow: 0 22px 44px rgba(0, 0, 0, 0.12);
         }
 
         .industry-card h3,
@@ -241,6 +250,56 @@ $extraHead = <<<'HTML'
             color: var(--color-dark-gray);
             font-size: 0.76rem;
             line-height: 1.25;
+        }
+
+        .industry-card-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            margin-top: 1rem;
+            padding: 0.78rem 0.9rem;
+            border: 1px solid #1fb457;
+            border-radius: 0;
+            background: #25d366;
+            color: var(--color-pure-white);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            line-height: 1.2;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .industry-card-whatsapp:hover,
+        .industry-card-whatsapp:focus {
+            background: #1fb457;
+            color: var(--color-pure-white);
+            text-decoration: none;
+            transform: translateY(-2px);
+            box-shadow: 0 14px 28px rgba(10, 64, 31, 0.22);
+        }
+
+        .industry-card-whatsapp i {
+            font-size: 1.05rem;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .industry-card,
+            .industry-card-whatsapp {
+                transition: none;
+            }
+
+            .industry-card:hover,
+            .industry-card:focus-within,
+            .industry-card-whatsapp:hover,
+            .industry-card-whatsapp:focus {
+                transform: none;
+            }
         }
 
         .industry-package-grid {
@@ -389,6 +448,10 @@ require __DIR__ . '/../includes/header.php';
                             <li><?php echo htmlspecialchars($service, ENT_QUOTES, 'UTF-8'); ?></li>
 <?php endforeach; ?>
                         </ul>
+                        <a href="https://wa.me/6582861600?text=<?php echo rawurlencode('Hi Signage SG, I would like to discuss signage solutions for ' . $industry['name'] . '.'); ?>" class="industry-card-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp about <?php echo htmlspecialchars($industry['name'], ENT_QUOTES, 'UTF-8'); ?> signage">
+                            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                            WhatsApp
+                        </a>
                     </article>
 <?php endforeach; ?>
                 </div>

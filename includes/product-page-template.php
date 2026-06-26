@@ -131,10 +131,18 @@ $extraHead = <<<'HTML'
         }
 
         .product-detail-card-media {
+            position: relative;
+            display: block;
+            width: 100%;
+            padding: 0;
             aspect-ratio: 4 / 3;
             overflow: hidden;
             border-bottom: 1px solid var(--color-pure-black);
+            border-left: 0;
+            border-right: 0;
+            border-top: 0;
             background: var(--color-light-gray);
+            cursor: zoom-in;
         }
 
         .product-detail-card-body,
@@ -149,6 +157,88 @@ $extraHead = <<<'HTML'
 
         .product-entry-description {
             white-space: pre-line;
+        }
+
+        .product-entry-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 40px;
+            margin-top: 1rem;
+            padding: 0.7rem 0.95rem;
+            border: 1px solid #16a34a;
+            background: #16a34a;
+            color: var(--color-pure-white);
+            font-size: 0.78rem;
+            font-weight: 800;
+            line-height: 1;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .product-entry-whatsapp:hover,
+        .product-entry-whatsapp:focus {
+            background: #0f8a3a;
+            border-color: #0f8a3a;
+            color: var(--color-pure-white);
+        }
+
+        .product-photo-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 1100;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1.25rem;
+            background: rgba(0, 0, 0, 0.78);
+        }
+
+        .product-photo-modal.is-open {
+            display: flex;
+        }
+
+        .product-photo-modal-dialog {
+            width: min(980px, 100%);
+            max-height: 92vh;
+            border: 1px solid var(--color-pure-white);
+            background: var(--color-pure-white);
+            overflow: hidden;
+        }
+
+        .product-photo-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid var(--color-pure-black);
+        }
+
+        .product-photo-modal-title {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .product-photo-modal-close {
+            border: 1px solid var(--color-pure-black);
+            background: var(--color-pure-white);
+            color: var(--color-pure-black);
+            padding: 0.55rem 0.8rem;
+            font-weight: 700;
+        }
+
+        .product-photo-modal-body {
+            padding: 1rem;
+            background: var(--color-light-gray);
+        }
+
+        .product-photo-modal-body img {
+            display: block;
+            width: 100%;
+            max-height: 76vh;
+            object-fit: contain;
+            background: var(--color-pure-white);
         }
 
         @media (max-width: 991.98px) {
@@ -168,6 +258,10 @@ $extraHead = <<<'HTML'
 
             .product-detail-section {
                 padding: 3.25rem 0;
+            }
+
+            .product-photo-modal {
+                padding: 0.75rem;
             }
         }
     </style>
@@ -199,23 +293,6 @@ require __DIR__ . '/header.php';
     </header>
 
     <main class="flex-grow-1">
-        <section class="product-detail-section bg-light">
-            <div class="container">
-                <div class="row g-4">
-                    <div class="col-lg-5">
-                        <span class="text-uppercase tracking-wider text-muted fw-bold" style="font-size: 0.78rem; letter-spacing: 2px;">Category</span>
-                        <h2 class="display-5 text-black mt-2 mb-3"><?php echo htmlspecialchars($productGroupTitle, ENT_QUOTES, 'UTF-8'); ?></h2>
-                    </div>
-                    <div class="col-lg-7">
-                        <div class="product-detail-panel">
-                            <p class="product-detail-copy mb-3">Use this page to collect references, compare available options, and prepare the basic project details needed for a quotation.</p>
-                            <p class="product-detail-copy mb-0">Typical details to prepare: preferred size, installation location, material finish, lighting requirement, artwork file, and target completion date.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
 <?php if ($currentItem === null): ?>
         <section class="product-detail-section">
             <div class="container">
@@ -242,22 +319,6 @@ require __DIR__ . '/header.php';
             </div>
         </section>
 <?php else: ?>
-        <section class="product-detail-section">
-            <div class="container">
-                <div class="row g-4 align-items-start">
-                    <div class="col-lg-5">
-                        <span class="text-uppercase tracking-wider text-muted fw-bold" style="font-size: 0.78rem; letter-spacing: 2px;">Product Scope</span>
-                        <h2 class="display-5 text-black mt-2 mb-3">What This Page Covers</h2>
-                    </div>
-                    <div class="col-lg-7">
-                        <div class="product-detail-panel">
-                            <p class="product-detail-copy mb-3"><?php echo htmlspecialchars($currentItem['title'], ENT_QUOTES, 'UTF-8'); ?> can be customized for sizing, materials, mounting, finishing, and installation site requirements.</p>
-                            <p class="product-detail-copy mb-0">Original reference source: <a href="<?php echo htmlspecialchars($currentItem['source_url'], ENT_QUOTES, 'UTF-8'); ?>" target="_blank" rel="noopener noreferrer">view source product page</a>.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 <?php $productEntries = isset($currentItem['entries']) && is_array($currentItem['entries']) ? $currentItem['entries'] : []; ?>
 <?php if ($productEntries !== []): ?>
         <section class="product-detail-section bg-light">
@@ -268,18 +329,21 @@ require __DIR__ . '/header.php';
                 </div>
                 <div class="product-detail-grid">
 <?php foreach ($productEntries as $entry): ?>
+<?php $entryTitle = (string) ($entry['title'] ?? 'Product Item'); ?>
+<?php $entryDescription = trim((string) ($entry['description'] ?? '')); ?>
+<?php if ($entryDescription === ''): ?>
+<?php $entryDescription = 'Reference item for ' . strtolower($currentItem['title']) . ' fabrication and installation planning.'; ?>
+<?php endif; ?>
+<?php $entryWhatsappUrl = 'https://wa.me/6582861600?text=' . rawurlencode('Hi Signage SG, I am interested in ' . $entryTitle . ' under ' . $currentItem['title'] . '.'); ?>
                     <article class="product-detail-card">
-                        <a class="product-detail-card-media" href="<?php echo htmlspecialchars($assetBase, ENT_QUOTES, 'UTF-8'); ?>/images/products/<?php echo htmlspecialchars($entry['image'] ?? $currentItem['image'], ENT_QUOTES, 'UTF-8'); ?>" target="_blank" rel="noopener noreferrer">
+                        <button type="button" class="product-detail-card-media" data-product-photo="<?php echo htmlspecialchars($assetBase, ENT_QUOTES, 'UTF-8'); ?>/images/products/<?php echo htmlspecialchars($entry['image'] ?? $currentItem['image'], ENT_QUOTES, 'UTF-8'); ?>" data-product-photo-title="<?php echo htmlspecialchars($entryTitle, ENT_QUOTES, 'UTF-8'); ?>">
                             <img loading="lazy" src="<?php echo htmlspecialchars($assetBase, ENT_QUOTES, 'UTF-8'); ?>/images/products/<?php echo htmlspecialchars($entry['image'] ?? $currentItem['image'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($entry['title'] ?? $currentItem['title'], ENT_QUOTES, 'UTF-8'); ?>">
-                        </a>
+                        </button>
                         <div class="product-detail-card-body">
                             <span class="product-tag"><?php echo htmlspecialchars($currentItem['title'], ENT_QUOTES, 'UTF-8'); ?></span>
-                            <h3><?php echo htmlspecialchars($entry['title'] ?? 'Product Item', ENT_QUOTES, 'UTF-8'); ?></h3>
-<?php if (!empty($entry['description'])): ?>
-                            <p class="product-detail-copy product-entry-description mb-0"><?php echo htmlspecialchars($entry['description'], ENT_QUOTES, 'UTF-8'); ?></p>
-<?php else: ?>
-                            <p class="product-detail-copy mb-0">Reference item for <?php echo htmlspecialchars(strtolower($currentItem['title']), ENT_QUOTES, 'UTF-8'); ?> fabrication and installation planning.</p>
-<?php endif; ?>
+                            <h3><?php echo htmlspecialchars($entryTitle, ENT_QUOTES, 'UTF-8'); ?></h3>
+                            <p class="product-detail-copy product-entry-description mb-0"><?php echo htmlspecialchars($entryDescription, ENT_QUOTES, 'UTF-8'); ?></p>
+                            <a class="product-entry-whatsapp" href="<?php echo htmlspecialchars($entryWhatsappUrl, ENT_QUOTES, 'UTF-8'); ?>" title="Whatsapp Us" target="_blank" rel="noopener noreferrer">Whatsapp Us</a>
                         </div>
                     </article>
 <?php endforeach; ?>
@@ -304,5 +368,59 @@ require __DIR__ . '/header.php';
             </div>
         </section>
     </main>
+
+    <div class="product-photo-modal" id="productPhotoModal" aria-hidden="true">
+        <div class="product-photo-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="productPhotoModalTitle">
+            <div class="product-photo-modal-header">
+                <h2 class="product-photo-modal-title" id="productPhotoModalTitle">Product Photo</h2>
+                <button type="button" class="product-photo-modal-close" data-product-photo-close>Close</button>
+            </div>
+            <div class="product-photo-modal-body">
+                <img src="" alt="" id="productPhotoModalImage">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (() => {
+            const modal = document.getElementById('productPhotoModal');
+            const image = document.getElementById('productPhotoModalImage');
+            const title = document.getElementById('productPhotoModalTitle');
+
+            if (!modal || !image || !title) {
+                return;
+            }
+
+            const closeModal = () => {
+                modal.classList.remove('is-open');
+                modal.setAttribute('aria-hidden', 'true');
+                image.src = '';
+                image.alt = '';
+            };
+
+            document.addEventListener('click', (event) => {
+                const trigger = event.target.closest('[data-product-photo]');
+
+                if (trigger) {
+                    title.textContent = trigger.dataset.productPhotoTitle || 'Product Photo';
+                    image.src = trigger.dataset.productPhoto;
+                    image.alt = trigger.dataset.productPhotoTitle || 'Product photo preview';
+                    modal.classList.add('is-open');
+                    modal.setAttribute('aria-hidden', 'false');
+                    return;
+                }
+
+                if (event.target === modal || event.target.matches('[data-product-photo-close]')) {
+                    closeModal();
+                }
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+                    closeModal();
+                }
+            });
+        })();
+    </script>
 
 <?php require __DIR__ . '/footer.php'; ?>
