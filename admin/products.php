@@ -74,6 +74,34 @@ function signage_admin_upload_product_image(string $fieldName, ?string $fallback
     return $filename;
 }
 
+function signage_admin_product_image_url(?string $filename): string
+{
+    $filename = trim((string) $filename);
+
+    return $filename === '' ? '' : '../assets/images/products/' . rawurlencode($filename);
+}
+
+function signage_admin_find_category_preview_image(array $items, string $groupTitle): string
+{
+    foreach ($items as $item) {
+        if (($item['group'] ?? '') === $groupTitle && !empty($item['image'])) {
+            return (string) $item['image'];
+        }
+
+        if (($item['group'] ?? '') !== $groupTitle || empty($item['entries']) || !is_array($item['entries'])) {
+            continue;
+        }
+
+        foreach ($item['entries'] as $entry) {
+            if (!empty($entry['image'])) {
+                return (string) $entry['image'];
+            }
+        }
+    }
+
+    return '';
+}
+
 if (isset($_GET['logout'])) {
     $_SESSION = [];
     session_destroy();
@@ -371,7 +399,7 @@ $items = $catalog['items'];
     <title>Product Admin | Signage SG</title>
     <style>
         body { margin: 0; font-family: Arial, sans-serif; background: #f6f6f6; color: #111; }
-        header, main { max-width: 1180px; margin: 0 auto; padding: 24px; }
+        header, main { width: min(1760px, calc(100% - 32px)); margin: 0 auto; padding: 24px 0; }
         header { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
         h1, h2, h3 { margin: 0 0 12px; }
         a { color: #111; }
@@ -384,6 +412,7 @@ $items = $catalog['items'];
         .category[open] summary::before { content: "-"; }
         .category-summary-title { display: flex; align-items: center; min-width: 0; }
         .category-summary-title span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .category-summary-actions { display: inline-flex; align-items: center; gap: 8px; flex-shrink: 0; }
         .category-count { flex-shrink: 0; border: 1px solid #111; padding: 5px 8px; font-size: 12px; font-family: monospace; }
         .category-body { padding: 0 14px 14px; border-top: 1px solid #ddd; }
         .item { border-top: 1px solid #ddd; padding-top: 12px; margin-top: 12px; }
@@ -397,6 +426,10 @@ $items = $catalog['items'];
         textarea { min-height: 84px; resize: vertical; }
         button { padding: 10px 14px; border: 1px solid #111; background: #111; color: #fff; cursor: pointer; }
         button.link-button { padding: 0; border: 0; background: transparent; color: #555; text-decoration: underline; font-size: 13px; }
+        button.photo-thumb { display: inline-flex; width: 58px; height: 44px; padding: 0; border: 1px solid #111; background: #fff; overflow: hidden; flex-shrink: 0; }
+        button.photo-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
+        button.category-photo-thumb { width: 46px; height: 34px; }
+        .image-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 6px; }
         button.secondary { background: #fff; color: #111; }
         button.danger { background: #a40000; border-color: #a40000; }
         .message { border: 1px solid #187a35; background: #e9f8ee; padding: 12px; margin-bottom: 16px; }
@@ -410,7 +443,7 @@ $items = $catalog['items'];
         .image-modal-close { background: #fff; color: #111; }
         .image-modal-body { padding: 14px; background: #f6f6f6; }
         .image-modal-body img { display: block; width: 100%; max-height: 74vh; object-fit: contain; background: #fff; border: 1px solid #ddd; }
-        @media (max-width: 900px) { .grid, .row { grid-template-columns: 1fr; } header { align-items: flex-start; flex-direction: column; } }
+        @media (max-width: 900px) { header, main { width: min(100% - 24px, 1760px); padding: 16px 0; } .grid, .row { grid-template-columns: 1fr; } header { align-items: flex-start; flex-direction: column; } .category summary { align-items: flex-start; } .category-summary-actions { flex-direction: column; align-items: flex-end; } }
     </style>
 </head>
 <body>
@@ -480,10 +513,18 @@ $items = $catalog['items'];
         <section class="panel">
             <h2>Manage Categories</h2>
 <?php foreach ($groups as $groupTitle => $groupItemTitles): ?>
+<?php $categoryPreviewImage = signage_admin_find_category_preview_image($items, $groupTitle); ?>
             <details class="category">
                 <summary>
                     <span class="category-summary-title"><span><?php echo htmlspecialchars($groupTitle, ENT_QUOTES, 'UTF-8'); ?></span></span>
-                    <span class="category-count"><?php echo count($groupItemTitles); ?> items</span>
+                    <span class="category-summary-actions">
+<?php if ($categoryPreviewImage !== ''): ?>
+                        <button type="button" class="photo-thumb category-photo-thumb" aria-label="View category photo for <?php echo htmlspecialchars($groupTitle, ENT_QUOTES, 'UTF-8'); ?>" data-image-preview="<?php echo htmlspecialchars(signage_admin_product_image_url($categoryPreviewImage), ENT_QUOTES, 'UTF-8'); ?>" data-image-title="<?php echo htmlspecialchars($groupTitle . ' category photo', ENT_QUOTES, 'UTF-8'); ?>">
+                            <img loading="lazy" src="<?php echo htmlspecialchars(signage_admin_product_image_url($categoryPreviewImage), ENT_QUOTES, 'UTF-8'); ?>" alt="">
+                        </button>
+<?php endif; ?>
+                        <span class="category-count"><?php echo count($groupItemTitles); ?> items</span>
+                    </span>
                 </summary>
                 <div class="category-body">
                 <form method="post" class="row">
@@ -503,6 +544,7 @@ $items = $catalog['items'];
 <?php $productItem = signage_catalog_find_item($items, $groupTitle, $itemTitle) ?? ['title' => $itemTitle, 'group' => $groupTitle, 'image' => '', 'source_url' => '']; ?>
 <?php $productEntries = isset($productItem['entries']) && is_array($productItem['entries']) ? $productItem['entries'] : []; ?>
 <?php $productSlug = signage_product_anchor((string) ($productItem['slug'] ?? '')) ?: signage_product_source_slug($productItem['source_url'] ?? '', $itemTitle); ?>
+<?php $productImageUrl = signage_admin_product_image_url($productItem['image'] ?? ''); ?>
                 <div class="item">
                     <form method="post" class="row" enctype="multipart/form-data">
                         <input type="hidden" name="action" value="update_product">
@@ -515,10 +557,14 @@ $items = $catalog['items'];
                         <div>
                             <label>Replace Image</label>
                             <input type="file" name="image_upload" accept="image/jpeg,image/png,image/webp,image/gif">
-                            <span class="muted">Current: <?php echo htmlspecialchars($productItem['image'] ?? 'none', ENT_QUOTES, 'UTF-8'); ?></span>
+                            <span class="image-meta">
+                                <span class="muted">Current: <?php echo htmlspecialchars($productItem['image'] ?? 'none', ENT_QUOTES, 'UTF-8'); ?></span>
 <?php if (!empty($productItem['image'])): ?>
-                            <br><button type="button" class="link-button" data-image-preview="../assets/images/products/<?php echo rawurlencode((string) $productItem['image']); ?>" data-image-title="<?php echo htmlspecialchars($productItem['image'], ENT_QUOTES, 'UTF-8'); ?>">View current image</button>
+                                <button type="button" class="photo-thumb" aria-label="View subcategory photo for <?php echo htmlspecialchars($itemTitle, ENT_QUOTES, 'UTF-8'); ?>" data-image-preview="<?php echo htmlspecialchars($productImageUrl, ENT_QUOTES, 'UTF-8'); ?>" data-image-title="<?php echo htmlspecialchars($itemTitle . ' subcategory photo', ENT_QUOTES, 'UTF-8'); ?>">
+                                    <img loading="lazy" src="<?php echo htmlspecialchars($productImageUrl, ENT_QUOTES, 'UTF-8'); ?>" alt="">
+                                </button>
 <?php endif; ?>
+                            </span>
                         </div>
                         <div><label>Reference URL</label><input name="source_url" value="<?php echo htmlspecialchars($productItem['source_url'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"></div>
                         <div><button type="submit" class="secondary">Save Subcategory</button></div>
@@ -543,6 +589,7 @@ $items = $catalog['items'];
                             </form>
 
 <?php foreach ($productEntries as $entryIndex => $entry): ?>
+<?php $entryImageUrl = signage_admin_product_image_url($entry['image'] ?? ''); ?>
                             <div class="entry">
                                 <form method="post" class="row" enctype="multipart/form-data">
                                     <input type="hidden" name="action" value="update_product_entry">
@@ -554,10 +601,14 @@ $items = $catalog['items'];
                                     <div>
                                         <label>Replace Item Image</label>
                                         <input type="file" name="entry_image_upload" accept="image/jpeg,image/png,image/webp,image/gif">
-                                        <span class="muted">Current: <?php echo htmlspecialchars($entry['image'] ?? 'none', ENT_QUOTES, 'UTF-8'); ?></span>
+                                        <span class="image-meta">
+                                            <span class="muted">Current: <?php echo htmlspecialchars($entry['image'] ?? 'none', ENT_QUOTES, 'UTF-8'); ?></span>
 <?php if (!empty($entry['image'])): ?>
-                                        <br><button type="button" class="link-button" data-image-preview="../assets/images/products/<?php echo rawurlencode((string) $entry['image']); ?>" data-image-title="<?php echo htmlspecialchars($entry['image'], ENT_QUOTES, 'UTF-8'); ?>">View item image</button>
+                                            <button type="button" class="photo-thumb" aria-label="View item photo for <?php echo htmlspecialchars($entry['title'] ?? 'Product item', ENT_QUOTES, 'UTF-8'); ?>" data-image-preview="<?php echo htmlspecialchars($entryImageUrl, ENT_QUOTES, 'UTF-8'); ?>" data-image-title="<?php echo htmlspecialchars(($entry['title'] ?? 'Product item') . ' photo', ENT_QUOTES, 'UTF-8'); ?>">
+                                                <img loading="lazy" src="<?php echo htmlspecialchars($entryImageUrl, ENT_QUOTES, 'UTF-8'); ?>" alt="">
+                                            </button>
 <?php endif; ?>
+                                        </span>
                                     </div>
                                     <div><label>Description</label><textarea name="entry_description"><?php echo htmlspecialchars($entry['description'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea></div>
                                     <div><button type="submit" class="secondary">Save Item</button></div>
@@ -601,6 +652,8 @@ $items = $catalog['items'];
             const trigger = event.target.closest('[data-image-preview]');
 
             if (trigger) {
+                event.preventDefault();
+                event.stopPropagation();
                 imagePreview.src = trigger.dataset.imagePreview;
                 imagePreview.alt = trigger.dataset.imageTitle || 'Product image preview';
                 imageTitle.textContent = trigger.dataset.imageTitle || 'Image Preview';
