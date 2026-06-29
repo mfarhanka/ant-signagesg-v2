@@ -41,7 +41,8 @@ $metaDescription = $currentItem
 $siteBaseUrl = 'https://signages.com.sg';
 $canonicalPath = '/products/' . ($currentItem ? $productPagePaths[$productGroupTitle . '|' . $currentItem['title']] : $productGroupPaths[$productGroupTitle]);
 $heroItem = $currentItem ?? $currentGroupProductItems[0];
-$ogImage = 'assets/images/products/' . $heroItem['image'];
+$heroImage = $currentItem ? (string) $heroItem['image'] : (trim((string) ($productCategoryImages[$productGroupTitle] ?? '')) ?: (string) $heroItem['image']);
+$ogImage = 'assets/images/products/' . $heroImage;
 $assetBase = $rootPrefix . 'assets';
 $homePagePath = $rootPrefix . 'index.php';
 $blogPath = $rootPrefix . 'blog';
@@ -54,7 +55,7 @@ $structuredData = [
     'name' => $pageHeading,
     'description' => $metaDescription,
     'url' => $siteBaseUrl . $canonicalPath,
-    'image' => $siteBaseUrl . '/assets/images/products/' . $heroItem['image'],
+    'image' => $siteBaseUrl . '/assets/images/products/' . $heroImage,
 ];
 $extraHead = <<<'HTML'
     <style>
@@ -285,7 +286,7 @@ require __DIR__ . '/header.php';
                 </div>
                 <div class="col-lg-5">
                     <figure class="product-detail-photo mb-0">
-                        <img src="<?php echo htmlspecialchars($assetBase, ENT_QUOTES, 'UTF-8'); ?>/images/products/<?php echo htmlspecialchars($heroItem['image'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($pageHeading, ENT_QUOTES, 'UTF-8'); ?> example in Singapore">
+                        <img src="<?php echo htmlspecialchars($assetBase, ENT_QUOTES, 'UTF-8'); ?>/images/products/<?php echo htmlspecialchars($heroImage, ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($pageHeading, ENT_QUOTES, 'UTF-8'); ?> example in Singapore">
                     </figure>
                 </div>
             </div>

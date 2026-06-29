@@ -72,6 +72,7 @@
             "Leaflet"
         ]
     },
+    "category_images": [],
     "items": [
         {
             "title": "Front-lit Signboard",
@@ -85,7 +86,15 @@
             "group": "3D Signboard With Lighting",
             "image": "back-lit-signboard.jpeg",
             "source_url": "https://signages.com.sg/products/3d-signboard-with-lighting/back-lit-signboard/",
-            "slug": "back-lit-signboard"
+            "slug": "back-lit-signboard",
+            "entries": [
+                {
+                    "title": "Onetaxcm",
+                    "image": "3d-aluminum-backlit-office-signage-installed-in-ubi-singapore.jpeg",
+                    "description": "",
+                    "hidden": false
+                }
+            ]
         },
         {
             "title": "Whole-lit Signboard",

@@ -34,6 +34,8 @@ $productMenuGroups = [
     'Marketing Essential' => ['Namecard', 'Leaflet'],
 ];
 
+$productCategoryImages = [];
+
 $productItems = [
     [
         'title' => 'Front-lit Signboard',
@@ -329,6 +331,7 @@ if (is_file($productCatalogJsonPath)) {
     if (is_array($productCatalogJson) && isset($productCatalogJson['groups'], $productCatalogJson['items']) && is_array($productCatalogJson['groups']) && is_array($productCatalogJson['items'])) {
         $productMenuGroups = $productCatalogJson['groups'];
         $productItems = $productCatalogJson['items'];
+        $productCategoryImages = isset($productCatalogJson['category_images']) && is_array($productCatalogJson['category_images']) ? $productCatalogJson['category_images'] : [];
     }
 }
 

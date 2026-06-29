@@ -13,15 +13,16 @@ function signage_products_root(): string
 
 function signage_load_catalog_for_admin(): array
 {
-    global $productMenuGroups, $productItems;
+    global $productMenuGroups, $productItems, $productCategoryImages;
 
     return [
         'groups' => $productMenuGroups,
         'items' => $productItems,
+        'category_images' => $productCategoryImages,
     ];
 }
 
-function signage_save_catalog_for_admin(array $groups, array $items): void
+function signage_save_catalog_for_admin(array $groups, array $items, array $categoryImages = []): void
 {
     $path = signage_catalog_json_path();
     $dir = dirname($path);
@@ -32,6 +33,7 @@ function signage_save_catalog_for_admin(array $groups, array $items): void
 
     $payload = [
         'groups' => $groups,
+        'category_images' => array_filter($categoryImages, static fn (string $image): bool => trim($image) !== ''),
         'items' => array_values($items),
     ];
 

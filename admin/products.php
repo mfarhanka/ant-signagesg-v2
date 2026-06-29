@@ -81,8 +81,12 @@ function signage_admin_product_image_url(?string $filename): string
     return $filename === '' ? '' : '../assets/images/products/' . rawurlencode($filename);
 }
 
-function signage_admin_find_category_preview_image(array $items, string $groupTitle): string
+function signage_admin_find_category_preview_image(array $items, string $groupTitle, array $categoryImages = []): string
 {
+    if (!empty($categoryImages[$groupTitle])) {
+        return (string) $categoryImages[$groupTitle];
+    }
+
     foreach ($items as $item) {
         if (($item['group'] ?? '') === $groupTitle && !empty($item['image'])) {
             return (string) $item['image'];
@@ -155,6 +159,7 @@ if ($isLoggedIn && $requestMethod === 'POST') {
     $catalog = signage_load_catalog_for_admin();
     $groups = $catalog['groups'];
     $items = $catalog['items'];
+    $categoryImages = $catalog['category_images'];
     $action = (string) ($_POST['action'] ?? '');
 
     try {
@@ -170,6 +175,7 @@ if ($isLoggedIn && $requestMethod === 'POST') {
             }
 
             $groups[$title] = [];
+            $categoryImages[$title] = signage_admin_upload_product_image('category_image_upload', '');
             $message = 'Category added.';
         }
 
@@ -202,6 +208,21 @@ if ($isLoggedIn && $requestMethod === 'POST') {
             }
             unset($item);
 
+            if ($oldTitle !== $newTitle && isset($categoryImages[$oldTitle])) {
+                $categoryImages[$newTitle] = $categoryImages[$oldTitle];
+                unset($categoryImages[$oldTitle]);
+            }
+
+            if (!empty($_POST['remove_category_image'])) {
+                unset($categoryImages[$newTitle]);
+            } else {
+                $uploadedCategoryImage = signage_admin_upload_product_image('category_image_upload', $categoryImages[$newTitle] ?? '');
+
+                if ($uploadedCategoryImage !== '') {
+                    $categoryImages[$newTitle] = $uploadedCategoryImage;
+                }
+            }
+
             $groups = $newGroups;
             $message = 'Category renamed.';
         }
@@ -214,6 +235,7 @@ if ($isLoggedIn && $requestMethod === 'POST') {
             }
 
             unset($groups[$title]);
+            unset($categoryImages[$title]);
             $items = array_values(array_filter($items, static fn (array $item): bool => ($item['group'] ?? '') !== $title));
             $message = 'Category and its subcategories removed.';
         }
@@ -406,7 +428,7 @@ if ($isLoggedIn && $requestMethod === 'POST') {
         }
 
         if ($message !== '') {
-            signage_save_catalog_for_admin($groups, $items);
+            signage_save_catalog_for_admin($groups, $items, $categoryImages);
             signage_rebuild_product_folders($groups, $items);
             $_SESSION['product_admin_message'] = $message;
             header('Location: products.php');
@@ -422,6 +444,7 @@ if ($isLoggedIn && $requestMethod === 'POST') {
 $catalog = signage_load_catalog_for_admin();
 $groups = $catalog['groups'];
 $items = $catalog['items'];
+$categoryImages = $catalog['category_images'];
 $entryTotals = signage_admin_count_entries($items);
 ?>
 <!DOCTYPE html>
@@ -471,6 +494,7 @@ $entryTotals = signage_admin_count_entries($items);
         .entry-form { display: grid; grid-template-columns: minmax(220px, 1fr) minmax(240px, 1fr) minmax(280px, 1.2fr) minmax(150px, .7fr) auto; gap: 10px; align-items: end; }
         .row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; align-items: end; }
         .row.compact { grid-template-columns: minmax(180px, 1fr) auto; }
+        .row.category-form { grid-template-columns: minmax(220px, 1fr) minmax(240px, 1fr) minmax(160px, auto) auto; }
         .row.subcategory-form { grid-template-columns: minmax(220px, 1.1fr) minmax(220px, 1fr) minmax(260px, 1fr) minmax(220px, 1fr) auto; }
         .row.add-entry-form { grid-template-columns: minmax(220px, 1fr) minmax(240px, 1fr) minmax(280px, 1.2fr) minmax(150px, .7fr) auto; }
         .action-row { display: flex; justify-content: flex-end; gap: 8px; margin-top: 10px; }
@@ -500,7 +524,7 @@ $entryTotals = signage_admin_count_entries($items);
         .image-modal-close { background: #fff; color: #111; }
         .image-modal-body { padding: 14px; background: #f6f6f6; }
         .image-modal-body img { display: block; width: 100%; max-height: 74vh; object-fit: contain; background: #fff; border: 1px solid #ddd; }
-        @media (max-width: 1180px) { .quick-panels, .metric-grid, .category-admin, .row, .row.compact, .row.subcategory-form, .row.add-entry-form, .entry-form { grid-template-columns: 1fr; } }
+        @media (max-width: 1180px) { .quick-panels, .metric-grid, .category-admin, .row, .row.compact, .row.category-form, .row.subcategory-form, .row.add-entry-form, .entry-form { grid-template-columns: 1fr; } }
         @media (max-width: 900px) { header, main { width: min(100% - 24px, 1760px); } header { position: static; align-items: flex-start; flex-direction: column; padding: 16px 0; } main { padding: 16px 0; } .category summary, .subitem-panel summary { align-items: flex-start; flex-direction: column; } .category-summary-actions { justify-content: flex-start; } .action-row { justify-content: flex-start; flex-wrap: wrap; } }
     </style>
 </head>
@@ -549,9 +573,10 @@ $entryTotals = signage_admin_count_entries($items);
         <div class="quick-panels">
         <section class="panel">
             <h2>Add Category</h2>
-            <form method="post" class="row compact">
+            <form method="post" class="row" enctype="multipart/form-data">
                 <input type="hidden" name="action" value="add_category">
                 <div><label>Category Title</label><input name="title" required></div>
+                <div><label>Category Photo</label><input type="file" name="category_image_upload" accept="image/jpeg,image/png,image/webp,image/gif"></div>
                 <div><button type="submit">Add Category</button></div>
             </form>
         </section>
@@ -583,7 +608,8 @@ $entryTotals = signage_admin_count_entries($items);
                 <span class="muted">Open a category to edit subcategories and product-page items.</span>
             </div>
 <?php foreach ($groups as $groupTitle => $groupItemTitles): ?>
-<?php $categoryPreviewImage = signage_admin_find_category_preview_image($items, $groupTitle); ?>
+<?php $categoryImage = (string) ($categoryImages[$groupTitle] ?? ''); ?>
+<?php $categoryPreviewImage = signage_admin_find_category_preview_image($items, $groupTitle, $categoryImages); ?>
 <?php $categoryEntryTotals = signage_admin_count_entries($items, $groupTitle); ?>
             <details class="category">
                 <summary>
@@ -601,11 +627,27 @@ $entryTotals = signage_admin_count_entries($items);
                 </summary>
                 <div class="category-body">
                 <div class="category-admin">
-                <form method="post" class="row compact">
+                <form method="post" class="row category-form" enctype="multipart/form-data">
                     <input type="hidden" name="action" value="rename_category">
                     <input type="hidden" name="old_title" value="<?php echo htmlspecialchars($groupTitle, ENT_QUOTES, 'UTF-8'); ?>">
                     <div><label>Category</label><input name="new_title" value="<?php echo htmlspecialchars($groupTitle, ENT_QUOTES, 'UTF-8'); ?>" required></div>
-                    <div><button type="submit" class="secondary">Rename</button></div>
+                    <div>
+                        <label>Parent Category Photo</label>
+                        <input type="file" name="category_image_upload" accept="image/jpeg,image/png,image/webp,image/gif">
+                        <span class="image-meta">
+                            <span class="muted">Current: <?php echo htmlspecialchars($categoryImage !== '' ? $categoryImage : 'none', ENT_QUOTES, 'UTF-8'); ?></span>
+<?php if ($categoryImage !== ''): ?>
+                            <button type="button" class="photo-thumb" aria-label="View category photo for <?php echo htmlspecialchars($groupTitle, ENT_QUOTES, 'UTF-8'); ?>" data-image-preview="<?php echo htmlspecialchars(signage_admin_product_image_url($categoryImage), ENT_QUOTES, 'UTF-8'); ?>" data-image-title="<?php echo htmlspecialchars($groupTitle . ' category photo', ENT_QUOTES, 'UTF-8'); ?>">
+                                <img loading="lazy" src="<?php echo htmlspecialchars(signage_admin_product_image_url($categoryImage), ENT_QUOTES, 'UTF-8'); ?>" alt="">
+                            </button>
+<?php endif; ?>
+                        </span>
+                    </div>
+                    <div>
+                        <label>Remove Photo</label>
+                        <label class="visibility-toggle"><input type="checkbox" name="remove_category_image" value="1"> Remove</label>
+                    </div>
+                    <div><button type="submit" class="secondary">Save Category</button></div>
                 </form>
                 <form method="post" onsubmit="return confirm('Delete this category and all subcategories?');">
                     <input type="hidden" name="action" value="delete_category">
