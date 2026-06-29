@@ -321,6 +321,7 @@ if ($isLoggedIn && $requestMethod === 'POST') {
                         'title' => $entryTitle,
                         'image' => $entryImage,
                         'description' => $entryDescription,
+                        'hidden' => empty($_POST['entry_visible']),
                     ];
                     break;
                 }
@@ -348,6 +349,7 @@ if ($isLoggedIn && $requestMethod === 'POST') {
                         'title' => $entryTitle,
                         'image' => signage_admin_upload_product_image('entry_image_upload', $existingImage),
                         'description' => $entryDescription,
+                        'hidden' => empty($_POST['entry_visible']),
                     ];
                     break;
                 }
@@ -423,6 +425,7 @@ $items = $catalog['items'];
         .row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; align-items: end; }
         label { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 4px; }
         input, select, textarea { width: 100%; box-sizing: border-box; padding: 10px; border: 1px solid #999; }
+        input[type="checkbox"] { width: auto; }
         textarea { min-height: 84px; resize: vertical; }
         button { padding: 10px 14px; border: 1px solid #111; background: #111; color: #fff; cursor: pointer; }
         button.link-button { padding: 0; border: 0; background: transparent; color: #555; text-decoration: underline; font-size: 13px; }
@@ -430,6 +433,9 @@ $items = $catalog['items'];
         button.photo-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
         button.category-photo-thumb { width: 46px; height: 34px; }
         .image-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 6px; }
+        .visibility-toggle { display: inline-flex; align-items: center; gap: 8px; min-height: 42px; text-transform: none; letter-spacing: 0; font-size: 14px; }
+        .visibility-status { display: inline-flex; align-items: center; min-height: 24px; padding: 0 8px; border: 1px solid #111; font-size: 12px; font-weight: 700; text-transform: uppercase; }
+        .visibility-status.is-hidden { border-color: #a40000; color: #a40000; }
         button.secondary { background: #fff; color: #111; }
         button.danger { background: #a40000; border-color: #a40000; }
         .message { border: 1px solid #187a35; background: #e9f8ee; padding: 12px; margin-bottom: 16px; }
@@ -585,11 +591,16 @@ $items = $catalog['items'];
                                 <div><label>Item Title</label><input name="entry_title" required></div>
                                 <div><label>Upload Item Image</label><input type="file" name="entry_image_upload" accept="image/jpeg,image/png,image/webp,image/gif"></div>
                                 <div><label>Description</label><textarea name="entry_description"></textarea></div>
+                                <div>
+                                    <label>Visibility</label>
+                                    <label class="visibility-toggle"><input type="checkbox" name="entry_visible" value="1" checked> Show item</label>
+                                </div>
                                 <div><button type="submit">Add Item</button></div>
                             </form>
 
 <?php foreach ($productEntries as $entryIndex => $entry): ?>
 <?php $entryImageUrl = signage_admin_product_image_url($entry['image'] ?? ''); ?>
+<?php $entryIsHidden = !empty($entry['hidden']); ?>
                             <div class="entry">
                                 <form method="post" class="row" enctype="multipart/form-data">
                                     <input type="hidden" name="action" value="update_product_entry">
@@ -611,6 +622,11 @@ $items = $catalog['items'];
                                         </span>
                                     </div>
                                     <div><label>Description</label><textarea name="entry_description"><?php echo htmlspecialchars($entry['description'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea></div>
+                                    <div>
+                                        <label>Visibility</label>
+                                        <label class="visibility-toggle"><input type="checkbox" name="entry_visible" value="1"<?php echo $entryIsHidden ? '' : ' checked'; ?>> Show item</label>
+                                        <span class="visibility-status<?php echo $entryIsHidden ? ' is-hidden' : ''; ?>"><?php echo $entryIsHidden ? 'Hidden' : 'Visible'; ?></span>
+                                    </div>
                                     <div><button type="submit" class="secondary">Save Item</button></div>
                                 </form>
                                 <form method="post" onsubmit="return confirm('Delete this item?');" style="margin-top: 8px;">

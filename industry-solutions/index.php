@@ -53,28 +53,62 @@ $fnbPackages = [
 $industries = [
     [
         'name' => 'F&B / Restaurant',
+        'anchor' => 'fnb-recommendations',
         'summary' => 'Complete signage packages for restaurants, cafes, food courts, bakeries, and beverage outlets.',
-        'services' => ['Shopfront Signboards', 'Menu Lightboxes', 'Interior Neon Signs', 'Counter Displays', 'Wayfinding', 'Wall Graphics']
+        'bestFor' => 'Attracting walk-in customers, showing menus clearly, and creating a branded dining atmosphere.',
+        'services' => ['Shopfront Signboards', 'Menu Lightboxes', 'Interior Neon Signs', 'Counter Displays', 'Wayfinding', 'Wall Graphics'],
+        'recommended' => ['Front-lit Signboard', 'Soft Fabric Lightbox', 'LED Neon Signage', 'Wall Sticker']
     ],
     [
         'name' => 'Retail',
+        'anchor' => 'retail-solutions',
         'summary' => 'Visibility, promotions, and display signage for boutiques, malls, and product-led stores.',
-        'services' => ['Shopfront Signboards', 'Promotional Lightboxes', 'Window Displays', 'Product Display Signage']
+        'bestFor' => 'Making the storefront easy to notice, promoting offers, and supporting product displays.',
+        'services' => ['Shopfront Signboards', 'Promotional Lightboxes', 'Window Displays', 'Product Display Signage'],
+        'recommended' => ['Front-lit Signboard', 'Glass Window Sticker', 'Normal Lightbox', 'Acrylic Signage']
     ],
     [
         'name' => 'Office',
+        'anchor' => 'office-solutions',
         'summary' => 'Professional brand presentation and navigation for corporate workspaces.',
-        'services' => ['Reception Logo Signs', 'Directory Signs', 'Meeting Room Signs', 'Frosted Glass Stickers', 'Wayfinding Systems']
+        'bestFor' => 'Presenting the company clearly at reception and helping visitors move through the workplace.',
+        'services' => ['Reception Logo Signs', 'Directory Signs', 'Meeting Room Signs', 'Frosted Glass Stickers', 'Wayfinding Systems'],
+        'recommended' => ['Stainless Steel 3D Wording Signage', 'Acrylic Signage', 'Glass Window Sticker', 'Directional Roadsign']
     ],
     [
         'name' => 'Healthcare & Clinic',
+        'anchor' => 'clinic-solutions',
         'summary' => 'Clear, reassuring signage systems for clinics, dental practices, and wellness centres.',
-        'services' => ['Reception Signs', 'Room Identification Signs', 'Directional Signage', 'Informational Signage']
+        'bestFor' => 'Reducing visitor confusion with clean reception, room, safety, and directional signage.',
+        'services' => ['Reception Signs', 'Room Identification Signs', 'Directional Signage', 'Informational Signage'],
+        'recommended' => ['Acrylic Signage', 'Foamboard Signage', 'Directional Roadsign', 'Label Sticker']
     ],
     [
         'name' => 'Industrial & Warehouse',
+        'anchor' => 'industrial-solutions',
         'summary' => 'Durable identification, safety, and directional signage for operational sites.',
-        'services' => ['Factory Signboards', 'Safety Signage', 'Directional Signs', 'Warehouse Identification Signs']
+        'bestFor' => 'Improving site identification, safety communication, loading flow, and operational wayfinding.',
+        'services' => ['Factory Signboards', 'Safety Signage', 'Directional Signs', 'Warehouse Identification Signs'],
+        'recommended' => ['Roadsign Safety Signage', 'Directional Roadsign', 'Construction Board', 'Normal Signboard']
+    ],
+];
+
+$planningSteps = [
+    [
+        'title' => 'Share Your Site',
+        'copy' => 'Send photos, floor plans, frontage size, brand files, and opening timeline so we understand the actual location.'
+    ],
+    [
+        'title' => 'Choose The Right Mix',
+        'copy' => 'We match your industry need to suitable sign types, materials, lighting, display areas, and installation approach.'
+    ],
+    [
+        'title' => 'Confirm Design & Quote',
+        'copy' => 'You review the proposed signage scope, dimensions, finishing, artwork direction, and quotation before fabrication.'
+    ],
+    [
+        'title' => 'Fabricate & Install',
+        'copy' => 'Our team coordinates production, site preparation, installation, and practical finishing details.'
     ],
 ];
 
@@ -161,6 +195,8 @@ $extraHead = <<<'HTML'
         .industry-hero-photo,
         .industry-card,
         .industry-package-card,
+        .industry-recommendation-card,
+        .industry-start-panel,
         .industry-flow-step {
             border: 1px solid var(--color-pure-black);
             background: var(--color-pure-white);
@@ -211,6 +247,12 @@ $extraHead = <<<'HTML'
             gap: 1rem;
         }
 
+        .industry-recommendation-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.25rem;
+        }
+
         .industry-card {
             display: flex;
             flex-direction: column;
@@ -229,6 +271,7 @@ $extraHead = <<<'HTML'
 
         .industry-card h3,
         .industry-package-card h3,
+        .industry-recommendation-card h3,
         .industry-flow-step h3 {
             font-size: 1.12rem;
             line-height: 1.2;
@@ -252,13 +295,17 @@ $extraHead = <<<'HTML'
             line-height: 1.25;
         }
 
+        .industry-card-actions {
+            display: grid;
+            gap: 0.65rem;
+            margin-top: 1rem;
+        }
+
         .industry-card-whatsapp {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
-            width: 100%;
-            margin-top: 1rem;
             padding: 0.78rem 0.9rem;
             border: 1px solid #1fb457;
             border-radius: 0;
@@ -288,18 +335,105 @@ $extraHead = <<<'HTML'
             font-size: 1.05rem;
         }
 
+        .industry-card-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 0.78rem 0.9rem;
+            border: 1px solid var(--color-pure-black);
+            color: var(--color-pure-black);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            line-height: 1.2;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+        }
+
+        .industry-card-link:hover,
+        .industry-card-link:focus {
+            background: var(--color-pure-black);
+            color: var(--color-pure-white);
+            transform: translateY(-2px);
+        }
+
         @media (prefers-reduced-motion: reduce) {
             .industry-card,
+            .industry-card-link,
             .industry-card-whatsapp {
                 transition: none;
             }
 
             .industry-card:hover,
             .industry-card:focus-within,
+            .industry-card-link:hover,
+            .industry-card-link:focus,
             .industry-card-whatsapp:hover,
             .industry-card-whatsapp:focus {
                 transform: none;
             }
+        }
+
+        .industry-start-panel {
+            padding: 1.4rem;
+            background: var(--color-light-gray);
+        }
+
+        .industry-start-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .industry-start-item {
+            padding: 1rem;
+            background: var(--color-pure-white);
+            border: 1px solid var(--color-subtle-border);
+        }
+
+        .industry-start-item strong {
+            display: block;
+            margin-bottom: 0.35rem;
+            color: var(--color-pure-black);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.95rem;
+        }
+
+        .industry-recommendation-card {
+            padding: 1.35rem;
+        }
+
+        .industry-recommendation-label {
+            display: inline-block;
+            margin-bottom: 0.8rem;
+            color: var(--color-dark-gray);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .industry-recommendation-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.55rem;
+            padding: 0;
+            margin: 1rem 0 0;
+            list-style: none;
+        }
+
+        .industry-recommendation-list li {
+            padding: 0.65rem 0.75rem;
+            background: var(--color-light-gray);
+            border: 1px solid var(--color-subtle-border);
+            color: var(--color-near-black);
+            font-size: 0.86rem;
+            font-weight: 600;
+            line-height: 1.3;
         }
 
         .industry-package-grid {
@@ -352,7 +486,7 @@ $extraHead = <<<'HTML'
 
         .industry-flow {
             display: grid;
-            grid-template-columns: repeat(5, minmax(0, 1fr));
+            grid-template-columns: repeat(4, minmax(0, 1fr));
             gap: 1rem;
         }
 
@@ -385,11 +519,17 @@ $extraHead = <<<'HTML'
             .industry-package-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
+
+            .industry-recommendation-grid,
+            .industry-start-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 767.98px) {
             .industry-card-grid,
             .industry-package-grid,
+            .industry-recommendation-list,
             .industry-flow {
                 grid-template-columns: 1fr;
             }
@@ -413,8 +553,8 @@ require __DIR__ . '/../includes/header.php';
                         Signage SG supports end-to-end branding and signage work, from shopfront visibility and interior brand features to wayfinding, wall graphics, display signage, and installation coordination.
                     </p>
                     <div class="d-flex flex-wrap gap-3">
-                        <a href="#fnb-solutions" class="btn-wb-solid">View F&B Package</a>
-                        <a href="../index.php#quote-form" class="btn-wb-outline">Request Consultation</a>
+                        <a href="#industry-solutions" class="btn-wb-solid">Choose My Industry</a>
+                        <a href="https://wa.me/6582861600?text=<?php echo rawurlencode('Hi Signage SG, I need help choosing signage for my business.'); ?>" class="btn-wb-outline" target="_blank" rel="noopener noreferrer">Ask For Recommendation</a>
                     </div>
                 </div>
                 <div class="col-lg-5">
@@ -448,10 +588,63 @@ require __DIR__ . '/../includes/header.php';
                             <li><?php echo htmlspecialchars($service, ENT_QUOTES, 'UTF-8'); ?></li>
 <?php endforeach; ?>
                         </ul>
-                        <a href="https://wa.me/6582861600?text=<?php echo rawurlencode('Hi Signage SG, I would like to discuss signage solutions for ' . $industry['name'] . '.'); ?>" class="industry-card-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp about <?php echo htmlspecialchars($industry['name'], ENT_QUOTES, 'UTF-8'); ?> signage">
-                            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
-                            WhatsApp
-                        </a>
+                        <div class="industry-card-actions">
+                            <a href="#<?php echo htmlspecialchars($industry['anchor'], ENT_QUOTES, 'UTF-8'); ?>" class="industry-card-link">View Ideas</a>
+                            <a href="https://wa.me/6582861600?text=<?php echo rawurlencode('Hi Signage SG, I would like to discuss signage solutions for ' . $industry['name'] . '.'); ?>" class="industry-card-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp about <?php echo htmlspecialchars($industry['name'], ENT_QUOTES, 'UTF-8'); ?> signage">
+                                <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                                WhatsApp
+                            </a>
+                        </div>
+                    </article>
+<?php endforeach; ?>
+                </div>
+            </div>
+        </section>
+
+        <section id="industry-recommendations" class="industry-section">
+            <div class="container">
+                <div class="row align-items-end justify-content-between g-4 mb-4">
+                    <div class="col-lg-8">
+                        <span class="text-uppercase tracking-wider text-muted fw-bold" style="font-size: 0.78rem; letter-spacing: 2px;">Recommended Starting Points</span>
+                        <h2 class="display-5 text-black mt-2 mb-3">Not Sure Which Signage Type Fits Your Business?</h2>
+                        <p class="industry-copy mb-0">
+                            Use your business type as the first filter. These recommendations give you a practical starting point before comparing materials, lighting, size, and installation details.
+                        </p>
+                    </div>
+                    <div class="col-lg-auto">
+                        <a href="../products" class="btn-wb-outline">Browse Products</a>
+                    </div>
+                </div>
+
+                <div class="industry-start-panel mb-4">
+                    <div class="industry-start-grid">
+                        <div class="industry-start-item">
+                            <strong>If you know your business type</strong>
+                            <p class="industry-copy mb-0">Start with the industry cards below and shortlist the signage mix that fits your space.</p>
+                        </div>
+                        <div class="industry-start-item">
+                            <strong>If you know the exact sign type</strong>
+                            <p class="industry-copy mb-0">Go straight to Products to compare lightboxes, 3D letters, stickers, road signs, and display sets.</p>
+                        </div>
+                        <div class="industry-start-item">
+                            <strong>If you only have a site photo</strong>
+                            <p class="industry-copy mb-0">WhatsApp us the photo and we can suggest suitable signage options for quotation.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="industry-recommendation-grid">
+<?php foreach ($industries as $industry): ?>
+                    <article id="<?php echo htmlspecialchars($industry['anchor'], ENT_QUOTES, 'UTF-8'); ?>" class="industry-recommendation-card">
+                        <span class="industry-recommendation-label"><?php echo htmlspecialchars($industry['name'], ENT_QUOTES, 'UTF-8'); ?></span>
+                        <h3 class="mb-2">Best for</h3>
+                        <p class="industry-copy mb-3"><?php echo htmlspecialchars($industry['bestFor'], ENT_QUOTES, 'UTF-8'); ?></p>
+                        <h3 class="mb-2">Recommended signage</h3>
+                        <ul class="industry-recommendation-list">
+<?php foreach ($industry['recommended'] as $item): ?>
+                            <li><?php echo htmlspecialchars($item, ENT_QUOTES, 'UTF-8'); ?></li>
+<?php endforeach; ?>
+                        </ul>
                     </article>
 <?php endforeach; ?>
                 </div>
@@ -498,36 +691,21 @@ require __DIR__ . '/../includes/header.php';
         <section id="solution-flow" class="industry-section">
             <div class="container">
                 <div class="industry-section-heading">
-                    <span class="text-uppercase tracking-wider text-muted fw-bold" style="font-size: 0.78rem; letter-spacing: 2px;">Preferred Website Flow</span>
-                    <h2 class="display-5 text-black mt-2 mb-3">A Customer-Focused Path From Industry Need To Enquiry</h2>
+                    <span class="text-uppercase tracking-wider text-muted fw-bold" style="font-size: 0.78rem; letter-spacing: 2px;">How We Plan Your Signage</span>
+                    <h2 class="display-5 text-black mt-2 mb-3">From Site Photos To Fabrication And Installation</h2>
+                    <p class="industry-copy mb-0">
+                        A clearer signage plan starts with your location, not only a product name. This process helps us recommend the right mix for visibility, customer flow, brand fit, and budget.
+                    </p>
                 </div>
 
                 <div class="industry-flow">
+<?php foreach ($planningSteps as $index => $step): ?>
                     <article class="industry-flow-step">
-                        <span>Step 01</span>
-                        <h3>Home</h3>
-                        <p class="industry-copy mb-0">Introduce Signage SG as an end-to-end signage and branding partner.</p>
+                        <span>Step <?php echo str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT); ?></span>
+                        <h3><?php echo htmlspecialchars($step['title'], ENT_QUOTES, 'UTF-8'); ?></h3>
+                        <p class="industry-copy mb-0"><?php echo htmlspecialchars($step['copy'], ENT_QUOTES, 'UTF-8'); ?></p>
                     </article>
-                    <article class="industry-flow-step">
-                        <span>Step 02</span>
-                        <h3>Industry Solutions</h3>
-                        <p class="industry-copy mb-0">Let visitors choose F&B, Retail, Office, Clinic, or Industrial requirements.</p>
-                    </article>
-                    <article class="industry-flow-step">
-                        <span>Step 03</span>
-                        <h3>Signage Categories</h3>
-                        <p class="industry-copy mb-0">Connect each package to actual products, materials, and fabrication options.</p>
-                    </article>
-                    <article class="industry-flow-step">
-                        <span>Step 04</span>
-                        <h3>Portfolio</h3>
-                        <p class="industry-copy mb-0">Show relevant installed work so customers can picture the final result.</p>
-                    </article>
-                    <article class="industry-flow-step">
-                        <span>Step 05</span>
-                        <h3>Contact Us</h3>
-                        <p class="industry-copy mb-0">Convert interest into a site discussion, quote, or WhatsApp enquiry.</p>
-                    </article>
+<?php endforeach; ?>
                 </div>
             </div>
         </section>

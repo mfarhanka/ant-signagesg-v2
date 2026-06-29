@@ -654,7 +654,8 @@
                 {
                     "title": "Light Bulb Signboard Item 02",
                     "image": "light-bulb-signboard-item-02-97adf7dd-efaa-40f5-b545-edf971318528.jpeg",
-                    "description": "Reference photo for light bulb signboard fabrication, bulb layout, illuminated letter styling, and installation planning."
+                    "description": "Reference photo for light bulb signboard fabrication, bulb layout, illuminated letter styling, and installation planning.",
+                    "hidden": false
                 }
             ]
         },

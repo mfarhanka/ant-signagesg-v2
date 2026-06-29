@@ -319,7 +319,7 @@ require __DIR__ . '/header.php';
             </div>
         </section>
 <?php else: ?>
-<?php $productEntries = isset($currentItem['entries']) && is_array($currentItem['entries']) ? $currentItem['entries'] : []; ?>
+<?php $productEntries = isset($currentItem['entries']) && is_array($currentItem['entries']) ? array_values(array_filter($currentItem['entries'], static fn (array $entry): bool => empty($entry['hidden']))) : []; ?>
 <?php if ($productEntries !== []): ?>
         <section class="product-detail-section bg-light">
             <div class="container">
