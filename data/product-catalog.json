@@ -79,7 +79,75 @@
             "group": "3D Signboard With Lighting",
             "image": "94f3f345-eec0-43fe-bcda-c0abdb93bd67.png",
             "source_url": "https://signages.com.sg/products/3d-signboard-with-lighting/front-lit-signboard/",
-            "slug": "front-lit-signboard"
+            "slug": "front-lit-signboard",
+            "entries": [
+                {
+                    "title": "Noci Bakehouse Front-lit Lettering",
+                    "image": "3d-signboard-3d-frontlit-lettering-installed-in-suntec-singapore.jpeg",
+                    "description": "White front-lit 3D lettering installed on a shopfront wall.",
+                    "hidden": false
+                },
+                {
+                    "title": "Noci Bakehouse LED Signboard",
+                    "image": "3d-signboard-3d-led-signboard-installed-in-suntec-singapore.jpeg",
+                    "description": "Illuminated 3D lettering mounted on a dark fascia panel.",
+                    "hidden": false
+                },
+                {
+                    "title": "MOS Burger Illuminated Signboard",
+                    "image": "3d-signboard-3d-illuminated-signboard-installation-amkhub-singapore.jpeg",
+                    "description": "Front-lit logo and lettering for a mall shopfront.",
+                    "hidden": false
+                },
+                {
+                    "title": "Bao Makers Front-lit Lettering",
+                    "image": "3d-signboard-frontlit-lettering-installation-the-woodleigh-mall-singapore.jpeg",
+                    "description": "Large white front-lit channel letters above a shopfront.",
+                    "hidden": false
+                },
+                {
+                    "title": "Foot Tree Front-lit Bracket Signboard",
+                    "image": "3d-signboard-frontlit-signboard-with-bracket-installation-jurong-singapore.jpeg",
+                    "description": "Suspended front-lit 3D lettering with bracket mounting.",
+                    "hidden": false
+                },
+                {
+                    "title": "Frank Zuo Hair Salon Illuminated Signage",
+                    "image": "3d-signboard-illuminated-shopfront-signage-installation-the-cathay-singapore.jpeg",
+                    "description": "Bright front-lit 3D logo and lettering on a dark fascia.",
+                    "hidden": false
+                },
+                {
+                    "title": "Steak 99 Shopfront 3D Lettering",
+                    "image": "3d-signboard-shopfront-3d-lettering-installation-jurong-gateway-singapore.jpeg",
+                    "description": "Front-lit shopfront lettering with red 3D accent elements.",
+                    "hidden": false
+                },
+                {
+                    "title": "Keisuke LED Illuminated Shopfront",
+                    "image": "3d-signboard-led-illuminated-shopfront-signage-installation-millenia-walk-singapore.jpeg",
+                    "description": "Illuminated shopfront sign with front-lit 3D lettering.",
+                    "hidden": false
+                },
+                {
+                    "title": "Yamaha LED Signboard",
+                    "image": "3d-signboard-led-signboard-installation-ang-mo-kio-singapore.jpeg",
+                    "description": "Red front-lit 3D logo and lettering for an exterior storefront.",
+                    "hidden": false
+                },
+                {
+                    "title": "Super Dream Stainless Steel Front-lit Signage",
+                    "image": "3d-signboard-stainless-steel-frontlit-installation-bugis-singapore.jpeg",
+                    "description": "Front-lit 3D lettering paired with a round illuminated logo.",
+                    "hidden": false
+                },
+                {
+                    "title": "Fantasia Music Academy Shopfront Signboard",
+                    "image": "3d-signboard-shopping-mall-shopfront-3d-signboard-installation-orchard-singapore.jpeg",
+                    "description": "White front-lit 3D lettering on a dark mall shopfront fascia.",
+                    "hidden": false
+                }
+            ]
         },
         {
             "title": "Back-lit Signboard",
@@ -93,6 +161,24 @@
                     "image": "3d-aluminum-backlit-office-signage-installed-in-ubi-singapore.jpeg",
                     "description": "",
                     "hidden": false
+                },
+                {
+                    "title": "SG Alliance Back-lit Signage",
+                    "image": "3d-signboard-aluminum-backlit-signage-installation-alexandra-rd-singapore.jpeg",
+                    "description": "Back-lit logo signage with halo glow on a feature wall.",
+                    "hidden": false
+                },
+                {
+                    "title": "Onetaxcm Office Back-lit Signboard",
+                    "image": "3d-signboard-office-signboard-installed-in-singapore.jpeg",
+                    "description": "3D office lettering with blue halo back-lighting.",
+                    "hidden": false
+                },
+                {
+                    "title": "Kurun Tokyo Premium Back-lit Signage",
+                    "image": "3d-signboard-premium-backlit-signage-installation-ngee-ann-city-singapore.jpeg",
+                    "description": "Premium back-lit 3D lettering with a soft halo effect.",
+                    "hidden": false
                 }
             ]
         },
@@ -101,7 +187,15 @@
             "group": "3D Signboard With Lighting",
             "image": "whole-lit-signboard.jpeg",
             "source_url": "https://signages.com.sg/3d-signboard-whole-lit-signboard/",
-            "slug": "whole-lit-signboard"
+            "slug": "whole-lit-signboard",
+            "entries": [
+                {
+                    "title": "MOS Burger Acrylic Whole-lit Feature Wall",
+                    "image": "3d-signboard-feature-wall-signage-acrylic-wholelit-installation-compass-one-singapore.jpeg",
+                    "description": "Acrylic whole-lit logo and lettering installed on an interior feature wall.",
+                    "hidden": false
+                }
+            ]
         },
         {
             "title": "Punch Hole Signboard",
@@ -133,7 +227,15 @@
             "title": "Acrylic 3D Wording",
             "group": "3D Signboard With Non-Lighting",
             "image": "acrylic-3d-wording.jpeg",
-            "source_url": "https://signages.com.sg/3d-signboard-with-non-lighting-acrylic/"
+            "source_url": "https://signages.com.sg/3d-signboard-with-non-lighting-acrylic/",
+            "entries": [
+                {
+                    "title": "Yappari Steak Non-lit 3D Lettering",
+                    "image": "3d-signboard-shopfront-bracket-signboard-installation-woodland-singapore.jpeg",
+                    "description": "Non-illuminated orange 3D shopfront lettering.",
+                    "hidden": false
+                }
+            ]
         },
         {
             "title": "Normal Lightbox",
@@ -187,7 +289,15 @@
             "title": "Stainless Steel 3D Wording Signage",
             "group": "Indoor Signage",
             "image": "stainless-steel-3d-wording-signage.jpeg",
-            "source_url": "https://signages.com.sg/indoor-3d-wording-stainless-steel-3d-wording-signage/"
+            "source_url": "https://signages.com.sg/indoor-3d-wording-stainless-steel-3d-wording-signage/",
+            "entries": [
+                {
+                    "title": "GIU Singapore Stainless Steel 3D Signboard",
+                    "image": "3d-signboard-3d-stainless-steel-signboard-installed-in-ubi-ave-singapore.jpeg",
+                    "description": "Mirror-finish stainless steel 3D signboard without internal lighting.",
+                    "hidden": false
+                }
+            ]
         },
         {
             "title": "Acrylic 3D Wording",
