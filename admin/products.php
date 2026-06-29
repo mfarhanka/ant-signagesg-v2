@@ -102,6 +102,36 @@ function signage_admin_find_category_preview_image(array $items, string $groupTi
     return '';
 }
 
+function signage_admin_count_entries(array $items, ?string $groupTitle = null): array
+{
+    $total = 0;
+    $hidden = 0;
+
+    foreach ($items as $item) {
+        if ($groupTitle !== null && ($item['group'] ?? '') !== $groupTitle) {
+            continue;
+        }
+
+        if (empty($item['entries']) || !is_array($item['entries'])) {
+            continue;
+        }
+
+        foreach ($item['entries'] as $entry) {
+            $total++;
+
+            if (!empty($entry['hidden'])) {
+                $hidden++;
+            }
+        }
+    }
+
+    return [
+        'total' => $total,
+        'hidden' => $hidden,
+        'visible' => $total - $hidden,
+    ];
+}
+
 if (isset($_GET['logout'])) {
     $_SESSION = [];
     session_destroy();
@@ -392,6 +422,7 @@ if ($isLoggedIn && $requestMethod === 'POST') {
 $catalog = signage_load_catalog_for_admin();
 $groups = $catalog['groups'];
 $items = $catalog['items'];
+$entryTotals = signage_admin_count_entries($items);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -400,36 +431,56 @@ $items = $catalog['items'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Admin | Signage SG</title>
     <style>
-        body { margin: 0; font-family: Arial, sans-serif; background: #f6f6f6; color: #111; }
-        header, main { width: min(1760px, calc(100% - 32px)); margin: 0 auto; padding: 24px 0; }
-        header { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+        body { margin: 0; font-family: Arial, sans-serif; background: #f4f5f7; color: #111; }
+        header, main { width: min(1760px, calc(100% - 32px)); margin: 0 auto; }
+        header { position: sticky; top: 0; z-index: 20; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px 0; background: #f4f5f7; border-bottom: 1px solid #d8dce2; }
+        main { padding: 22px 0 32px; }
         h1, h2, h3 { margin: 0 0 12px; }
+        h1 { font-size: 28px; }
+        h2 { font-size: 18px; }
+        h3 { font-size: 16px; }
         a { color: #111; }
-        .panel { background: #fff; border: 1px solid #111; padding: 18px; margin-bottom: 18px; }
-        .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-        .category { border: 1px solid #ccc; margin-top: 12px; background: #fff; }
-        .category summary { display: flex; justify-content: space-between; gap: 16px; align-items: center; padding: 14px; cursor: pointer; font-weight: 700; }
+        .admin-links { display: inline-flex; align-items: center; gap: 12px; font-size: 14px; font-weight: 700; }
+        .panel { background: #fff; border: 1px solid #cfd4dc; padding: 18px; margin-bottom: 18px; border-radius: 6px; box-shadow: 0 1px 2px rgba(17, 24, 39, .04); }
+        .quick-panels { display: grid; grid-template-columns: minmax(280px, .85fr) minmax(520px, 1.6fr); gap: 16px; align-items: start; }
+        .metric-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-bottom: 18px; }
+        .metric { background: #fff; border: 1px solid #cfd4dc; border-radius: 6px; padding: 14px; }
+        .metric strong { display: block; font-size: 24px; line-height: 1; }
+        .metric span { display: block; margin-top: 7px; color: #555; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+        .section-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px; }
+        .category { border: 1px solid #cfd4dc; margin-top: 12px; background: #fff; border-radius: 6px; overflow: hidden; }
+        .category summary { display: flex; justify-content: space-between; gap: 16px; align-items: center; padding: 16px; cursor: pointer; font-weight: 700; background: #fff; }
         .category summary::-webkit-details-marker { display: none; }
         .category summary::before { content: "+"; display: inline-flex; width: 26px; height: 26px; align-items: center; justify-content: center; border: 1px solid #111; margin-right: 10px; flex-shrink: 0; }
         .category[open] summary::before { content: "-"; }
         .category-summary-title { display: flex; align-items: center; min-width: 0; }
         .category-summary-title span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-        .category-summary-actions { display: inline-flex; align-items: center; gap: 8px; flex-shrink: 0; }
-        .category-count { flex-shrink: 0; border: 1px solid #111; padding: 5px 8px; font-size: 12px; font-family: monospace; }
-        .category-body { padding: 0 14px 14px; border-top: 1px solid #ddd; }
-        .item { border-top: 1px solid #ddd; padding-top: 12px; margin-top: 12px; }
-        .subitem-panel { margin-top: 12px; border: 1px solid #ddd; background: #fafafa; }
-        .subitem-panel summary { padding: 10px 12px; cursor: pointer; font-weight: 700; }
-        .subitem-panel-body { padding: 0 12px 12px; border-top: 1px solid #ddd; }
-        .entry { padding-top: 12px; margin-top: 12px; border-top: 1px solid #ddd; }
-        .row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; align-items: end; }
+        .category-summary-actions { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-end; flex-shrink: 0; }
+        .category-count { flex-shrink: 0; border: 1px solid #111; padding: 5px 8px; font-size: 12px; font-family: monospace; background: #fff; }
+        .category-count.is-muted { border-color: #b6bdc8; color: #555; }
+        .category-count.is-hidden { border-color: #a40000; color: #a40000; }
+        .category-body { padding: 16px; border-top: 1px solid #d8dce2; background: #fbfcfd; }
+        .category-admin { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: end; margin-bottom: 14px; padding: 14px; border: 1px solid #d8dce2; background: #fff; border-radius: 6px; }
+        .item { border: 1px solid #d8dce2; padding: 14px; margin-top: 12px; background: #fff; border-radius: 6px; }
+        .item-header { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; margin-bottom: 12px; }
+        .item-title { margin: 0; font-size: 15px; }
+        .subitem-panel { margin-top: 12px; border: 1px solid #d8dce2; background: #fafafa; border-radius: 6px; overflow: hidden; }
+        .subitem-panel summary { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 14px; cursor: pointer; font-weight: 700; background: #eef1f5; }
+        .subitem-panel-body { padding: 14px; border-top: 1px solid #d8dce2; }
+        .entry { padding: 12px; margin-top: 12px; border: 1px solid #d8dce2; background: #fff; border-radius: 6px; }
+        .entry-form { display: grid; grid-template-columns: minmax(220px, 1fr) minmax(240px, 1fr) minmax(280px, 1.2fr) minmax(150px, .7fr) auto; gap: 10px; align-items: end; }
+        .row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; align-items: end; }
+        .row.compact { grid-template-columns: minmax(180px, 1fr) auto; }
+        .row.subcategory-form { grid-template-columns: minmax(220px, 1.1fr) minmax(220px, 1fr) minmax(260px, 1fr) minmax(220px, 1fr) auto; }
+        .row.add-entry-form { grid-template-columns: minmax(220px, 1fr) minmax(240px, 1fr) minmax(280px, 1.2fr) minmax(150px, .7fr) auto; }
+        .action-row { display: flex; justify-content: flex-end; gap: 8px; margin-top: 10px; }
         label { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 4px; }
-        input, select, textarea { width: 100%; box-sizing: border-box; padding: 10px; border: 1px solid #999; }
+        input, select, textarea { width: 100%; box-sizing: border-box; padding: 10px; border: 1px solid #aeb6c2; border-radius: 4px; background: #fff; }
         input[type="checkbox"] { width: auto; }
         textarea { min-height: 84px; resize: vertical; }
-        button { padding: 10px 14px; border: 1px solid #111; background: #111; color: #fff; cursor: pointer; }
+        button { min-height: 40px; padding: 10px 14px; border: 1px solid #111; border-radius: 4px; background: #111; color: #fff; cursor: pointer; font-weight: 700; white-space: nowrap; }
         button.link-button { padding: 0; border: 0; background: transparent; color: #555; text-decoration: underline; font-size: 13px; }
-        button.photo-thumb { display: inline-flex; width: 58px; height: 44px; padding: 0; border: 1px solid #111; background: #fff; overflow: hidden; flex-shrink: 0; }
+        button.photo-thumb { display: inline-flex; width: 58px; height: 44px; min-height: 0; padding: 0; border: 1px solid #111; background: #fff; overflow: hidden; flex-shrink: 0; }
         button.photo-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
         button.category-photo-thumb { width: 46px; height: 34px; }
         .image-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 6px; }
@@ -449,7 +500,8 @@ $items = $catalog['items'];
         .image-modal-close { background: #fff; color: #111; }
         .image-modal-body { padding: 14px; background: #f6f6f6; }
         .image-modal-body img { display: block; width: 100%; max-height: 74vh; object-fit: contain; background: #fff; border: 1px solid #ddd; }
-        @media (max-width: 900px) { header, main { width: min(100% - 24px, 1760px); padding: 16px 0; } .grid, .row { grid-template-columns: 1fr; } header { align-items: flex-start; flex-direction: column; } .category summary { align-items: flex-start; } .category-summary-actions { flex-direction: column; align-items: flex-end; } }
+        @media (max-width: 1180px) { .quick-panels, .metric-grid, .category-admin, .row, .row.compact, .row.subcategory-form, .row.add-entry-form, .entry-form { grid-template-columns: 1fr; } }
+        @media (max-width: 900px) { header, main { width: min(100% - 24px, 1760px); } header { position: static; align-items: flex-start; flex-direction: column; padding: 16px 0; } main { padding: 16px 0; } .category summary, .subitem-panel summary { align-items: flex-start; flex-direction: column; } .category-summary-actions { justify-content: flex-start; } .action-row { justify-content: flex-start; flex-wrap: wrap; } }
     </style>
 </head>
 <body>
@@ -473,10 +525,10 @@ $items = $catalog['items'];
     <header>
         <div>
             <h1>Product Admin</h1>
-            <p class="muted"><?php echo count($groups); ?> categories, <?php echo count($items); ?> subcategories</p>
+            <p class="muted"><?php echo count($groups); ?> categories, <?php echo count($items); ?> subcategories, <?php echo (int) $entryTotals['total']; ?> product-page items</p>
         </div>
-        <div>
-            <a href="../products" target="_blank">View Products</a> |
+        <div class="admin-links">
+            <a href="../products" target="_blank">View Products</a>
             <a href="?logout=1">Logout</a>
         </div>
     </header>
@@ -487,9 +539,17 @@ $items = $catalog['items'];
 <?php if ($error !== ''): ?>
         <div class="error"><?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?></div>
 <?php endif; ?>
+        <section class="metric-grid" aria-label="Catalog summary">
+            <div class="metric"><strong><?php echo count($groups); ?></strong><span>Categories</span></div>
+            <div class="metric"><strong><?php echo count($items); ?></strong><span>Subcategories</span></div>
+            <div class="metric"><strong><?php echo (int) $entryTotals['visible']; ?></strong><span>Visible Items</span></div>
+            <div class="metric"><strong><?php echo (int) $entryTotals['hidden']; ?></strong><span>Hidden Items</span></div>
+        </section>
+
+        <div class="quick-panels">
         <section class="panel">
             <h2>Add Category</h2>
-            <form method="post" class="row">
+            <form method="post" class="row compact">
                 <input type="hidden" name="action" value="add_category">
                 <div><label>Category Title</label><input name="title" required></div>
                 <div><button type="submit">Add Category</button></div>
@@ -515,11 +575,16 @@ $items = $catalog['items'];
                 <div><button type="submit">Add Subcategory</button></div>
             </form>
         </section>
+        </div>
 
         <section class="panel">
-            <h2>Manage Categories</h2>
+            <div class="section-heading">
+                <h2>Manage Categories</h2>
+                <span class="muted">Open a category to edit subcategories and product-page items.</span>
+            </div>
 <?php foreach ($groups as $groupTitle => $groupItemTitles): ?>
 <?php $categoryPreviewImage = signage_admin_find_category_preview_image($items, $groupTitle); ?>
+<?php $categoryEntryTotals = signage_admin_count_entries($items, $groupTitle); ?>
             <details class="category">
                 <summary>
                     <span class="category-summary-title"><span><?php echo htmlspecialchars($groupTitle, ENT_QUOTES, 'UTF-8'); ?></span></span>
@@ -529,30 +594,43 @@ $items = $catalog['items'];
                             <img loading="lazy" src="<?php echo htmlspecialchars(signage_admin_product_image_url($categoryPreviewImage), ENT_QUOTES, 'UTF-8'); ?>" alt="">
                         </button>
 <?php endif; ?>
-                        <span class="category-count"><?php echo count($groupItemTitles); ?> items</span>
+                        <span class="category-count"><?php echo count($groupItemTitles); ?> subcategories</span>
+                        <span class="category-count is-muted"><?php echo (int) $categoryEntryTotals['visible']; ?> visible</span>
+                        <span class="category-count is-hidden"><?php echo (int) $categoryEntryTotals['hidden']; ?> hidden</span>
                     </span>
                 </summary>
                 <div class="category-body">
-                <form method="post" class="row">
+                <div class="category-admin">
+                <form method="post" class="row compact">
                     <input type="hidden" name="action" value="rename_category">
                     <input type="hidden" name="old_title" value="<?php echo htmlspecialchars($groupTitle, ENT_QUOTES, 'UTF-8'); ?>">
                     <div><label>Category</label><input name="new_title" value="<?php echo htmlspecialchars($groupTitle, ENT_QUOTES, 'UTF-8'); ?>" required></div>
-                    <div><label>Total Items</label><input value="<?php echo count($groupItemTitles); ?>" disabled></div>
                     <div><button type="submit" class="secondary">Rename</button></div>
                 </form>
-                <form method="post" onsubmit="return confirm('Delete this category and all subcategories?');" style="margin-top: 8px;">
+                <form method="post" onsubmit="return confirm('Delete this category and all subcategories?');">
                     <input type="hidden" name="action" value="delete_category">
                     <input type="hidden" name="title" value="<?php echo htmlspecialchars($groupTitle, ENT_QUOTES, 'UTF-8'); ?>">
                     <button type="submit" class="danger">Delete Category</button>
                 </form>
+                </div>
 
 <?php foreach ($groupItemTitles as $itemTitle): ?>
 <?php $productItem = signage_catalog_find_item($items, $groupTitle, $itemTitle) ?? ['title' => $itemTitle, 'group' => $groupTitle, 'image' => '', 'source_url' => '']; ?>
 <?php $productEntries = isset($productItem['entries']) && is_array($productItem['entries']) ? $productItem['entries'] : []; ?>
+<?php $productEntryTotal = count($productEntries); ?>
+<?php $productHiddenTotal = count(array_filter($productEntries, static fn (array $entry): bool => !empty($entry['hidden']))); ?>
 <?php $productSlug = signage_product_anchor((string) ($productItem['slug'] ?? '')) ?: signage_product_source_slug($productItem['source_url'] ?? '', $itemTitle); ?>
 <?php $productImageUrl = signage_admin_product_image_url($productItem['image'] ?? ''); ?>
                 <div class="item">
-                    <form method="post" class="row" enctype="multipart/form-data">
+                    <div class="item-header">
+                        <h3 class="item-title"><?php echo htmlspecialchars($itemTitle, ENT_QUOTES, 'UTF-8'); ?></h3>
+                        <span class="category-summary-actions">
+                            <span class="category-count"><?php echo (int) $productEntryTotal; ?> items</span>
+                            <span class="category-count is-muted"><?php echo (int) ($productEntryTotal - $productHiddenTotal); ?> visible</span>
+                            <span class="category-count is-hidden"><?php echo (int) $productHiddenTotal; ?> hidden</span>
+                        </span>
+                    </div>
+                    <form method="post" class="row subcategory-form" enctype="multipart/form-data">
                         <input type="hidden" name="action" value="update_product">
                         <input type="hidden" name="old_group" value="<?php echo htmlspecialchars($groupTitle, ENT_QUOTES, 'UTF-8'); ?>">
                         <input type="hidden" name="old_title" value="<?php echo htmlspecialchars($itemTitle, ENT_QUOTES, 'UTF-8'); ?>">
@@ -575,16 +653,23 @@ $items = $catalog['items'];
                         <div><label>Reference URL</label><input name="source_url" value="<?php echo htmlspecialchars($productItem['source_url'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"></div>
                         <div><button type="submit" class="secondary">Save Subcategory</button></div>
                     </form>
-                    <form method="post" onsubmit="return confirm('Delete this subcategory?');" style="margin-top: 8px;">
+                    <form method="post" class="action-row" onsubmit="return confirm('Delete this subcategory?');">
                         <input type="hidden" name="action" value="delete_product">
                         <input type="hidden" name="group" value="<?php echo htmlspecialchars($groupTitle, ENT_QUOTES, 'UTF-8'); ?>">
                         <input type="hidden" name="title" value="<?php echo htmlspecialchars($itemTitle, ENT_QUOTES, 'UTF-8'); ?>">
                         <button type="submit" class="danger">Delete Subcategory</button>
                     </form>
                     <details class="subitem-panel">
-                        <summary><?php echo count($productEntries); ?> items under <?php echo htmlspecialchars($itemTitle, ENT_QUOTES, 'UTF-8'); ?></summary>
+                        <summary>
+                            <span>Product-page items under <?php echo htmlspecialchars($itemTitle, ENT_QUOTES, 'UTF-8'); ?></span>
+                            <span class="category-summary-actions">
+                                <span class="category-count"><?php echo (int) $productEntryTotal; ?> total</span>
+                                <span class="category-count is-muted"><?php echo (int) ($productEntryTotal - $productHiddenTotal); ?> visible</span>
+                                <span class="category-count is-hidden"><?php echo (int) $productHiddenTotal; ?> hidden</span>
+                            </span>
+                        </summary>
                         <div class="subitem-panel-body">
-                            <form method="post" class="row" enctype="multipart/form-data">
+                            <form method="post" class="row add-entry-form" enctype="multipart/form-data">
                                 <input type="hidden" name="action" value="add_product_entry">
                                 <input type="hidden" name="group" value="<?php echo htmlspecialchars($groupTitle, ENT_QUOTES, 'UTF-8'); ?>">
                                 <input type="hidden" name="title" value="<?php echo htmlspecialchars($itemTitle, ENT_QUOTES, 'UTF-8'); ?>">
@@ -602,7 +687,7 @@ $items = $catalog['items'];
 <?php $entryImageUrl = signage_admin_product_image_url($entry['image'] ?? ''); ?>
 <?php $entryIsHidden = !empty($entry['hidden']); ?>
                             <div class="entry">
-                                <form method="post" class="row" enctype="multipart/form-data">
+                                <form method="post" class="entry-form" enctype="multipart/form-data">
                                     <input type="hidden" name="action" value="update_product_entry">
                                     <input type="hidden" name="group" value="<?php echo htmlspecialchars($groupTitle, ENT_QUOTES, 'UTF-8'); ?>">
                                     <input type="hidden" name="title" value="<?php echo htmlspecialchars($itemTitle, ENT_QUOTES, 'UTF-8'); ?>">
@@ -629,7 +714,7 @@ $items = $catalog['items'];
                                     </div>
                                     <div><button type="submit" class="secondary">Save Item</button></div>
                                 </form>
-                                <form method="post" onsubmit="return confirm('Delete this item?');" style="margin-top: 8px;">
+                                <form method="post" class="action-row" onsubmit="return confirm('Delete this item?');">
                                     <input type="hidden" name="action" value="delete_product_entry">
                                     <input type="hidden" name="group" value="<?php echo htmlspecialchars($groupTitle, ENT_QUOTES, 'UTF-8'); ?>">
                                     <input type="hidden" name="title" value="<?php echo htmlspecialchars($itemTitle, ENT_QUOTES, 'UTF-8'); ?>">
