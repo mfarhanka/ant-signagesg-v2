@@ -1,9 +1,9 @@
 {
     "groups": {
         "3D Signboard With Lighting": [
-            "Light Bulb Signboard",
-            "Front-lit Signboard",
             "Back-lit Signboard",
+            "Front-lit Signboard",
+            "Light Bulb Signboard",
             "Whole-lit Signboard",
             "Punch Hole Signboard"
         ],
@@ -76,989 +76,289 @@
         {
             "title": "Front-lit Signboard",
             "group": "3D Signboard With Lighting",
-            "image": "front-lit-3d-signboard.jpeg",
-            "source_url": "https://signages.com.sg/3d-signboard-front-lit-signboard/",
-            "slug": "front-lit-signboard",
-            "entries": [
-                {
-                    "title": "Front-lit Signboard Item 01",
-                    "image": "front-lit-signboard-item-02-website-image-combine-02-1.jpg",
-                    "description": "Reference photo for front-lit 3D signboard fabrication, acrylic face lighting, letter depth, and installation planning.",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 02",
-                    "image": "front-lit-signboard-item-03-website-image-combine-01-scaled.jpg",
-                    "description": "Reference photo for front-lit 3D signboard fabrication, acrylic face lighting, letter depth, and installation planning.",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 03",
-                    "image": "front-lit-signboard-item-04-bc203ad2-d9ae-4ec8-9626-828cdde48a41.jpeg",
-                    "description": "Materials:\n- SENTOSA wording: Aluminium frameless box-up lettering with white LED front-lit\n- Bottom wording: 10mm PVC foamboard with spray paint\n- Acrylic Base",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 04",
-                    "image": "front-lit-signboard-item-05-d42212db-bcad-47d7-a102-e67c6d448f48.jpeg",
-                    "description": "Reference photo for front-lit 3D signboard fabrication, acrylic face lighting, letter depth, and installation planning.",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 05",
-                    "image": "front-lit-signboard-item-06-e6ae8cfb-9b40-44fd-bf5e-4580a8b5fd24.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box-up\n- LED Front-lit",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 06",
-                    "image": "front-lit-signboard-item-07-e588fd72-5e29-401d-ab9b-b10edb936f70.jpeg",
-                    "description": "Materials:\n- G.I. colorbond base\n- 3D box-up LED front-lit frameless",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 07",
-                    "image": "front-lit-signboard-item-08-e36753a9-89e2-4fd4-8319-fb59d2576a25.jpeg",
-                    "description": "Materials:\n- Alumnium ceiling strip\n- 3D box up front-lit frameless\n- Cut sticker\n- Small wording: 5mm acrylic\n- Logo: Lightbox sticker matt lam",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 08",
-                    "image": "front-lit-signboard-item-09-ebc0af04-a6c0-4254-9b49-a1e040177cb2.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box-up lettering\n- LED front-lit\n- Lighting white acrylic sheet as surface\n- Logo: Lightbox sticker matt lam\n- LED Module / strip inside with transformer",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 09",
-                    "image": "front-lit-signboard-item-10-f61b5d77-0c26-4033-be09-7e9306423352.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering with LED front lit\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 10",
-                    "image": "front-lit-signboard-item-11-1efc6689-ad0c-4d32-a37b-c1705c2940d6.jpeg",
-                    "description": "Materials:\n- Single sided round shape lightbox\n- Lightbox sticker matt lam",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 11",
-                    "image": "front-lit-signboard-item-12-2a5101e3-f5e9-42e5-9b7a-4b122c1e9532.jpeg",
-                    "description": "Reference photo for front-lit 3D signboard fabrication, acrylic face lighting, letter depth, and installation planning.",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 12",
-                    "image": "front-lit-signboard-item-13-2f43a78b-cf69-465b-92da-15def7701db9.jpeg",
-                    "description": "Reference photo for front-lit 3D signboard fabrication, acrylic face lighting, letter depth, and installation planning.",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 13",
-                    "image": "front-lit-signboard-item-14-3b199d67-fed2-4aab-8c19-e4466c3785fa.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering with LED front lit\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 14",
-                    "image": "front-lit-signboard-item-15-04fe7555-cea3-43c6-8f77-39f14c1275c0.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering with LED front lit\n- Lighting white acrylic sheet as base\n- LED white module / strip inside with transformer\n- Image: Lightbox sticker matt lam",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 15",
-                    "image": "front-lit-signboard-item-16-4f159a56-303a-4b6c-a52b-b56550d18282.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box-up lettering with LED front-lit\n- Lighting white acrylic sheet as surface\n- White LED Module / strip inside with transformer",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 16",
-                    "image": "front-lit-signboard-item-17-5e478f95-2f6a-4e88-8388-a3d19799ae63.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box-up\n- LED Front-lit",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 17",
-                    "image": "front-lit-signboard-item-18-6c451b6c-c3d4-47b5-8182-68b5694565bd.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box-up\n- Lightbox sticker matt lam\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 18",
-                    "image": "front-lit-signboard-item-19-035f63a9-db4e-4cd1-bd23-38c09918a4ee.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box-up\n- Lightbox sticker matt lam\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 19",
-                    "image": "front-lit-signboard-item-20-28e28464-1c2c-4303-9c39-7fd77f0aabe2.jpeg",
-                    "description": "Materials:\n- Aluminium ceiling strip as base\n- Logo & wording: 3D box up front-lit frameless\n- Logo: Lightbox sticker matt lam\n- Small wording: 5mm acrylic base + cut sticker as surface",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 20",
-                    "image": "front-lit-signboard-item-21-047eb235-e5f2-4aa7-a85d-2267786fafc5-e1735522874204.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box up with LED front lit\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer\n- Wording: Stainless Steel lettering",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 21",
-                    "image": "front-lit-signboard-item-22-72c41a4e-d577-4cfc-a07f-da5d80a86c28.jpeg",
-                    "description": "Materials:\n- 3D Aluminium Box-up\n- LED Front-lit",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 22",
-                    "image": "front-lit-signboard-item-23-94ee4bfd-af47-499a-93db-6231e018cfff.jpeg",
-                    "description": "Reference photo for front-lit 3D signboard fabrication, acrylic face lighting, letter depth, and installation planning.",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 23",
-                    "image": "front-lit-signboard-item-24-327e002a-9786-4334-9a38-ddb8e5e29dfb.jpeg",
-                    "description": "Materials:\n- G.I. board as base\n- White cut sticker for wording\n- Front-lit as surface",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 24",
-                    "image": "front-lit-signboard-item-25-1020cf57-c369-4bfe-aaea-4980d3d4287b.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering with LED front lit\n- Lighting white acrylic sheet as base\n- LED white module / strip inside with transformer\n- Image: Cutting sticker",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 25",
-                    "image": "front-lit-signboard-item-26-3519aa0e-ee2d-4e41-97fc-05d380f25c97.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering with LED front-lit\n- Lighting white acrylic sheet as base\n- LED white module / strip inside with transformer\n- Image: Lightbox sticker matt lam",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 26",
-                    "image": "front-lit-signboard-item-27-67078daa-1fe3-4f0d-ad18-58f75ba25856.jpeg",
-                    "description": "Reference photo for front-lit 3D signboard fabrication, acrylic face lighting, letter depth, and installation planning.",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 27",
-                    "image": "front-lit-signboard-item-28-ad47c280-ef5b-47ec-a790-6aec6ac4fd8b.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering with LED front lit\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 28",
-                    "image": "front-lit-signboard-item-29-ae300df7-cb0c-4429-b200-c1ddfffb176c.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering with LED front lit\n- Lighting white acrylic sheet as base\n- LED white module / strip inside with transformer\n- Image: Lightbox sticker matt lam",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 29",
-                    "image": "front-lit-signboard-item-30-7f880776-748f-40ad-9935-dd98e7effb89.jpg",
-                    "description": "Materials:\n- 10mm acrylic laser cutting out wording\n- Blue cut sticker for wording\n- White cut sticker as right top side\n- Clear acrylic base",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 30",
-                    "image": "front-lit-signboard-item-31-92ed6377-f5f2-4ccd-8d77-38d219c0a4ae.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering with spray paint\n- LED front lit\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer\n- Cutting sticker as logo surface",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 31",
-                    "image": "front-lit-signboard-item-32-22badcfd-373b-4a8c-b0ce-dde8af84ec90.jpeg",
-                    "description": "Reference photo for front-lit 3D signboard fabrication, acrylic face lighting, letter depth, and installation planning.",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 32",
-                    "image": "front-lit-signboard-item-33-b78d8830-dc9a-40e6-b52b-e9e0e968a2f7-e1735526064344.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering with LED front lit\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 33",
-                    "image": "front-lit-signboard-item-34-c826f463-915f-439f-a11f-5d766911667e-e1735286966941.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering with LED front lit\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 34",
-                    "image": "front-lit-signboard-item-35-3cc34cb5-4512-4f39-9229-594ba8b1290e.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering with LED front lit\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 35",
-                    "image": "front-lit-signboard-item-36-38c35ae3-e94d-434b-a8a3-13b602da3f5a.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering with LED front lit\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 36",
-                    "image": "front-lit-signboard-item-37-0c45d3bd-151f-47a1-9735-bb88d302ac75.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering with LED front lit\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 37",
-                    "image": "front-lit-signboard-item-38-d2efe331-f9da-49ce-86ca-f4c0eae43f12.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering with LED front lit\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 38",
-                    "image": "front-lit-signboard-item-39-de7857cb-498d-40cf-99a8-6019f5564375.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering with LED front lit\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 39",
-                    "image": "front-lit-signboard-item-40-a5f24967-e36f-4325-992a-8e1285ae50a8.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering with LED front lit\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 40",
-                    "image": "front-lit-signboard-item-41-f66cc4a9-a7aa-4d95-8851-b089da47b408.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering side white with LED front lit\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer\n- Oracal cut sticker as surface",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 41",
-                    "image": "front-lit-signboard-item-42-228f368e-01c2-4118-bc7d-7e4cae647dde.jpg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering with LED front lit\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 42",
-                    "image": "front-lit-signboard-item-43-3961b93d-7092-4bc7-bda0-706c53ce5df8-1.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering side with black spray paint\n- LED front lit\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 43",
-                    "image": "front-lit-signboard-item-44-9eb16ef6-9ded-48e4-bc64-b0c993ed6d18-1.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering side with black spray paint\n- LED front lit\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 44",
-                    "image": "front-lit-signboard-item-45-1be12085-0c9e-4ed5-a30e-18df426910ab-1-e1727322426794.jpeg",
-                    "description": "Reference photo for front-lit 3D signboard fabrication, acrylic face lighting, letter depth, and installation planning.",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 45",
-                    "image": "front-lit-signboard-item-46-e4acf619-0869-482a-8d04-b0b61f92c59f.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering with LED front lit\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 46",
-                    "image": "front-lit-signboard-item-47-ffa96e9b-a26e-4ec1-929d-b17c07083cb8.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering with LED front lit\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 47",
-                    "image": "front-lit-signboard-item-48-8ccd7575-d18c-43f8-b004-908d0e1ae7ee.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering with LED front lit\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 48",
-                    "image": "front-lit-signboard-item-49-4f3e6ff7-507f-434a-b7c7-61470576e048.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering with LED front lit\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 49",
-                    "image": "front-lit-signboard-item-50-c6231da1-f494-4b3e-94c1-0f431fe8e41e.jpeg",
-                    "description": "Materials:\n- 3D no border double sided with LED front-lit side spray black\n- Lighting white acrylic sheet as surface\n- Cut sticker as surface\n- LED Module / strip inside with transformer",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 50",
-                    "image": "front-lit-signboard-item-51-47b46aed-9c95-4824-803e-38c97aa399ec.jpeg",
-                    "description": "Materials:\n- 3D no border double-sided front-lit with side spray black\n- Cut sticker as surface",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 51",
-                    "image": "front-lit-signboard-item-52-54d904bb-5c3b-4a56-9bba-79f12949326e.jpeg",
-                    "description": "Reference photo for front-lit 3D signboard fabrication, acrylic face lighting, letter depth, and installation planning.",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 52",
-                    "image": "front-lit-signboard-item-53-2bbf5945-8534-46ca-81b5-9535344ee549.jpeg",
-                    "description": "Materials:\n- Aluminium strip base with gold spray angle\n- English company name, logo used aluminium borderless LED front-lit\n- Chinese company name used aluminium box-up LED box-lit",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 53",
-                    "image": "front-lit-signboard-item-54-556b2c3b-4eac-4df1-9b67-06c9e56ad12f-e1735526211291.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering with LED front lit\n- Cut sticker as surface\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 54",
-                    "image": "front-lit-signboard-item-55-39ffb96c-f4f0-4c54-b103-d7ec9e7a3299-e1735526287469.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering with LED front lit\n- Cut sticker as surface\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 55",
-                    "image": "front-lit-signboard-item-56-cb6de53c-52c4-4d21-ae70-d74861f3cdb1.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering with LED front lit\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 56",
-                    "image": "front-lit-signboard-item-57-e8e33171-0bfc-4034-9f7d-ab7ef28f96a8.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box up with LED front lit\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 57",
-                    "image": "front-lit-signboard-item-58-90291727-f23c-4127-91da-4e76f7ea08fa.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering\n- 3mm lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer\n- White sticker matt lam with laminaion as logo surface",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 58",
-                    "image": "front-lit-signboard-item-59-44f9e814-468f-4c01-a0b1-e1517cf962a7.jpeg",
-                    "description": "Materials:\n- 3D Aluminium box up with LED front lit\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 59",
-                    "image": "front-lit-signboard-item-60-f0fffa16-0752-465e-8476-9703278a4c59.jpeg",
-                    "description": "Materials:\n- Aluminium box up 3D lettering\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 60",
-                    "image": "front-lit-signboard-item-61-3d477ab4-6fb9-49c4-a86b-534bc5f33a6b.jpeg",
-                    "description": "Reference photo for front-lit 3D signboard fabrication, acrylic face lighting, letter depth, and installation planning.",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 61",
-                    "image": "front-lit-signboard-item-62-f12ab0dc-a5bb-497e-a35c-9aede7d78411.jpeg",
-                    "description": "Materials:\n- Aluminium box up 3D lettering\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 62",
-                    "image": "front-lit-signboard-item-63-1f6ebef4-63db-485c-930f-05f6e3aedfc5.jpeg",
-                    "description": "Materials:\n- Aluminium box up 3D lettering\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer\n- Hollow structure",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 63",
-                    "image": "front-lit-signboard-item-64-24d52d21-510b-4ee2-a796-f5b55b11b7b0-e1719373027381.jpeg",
-                    "description": "Materials:\n- Aluminium box up 3D lettering\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer\n- Hollow structure",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 64",
-                    "image": "front-lit-signboard-item-65-1f0d3c7a-37fb-42fd-80dc-e84335cc9b7a.jpeg",
-                    "description": "Reference photo for front-lit 3D signboard fabrication, acrylic face lighting, letter depth, and installation planning.",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 65",
-                    "image": "front-lit-signboard-item-66-82.jpg",
-                    "description": "Materials:\n- 3D no border double sided with LED front-lit side spray black\n- Lighting white acrylic sheet as surface\n- Cut sticker as surface\n- LED Module / strip inside with transformer",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 66",
-                    "image": "front-lit-signboard-item-67-35.jpg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering with LED front lit\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 67",
-                    "image": "front-lit-signboard-item-68-546f703e-993d-44d1-b45c-4fd65d77d879.jpeg",
-                    "description": "Reference photo for front-lit 3D signboard fabrication, acrylic face lighting, letter depth, and installation planning.",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 68",
-                    "image": "front-lit-signboard-item-69-dd158b51-fefa-49be-973a-25177e8a6d41.jpeg",
-                    "description": "Materials:\n- Hollow structure\n- 3D Aluminium box-up with LED front-lit\n- Q logo, restoran and small wording used foamboard cutting out the word",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 69",
-                    "image": "front-lit-signboard-item-70-28.jpg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering with side spray paint black\n- 3mm lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer\n- Oracal red cut sticker as surface",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 70",
-                    "image": "front-lit-signboard-item-71-26.jpg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering with LED front lit\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer\n- Oracal cutting sticker as surface",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 71",
-                    "image": "front-lit-signboard-item-72-1714706174rkh8272881fa7197cb972a.jpg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering with LED front lit\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer\n- Oracal cutting sticker as surface",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 72",
-                    "image": "front-lit-signboard-item-73-20.jpg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering side black spray paint with LED front lit\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer\n- Oracal cutting sticker as surface",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 73",
-                    "image": "front-lit-signboard-item-74-19.jpg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering side black spray paint with LED front lit\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer\n- Oracal cutting sticker as surface",
-                    "hidden": true
-                },
-                {
-                    "title": "Front-lit Signboard Item 74",
-                    "image": "front-lit-signboard-item-75-18.jpg",
-                    "description": "Materials:\n- 3D Aluminium box up lettering with LED front lit\n- Lighting white acrylic sheet as surface\n- LED Module / strip inside with transformer",
-                    "hidden": true
-                }
-            ]
+            "image": "94f3f345-eec0-43fe-bcda-c0abdb93bd67.png",
+            "source_url": "https://signages.com.sg/products/3d-signboard-with-lighting/front-lit-signboard/",
+            "slug": "front-lit-signboard"
         },
         {
             "title": "Back-lit Signboard",
             "group": "3D Signboard With Lighting",
             "image": "back-lit-signboard.jpeg",
-            "source_url": "https://signages.com.sg/3d-signboard-back-lit-signboard/",
-            "slug": "back-lit-signboard",
-            "entries": [
-                {
-                    "title": "Back-lit Signboard Item 01",
-                    "image": "back-lit-signboard-item-01-06.jpg",
-                    "description": "Reference photo for halo-lit 3D lettering, rear glow spacing, and shopfront signboard finishing.",
-                    "hidden": true
-                },
-                {
-                    "title": "Back-lit Signboard Item 02",
-                    "image": "back-lit-signboard-item-02-17.jpg",
-                    "description": "Reference photo for back-lit letter construction, LED glow coverage, and facade mounting planning.",
-                    "hidden": true
-                },
-                {
-                    "title": "Back-lit Signboard Item 03",
-                    "image": "back-lit-signboard-item-03-ffbddaa3-bb56-4c89-977a-0d68233e4bb3.jpeg",
-                    "description": "Reference photo for illuminated lettering depth, panel contrast, and premium brand wall usage.",
-                    "hidden": true
-                },
-                {
-                    "title": "Back-lit Signboard Item 04",
-                    "image": "back-lit-signboard-item-04-15caf7c0-aaac-41a3-b98c-5ca533ab38ec.jpeg",
-                    "description": "Reference photo for rear-lit signage glow, wall spacing, and installation detail discussions.",
-                    "hidden": true
-                },
-                {
-                    "title": "Back-lit Signboard Item 05",
-                    "image": "back-lit-signboard-item-05-de0f6bc0-c6c2-4798-b88c-98e944655af1-e1719372937211.jpeg",
-                    "description": "Reference photo for back-lit signboard brightness, letter finish, and viewing distance checks.",
-                    "hidden": true
-                },
-                {
-                    "title": "Back-lit Signboard Item 06",
-                    "image": "back-lit-signboard-item-06-0609f5df-3b8c-48db-b828-1a6406b3a421-e1719372886435.jpeg",
-                    "description": "Reference photo for illuminated 3D lettering with controlled halo effect and clean wall mounting.",
-                    "hidden": true
-                },
-                {
-                    "title": "Back-lit Signboard Item 07",
-                    "image": "back-lit-signboard-item-07-92d4bb47-f41f-47f7-aa29-d565a09f4d9b.jpeg",
-                    "description": "Reference photo for commercial back-lit signage, facade visibility, and nighttime brand presence.",
-                    "hidden": true
-                },
-                {
-                    "title": "Back-lit Signboard Item 08",
-                    "image": "back-lit-signboard-item-08-e4b39b47-bfbc-48e0-bee0-f2ae49ceb37a.jpeg",
-                    "description": "Reference photo for rear-glow letter signage, polished finishing, and indoor feature wall planning.",
-                    "hidden": true
-                },
-                {
-                    "title": "Back-lit Signboard Item 09",
-                    "image": "back-lit-signboard-item-09-1d6c64f4-5f70-4488-99f3-ee32297098a5.jpeg",
-                    "description": "Reference photo for halo-lit signboard proportions, lighting warmth, and brand lettering layout.",
-                    "hidden": true
-                },
-                {
-                    "title": "Back-lit Signboard Item 10",
-                    "image": "back-lit-signboard-item-10-1636f324-7a2d-4750-bb6a-d57844bee52c.jpeg",
-                    "description": "Reference photo for compact back-lit signage, raised letters, and premium wall installation.",
-                    "hidden": true
-                },
-                {
-                    "title": "Back-lit Signboard Item 11",
-                    "image": "back-lit-signboard-item-11-d214c55e-dc41-4938-8e07-96023d11e7c9.jpeg",
-                    "description": "Reference photo for illuminated facade signage, halo depth, and retail frontage planning.",
-                    "hidden": true
-                },
-                {
-                    "title": "Back-lit Signboard Item 12",
-                    "image": "back-lit-signboard-item-12-da307d72-ed24-4555-afc9-b2e129bf9f4d.jpeg",
-                    "description": "Reference photo for back-lit letter spacing, glow uniformity, and wall surface compatibility.",
-                    "hidden": true
-                },
-                {
-                    "title": "Back-lit Signboard Item 13",
-                    "image": "back-lit-signboard-item-13-38ed71b9-9f6d-4670-b55f-8403204d177f.jpeg",
-                    "description": "Reference photo for rear illuminated 3D signage, letter depth, and premium finish selection.",
-                    "hidden": true
-                },
-                {
-                    "title": "Back-lit Signboard Item 14",
-                    "image": "back-lit-signboard-item-14-b8ee29cc-4548-4cd6-a086-f0d21c5c935d.jpeg",
-                    "description": "Reference photo for back-lit signboard installation, facade placement, and brand visibility.",
-                    "hidden": true
-                },
-                {
-                    "title": "Back-lit Signboard Item 15",
-                    "image": "back-lit-signboard-item-15-b090e094-b3d6-4831-9615-f71370fe56fd-e1720143629553.jpeg",
-                    "description": "Reference photo for halo-lit letters, edge finishing, and indoor or sheltered sign applications.",
-                    "hidden": true
-                },
-                {
-                    "title": "Back-lit Signboard Item 16",
-                    "image": "back-lit-signboard-item-16-bf76d6e3-34e9-4a07-9e75-9e36db186bc3.jpeg",
-                    "description": "Reference photo for brand wall backlighting, lighting contrast, and raised lettering finish.",
-                    "hidden": true
-                },
-                {
-                    "title": "Back-lit Signboard Item 17",
-                    "image": "back-lit-signboard-item-17-9358a78f-0f70-4526-80dd-8fab598a0852.jpeg",
-                    "description": "Reference photo for rear-lit signboard fabrication, LED placement, and wall glow control.",
-                    "hidden": true
-                },
-                {
-                    "title": "Back-lit Signboard Item 18",
-                    "image": "back-lit-signboard-item-18-d585fd3a-bac5-4df3-92cc-633fe5bde2a6.jpeg",
-                    "description": "Reference photo for larger back-lit signage, facade scale, and visibility from distance.",
-                    "hidden": true
-                },
-                {
-                    "title": "Back-lit Signboard Item 19",
-                    "image": "back-lit-signboard-item-19-cf499f02-6d6f-463d-8351-592747962b25.jpeg",
-                    "description": "Reference photo for stainless steel-style raised letters with rear illumination.",
-                    "hidden": true
-                },
-                {
-                    "title": "Back-lit Signboard Item 20",
-                    "image": "back-lit-signboard-item-20-9eb9382b-ed56-4f10-8338-5e9eb75089d8.jpg",
-                    "description": "Reference photo for clean halo lighting, wall-mounted lettering, and modern retail signage.",
-                    "hidden": true
-                },
-                {
-                    "title": "Back-lit Signboard Item 21",
-                    "image": "back-lit-signboard-item-21-67078daa-1fe3-4f0d-ad18-58f75ba25856.jpeg",
-                    "description": "Reference photo for 3D lettering signboard layout, illuminated depth, and finish comparison.",
-                    "hidden": true
-                },
-                {
-                    "title": "Back-lit Signboard Item 22",
-                    "image": "back-lit-signboard-item-22-10cd7404-2d3a-4514-891b-91f08050dec9-e1735291755297.jpeg",
-                    "description": "Reference photo for stainless steel lettering, premium finish, and back-lit mounting detail.",
-                    "hidden": true
-                },
-                {
-                    "title": "Back-lit Signboard Item 23",
-                    "image": "back-lit-signboard-item-23-8a6b52a7-4856-49df-89ef-03c3d40578d4.jpeg",
-                    "description": "Reference photo for rear illuminated signage with refined letter spacing and brand-wall contrast.",
-                    "hidden": true
-                },
-                {
-                    "title": "Back-lit Signboard Item 24",
-                    "image": "back-lit-signboard-item-24-c6a2b0f4-1376-4bad-99ce-f18ecf5ced25.jpeg",
-                    "description": "Reference photo for back-lit signboard fabrication, glow direction, and signage placement planning.",
-                    "hidden": true
-                },
-                {
-                    "title": "Back-lit Signboard Item 25",
-                    "image": "back-lit-signboard-item-25-bc877f9e-0b08-4914-963e-8aeff0027d8e-e1735273270157.jpeg",
-                    "description": "Reference photo for halo-lit brand lettering, premium wall finish, and final quotation reference.",
-                    "hidden": true
-                }
-            ]
+            "source_url": "https://signages.com.sg/products/3d-signboard-with-lighting/back-lit-signboard/",
+            "slug": "back-lit-signboard"
         },
         {
             "title": "Whole-lit Signboard",
             "group": "3D Signboard With Lighting",
             "image": "whole-lit-signboard.jpeg",
             "source_url": "https://signages.com.sg/3d-signboard-whole-lit-signboard/",
-            "slug": "whole-lit-signboard",
-            "entries": [
-                {
-                    "title": "Whole-lit Signboard Item 01",
-                    "image": "whole-lit-signboard-item-01-74.jpg",
-                    "description": "Reference photo for whole-lit 3D signboard fabrication, full-face illumination, letter depth, and installation planning.",
-                    "hidden": true
-                },
-                {
-                    "title": "Whole-lit Signboard Item 02",
-                    "image": "whole-lit-signboard-item-02-whatsapp-image-2022-11-08-at-17.29.31-2.jpeg",
-                    "description": "Reference photo for whole-lit 3D signboard fabrication, full-face illumination, letter depth, and installation planning.",
-                    "hidden": true
-                },
-                {
-                    "title": "Whole-lit Signboard Item 03",
-                    "image": "whole-lit-signboard-item-03-f9e9f7bf-4bfd-447b-bdcd-2f6338200f62.jpeg",
-                    "description": "Reference photo for whole-lit 3D signboard fabrication, full-face illumination, letter depth, and installation planning.",
-                    "hidden": true
-                },
-                {
-                    "title": "Whole-lit Signboard Item 04",
-                    "image": "whole-lit-signboard-item-04-a7626876-3edb-41ca-bd50-f49c32498aab.jpeg",
-                    "description": "Reference photo for whole-lit 3D signboard fabrication, full-face illumination, letter depth, and installation planning.",
-                    "hidden": true
-                },
-                {
-                    "title": "Whole-lit Signboard Item 05",
-                    "image": "whole-lit-signboard-item-05-7ff6d37f-20f8-4f19-b298-0501adc51ffe.jpeg",
-                    "description": "Reference photo for whole-lit 3D signboard fabrication, full-face illumination, letter depth, and installation planning.",
-                    "hidden": true
-                }
-            ]
+            "slug": "whole-lit-signboard"
         },
         {
             "title": "Punch Hole Signboard",
             "group": "3D Signboard With Lighting",
             "image": "punch-hole-signboard.jpeg",
             "source_url": "https://signages.com.sg/3d-signboard-punch-hole-signboard/",
-            "slug": "punch-hole-signboard",
-            "entries": [
-                {
-                    "title": "Punch Hole Signboard Item 01",
-                    "image": "punch-hole-signboard-item-01-whatsapp-image-2017-05-27-at-5.00.32-pm.jpeg",
-                    "description": "Reference photo for punch hole signboard fabrication, exposed-light effect, panel detailing, and installation planning.",
-                    "hidden": true
-                },
-                {
-                    "title": "Punch Hole Signboard Item 02",
-                    "image": "punch-hole-signboard-item-02-whatsapp-image-2018-02-12-at-15.55.10.jpeg",
-                    "description": "Reference photo for punch hole signboard fabrication, exposed-light effect, panel detailing, and installation planning.",
-                    "hidden": true
-                }
-            ]
+            "slug": "punch-hole-signboard"
         },
         {
             "title": "Light Bulb Signboard",
             "group": "3D Signboard With Lighting",
             "image": "light-bulb-signboard.jpeg",
             "source_url": "https://signages.com.sg/3d-signboard-light-bulb-signboard/",
-            "slug": "light-bulb-signboard",
-            "entries": [
-                {
-                    "title": "Light Bulb Signboard Item 01",
-                    "image": "light-bulb-signboard-item-01-012602b2-8c6a-4ae0-aa8f-c0b43980ac90.jpeg",
-                    "description": "Reference photo for light bulb signboard fabrication, bulb layout, illuminated letter styling, and installation planning.",
-                    "hidden": true
-                },
-                {
-                    "title": "Light Bulb Signboard Item 02",
-                    "image": "light-bulb-signboard-item-02-97adf7dd-efaa-40f5-b545-edf971318528.jpeg",
-                    "description": "Reference photo for light bulb signboard fabrication, bulb layout, illuminated letter styling, and installation planning.",
-                    "hidden": true
-                }
-            ]
+            "slug": "light-bulb-signboard"
         },
         {
             "title": "Foamboard 3D Wording",
             "group": "3D Signboard With Non-Lighting",
             "image": "foamboard-3d-wording.jpeg",
-            "source_url": "https://signages.com.sg/3d-signboard-with-non-lighting-foamboard-3d-wording/",
-            "slug": "foamboard-3d-wording"
+            "source_url": "https://signages.com.sg/3d-signboard-with-non-lighting-foamboard-3d-wording/"
         },
         {
             "title": "Aluminium Box-Up 3D Wording",
             "group": "3D Signboard With Non-Lighting",
             "image": "aluminium-3d-box-up-signboard.jpeg",
-            "source_url": "https://signages.com.sg/aluminium-box-up-3d-wording-3d-signboard-with-non-lighting/",
-            "slug": "aluminium-box-up-3d-wording"
+            "source_url": "https://signages.com.sg/aluminium-box-up-3d-wording-3d-signboard-with-non-lighting/"
         },
         {
             "title": "Acrylic 3D Wording",
             "group": "3D Signboard With Non-Lighting",
             "image": "acrylic-3d-wording.jpeg",
-            "source_url": "https://signages.com.sg/3d-signboard-with-non-lighting-acrylic/",
-            "slug": "acrylic-3d-wording"
+            "source_url": "https://signages.com.sg/3d-signboard-with-non-lighting-acrylic/"
         },
         {
             "title": "Normal Lightbox",
             "group": "Lightbox",
             "image": "normal-lightbox.jpeg",
-            "source_url": "https://signages.com.sg/lightbox-normal-lightbox/",
-            "slug": "normal-lightbox"
+            "source_url": "https://signages.com.sg/lightbox-normal-lightbox/"
         },
         {
             "title": "Aluminium Casing Lightbox",
             "group": "Lightbox",
             "image": "aluminium-casing-lightbox.jpeg",
-            "source_url": "https://signages.com.sg/lightbox-aluminium-casing-lightbox/",
-            "slug": "aluminium-casing-lightbox"
+            "source_url": "https://signages.com.sg/lightbox-aluminium-casing-lightbox/"
         },
         {
             "title": "Soft Fabric Lightbox",
             "group": "Lightbox",
             "image": "soft-fabric-lightbox.jpeg",
-            "source_url": "https://signages.com.sg/lightbox-soft-fabric-lightbox/",
-            "slug": "soft-fabric-lightbox"
+            "source_url": "https://signages.com.sg/lightbox-soft-fabric-lightbox/"
         },
         {
             "title": "Crystal Wording Lightbox",
             "group": "Lightbox",
             "image": "crystal-wording-lightbox.jpeg",
-            "source_url": "https://signages.com.sg/indoor-3d-signage-crystal-wording-lightbox/",
-            "slug": "crystal-wording-lightbox"
+            "source_url": "https://signages.com.sg/indoor-3d-signage-crystal-wording-lightbox/"
         },
         {
             "title": "Normal Signboard",
             "group": "2D Signboard",
             "image": "normal-signboard.jpeg",
-            "source_url": "https://signages.com.sg/signboard-normal-signboard/",
-            "slug": "normal-signboard"
+            "source_url": "https://signages.com.sg/signboard-normal-signboard/"
         },
         {
             "title": "Aluminium Strip Signboard Base",
             "group": "2D Signboard",
             "image": "aluminium-strip-signboard-base.jpeg",
-            "source_url": "https://signages.com.sg/signboard-aluminium-strip-signboard-base/",
-            "slug": "aluminium-strip-signboard-base"
+            "source_url": "https://signages.com.sg/signboard-aluminium-strip-signboard-base/"
         },
         {
             "title": "Banner Signboard",
             "group": "2D Signboard",
             "image": "banner-signboard.jpeg",
-            "source_url": "https://signages.com.sg/signboard-banner-signboard/",
-            "slug": "banner-signboard"
+            "source_url": "https://signages.com.sg/signboard-banner-signboard/"
         },
         {
             "title": "Foamboard 3D Wording Signage",
             "group": "Indoor Signage",
             "image": "foamboard-3d-wording-signage.jpeg",
-            "source_url": "https://signages.com.sg/indoor-3d-wording-foamboard-3d-wording-signage/",
-            "slug": "foamboard-3d-wording-signage"
+            "source_url": "https://signages.com.sg/indoor-3d-wording-foamboard-3d-wording-signage/"
         },
         {
             "title": "Stainless Steel 3D Wording Signage",
             "group": "Indoor Signage",
             "image": "stainless-steel-3d-wording-signage.jpeg",
-            "source_url": "https://signages.com.sg/indoor-3d-wording-stainless-steel-3d-wording-signage/",
-            "slug": "stainless-steel-3d-wording-signage"
+            "source_url": "https://signages.com.sg/indoor-3d-wording-stainless-steel-3d-wording-signage/"
         },
         {
             "title": "Acrylic 3D Wording",
             "group": "Indoor Signage",
             "image": "acrylic-3d-wording.jpeg",
-            "source_url": "https://signages.com.sg/indoor-3d-wording-acrylic-3d-wording-signage/",
-            "slug": "acrylic-3d-wording"
+            "source_url": "https://signages.com.sg/indoor-3d-wording-acrylic-3d-wording-signage/"
         },
         {
             "title": "Acrylic Signage",
             "group": "Indoor Signage",
             "image": "acrylic-signage.jpeg",
-            "source_url": "https://signages.com.sg/indoor-signage-acrylic-signage/",
-            "slug": "acrylic-signage"
+            "source_url": "https://signages.com.sg/indoor-signage-acrylic-signage/"
         },
         {
             "title": "Foamboard Signage",
             "group": "Indoor Signage",
             "image": "foamboard-signage.jpeg",
-            "source_url": "https://signages.com.sg/indoor-signage-foamboard-signage/",
-            "slug": "foamboard-signage"
+            "source_url": "https://signages.com.sg/indoor-signage-foamboard-signage/"
         },
         {
             "title": "LED Banner and Signage",
             "group": "LED Displays",
             "image": "led-banner-and-signage.jpeg",
-            "source_url": "https://signages.com.sg/signage-products-led-banner-and-signage/",
-            "slug": "led-banner-and-signage"
+            "source_url": "https://signages.com.sg/signage-products-led-banner-and-signage/"
         },
         {
             "title": "LED Neon Signage",
             "group": "LED Displays",
             "image": "led-neon-signage-pink.jpg",
-            "source_url": "https://signages.com.sg/signage-products-led-neon-signage/",
-            "slug": "led-neon-signage"
+            "source_url": "https://signages.com.sg/signage-products-led-neon-signage/"
         },
         {
             "title": "Pylon and Directional Signage",
             "group": "LED Displays",
             "image": "pylon-and-directional-signage.jpeg",
-            "source_url": "https://signages.com.sg/signage-product-pylon-and-directional-signage/",
-            "slug": "pylon-and-directional-signage"
+            "source_url": "https://signages.com.sg/signage-product-pylon-and-directional-signage/"
         },
         {
             "title": "Billboard",
             "group": "Billboard",
             "image": "billboard.jpeg",
-            "source_url": "https://signages.com.sg/billboard/",
-            "slug": "billboard"
+            "source_url": "https://signages.com.sg/billboard/"
         },
         {
             "title": "Hoarding",
             "group": "Billboard",
             "image": "hoarding.jpeg",
-            "source_url": "https://signages.com.sg/signage-product-hoarding/",
-            "slug": "hoarding"
+            "source_url": "https://signages.com.sg/signage-product-hoarding/"
         },
         {
             "title": "Construction Board",
             "group": "Billboard",
             "image": "construction-board.jpeg",
-            "source_url": "https://signages.com.sg/signage-product-construction-board/",
-            "slug": "construction-board"
+            "source_url": "https://signages.com.sg/signage-product-construction-board/"
         },
         {
             "title": "Roadsign Safety Signage",
             "group": "Road Sign",
             "image": "roadsign-safety-signage.jpeg",
-            "source_url": "https://signages.com.sg/roadsign-jkr-roadsign/",
-            "slug": "roadsign-safety-signage"
+            "source_url": "https://signages.com.sg/roadsign-jkr-roadsign/"
         },
         {
             "title": "Directional Roadsign",
             "group": "Road Sign",
             "image": "directional-roadsign.jpeg",
-            "source_url": "https://signages.com.sg/roadsign-directional-roadsign/",
-            "slug": "directional-roadsign"
+            "source_url": "https://signages.com.sg/roadsign-directional-roadsign/"
         },
         {
             "title": "Label Sticker",
             "group": "Printing Services",
             "image": "label-sticker.jpeg",
-            "source_url": "https://signages.com.sg/sticker-service-label-sticker/",
-            "slug": "label-sticker"
+            "source_url": "https://signages.com.sg/sticker-service-label-sticker/"
         },
         {
             "title": "Glass Window Sticker",
             "group": "Printing Services",
             "image": "glass-window-sticker.jpeg",
-            "source_url": "https://signages.com.sg/sticker-service-glass-window-sticker/",
-            "slug": "glass-window-sticker"
+            "source_url": "https://signages.com.sg/sticker-service-glass-window-sticker/"
         },
         {
             "title": "Wall Sticker",
             "group": "Printing Services",
             "image": "wall-sticker.jpeg",
-            "source_url": "https://signages.com.sg/sticker/",
-            "slug": "wall-sticker"
+            "source_url": "https://signages.com.sg/sticker/"
         },
         {
             "title": "Vehicle Sticker Wrapping",
             "group": "Printing Services",
             "image": "vehicle-sticker-singapore.jpeg",
-            "source_url": "https://signages.com.sg/sticker-service-vehicle-sticker-wrapping/",
-            "slug": "vehicle-sticker-wrapping"
+            "source_url": "https://signages.com.sg/sticker-service-vehicle-sticker-wrapping/"
         },
         {
             "title": "PVC Table Booth",
             "group": "Exhibition Booth",
             "image": "pvc-table-booth.jpeg",
-            "source_url": "https://signages.com.sg/exhibition-booth-pvc-table-booth/",
-            "slug": "pvc-table-booth"
+            "source_url": "https://signages.com.sg/exhibition-booth-pvc-table-booth/"
         },
         {
             "title": "Backdrop",
             "group": "Exhibition Booth",
             "image": "backdrop.jpeg",
-            "source_url": "https://signages.com.sg/exhibition-booth-backdrop/",
-            "slug": "backdrop"
+            "source_url": "https://signages.com.sg/exhibition-booth-backdrop/"
         },
         {
             "title": "Jumbo Banner",
             "group": "Exhibition Booth",
             "image": "jumbo-banner.jpeg",
-            "source_url": "https://signages.com.sg/exhibition-booth-jumbo-banner/",
-            "slug": "jumbo-banner"
+            "source_url": "https://signages.com.sg/exhibition-booth-jumbo-banner/"
         },
         {
             "title": "Pop-Up Backdrop Display System",
             "group": "Exhibition Booth",
             "image": "pop-up-backdrop-display-system.jpeg",
-            "source_url": "https://signages.com.sg/exhibition-booth-pop-up-backdrop-display-system/",
-            "slug": "pop-up-backdrop-display-system"
+            "source_url": "https://signages.com.sg/exhibition-booth-pop-up-backdrop-display-system/"
         },
         {
             "title": "Pop-Up Promotion Counter",
             "group": "Exhibition Booth",
             "image": "pop-up-promotion-counter.jpeg",
-            "source_url": "https://signages.com.sg/exhibition-booth-pop-up-promotion-counter/",
-            "slug": "pop-up-promotion-counter"
+            "source_url": "https://signages.com.sg/exhibition-booth-pop-up-promotion-counter/"
         },
         {
             "title": "Banner",
             "group": "Display Set",
             "image": "banner.jpeg",
-            "source_url": "https://signages.com.sg/banner/",
-            "slug": "banner"
+            "source_url": "https://signages.com.sg/banner/"
         },
         {
             "title": "Normal Roll-Up Bunting",
             "group": "Display Set",
             "image": "normal-roll-up-bunting.jpeg",
-            "source_url": "https://signages.com.sg/display-set-normal-roll-up-bunting/",
-            "slug": "normal-roll-up-bunting"
+            "source_url": "https://signages.com.sg/display-set-normal-roll-up-bunting/"
         },
         {
             "title": "Deluxe Roll-Up Bunting",
             "group": "Display Set",
             "image": "deluxe-roll-up-bunting.jpeg",
-            "source_url": "https://signages.com.sg/display-set-deluxe-roll-up-bunting/",
-            "slug": "deluxe-roll-up-bunting"
+            "source_url": "https://signages.com.sg/display-set-deluxe-roll-up-bunting/"
         },
         {
             "title": "Tripod/Round Plate Bunting",
             "group": "Display Set",
             "image": "tripod-round-plate-bunting.jpeg",
-            "source_url": "https://signages.com.sg/display-set-tripod-round-plate-bunting/",
-            "slug": "tripod-round-plate-bunting"
+            "source_url": "https://signages.com.sg/display-set-tripod-round-plate-bunting/"
         },
         {
             "title": "Human Stand",
             "group": "Display Set",
             "image": "human-stand.jpeg",
-            "source_url": "https://signages.com.sg/display-set-human-stand/",
-            "slug": "human-stand"
+            "source_url": "https://signages.com.sg/display-set-human-stand/"
         },
         {
             "title": "Easel Stand / Wood Stand",
             "group": "Display Set",
             "image": "easel-stand-wood-stand.jpeg",
-            "source_url": "https://signages.com.sg/easel-stand-wood-stand/",
-            "slug": "easel-stand-wood-stand"
+            "source_url": "https://signages.com.sg/easel-stand-wood-stand/"
         },
         {
             "title": "X-Stand",
             "group": "Display Set",
             "image": "x-stand.jpeg",
-            "source_url": "https://signages.com.sg/display-set/",
-            "slug": "x-stand"
+            "source_url": "https://signages.com.sg/display-set/"
         },
         {
             "title": "Door Bunting",
             "group": "Display Set",
             "image": "door-bunting.jpeg",
-            "source_url": "https://signages.com.sg/display-set-door-bunting/",
-            "slug": "door-bunting"
+            "source_url": "https://signages.com.sg/display-set-door-bunting/"
         },
         {
             "title": "Namecard",
             "group": "Marketing Essential",
             "image": "namecard.jpeg",
-            "source_url": "https://signages.com.sg/marketing-essential/",
-            "slug": "namecard"
+            "source_url": "https://signages.com.sg/marketing-essential/"
         },
         {
             "title": "Leaflet",
             "group": "Marketing Essential",
             "image": "leaflet.jpeg",
-            "source_url": "https://signages.com.sg/marketing-essential-leaflet/",
-            "slug": "leaflet"
+            "source_url": "https://signages.com.sg/marketing-essential-leaflet/"
         }
     ]
 }

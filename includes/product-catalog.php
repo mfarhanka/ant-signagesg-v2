@@ -39,13 +39,15 @@ $productItems = [
         'title' => 'Front-lit Signboard',
         'group' => '3D Signboard With Lighting',
         'image' => 'front-lit-3d-signboard.jpeg',
-        'source_url' => 'https://signages.com.sg/3d-signboard-front-lit-signboard/',
+        'source_url' => 'https://signages.com.sg/products/3d-signboard-with-lighting/front-lit-signboard/',
+        'slug' => 'front-lit-signboard',
     ],
     [
         'title' => 'Back-lit Signboard',
         'group' => '3D Signboard With Lighting',
         'image' => 'back-lit-signboard.jpeg',
-        'source_url' => 'https://signages.com.sg/3d-signboard-back-lit-signboard/',
+        'source_url' => 'https://signages.com.sg/products/3d-signboard-with-lighting/back-lit-signboard/',
+        'slug' => 'back-lit-signboard',
     ],
     [
         'title' => 'Whole-lit Signboard',
