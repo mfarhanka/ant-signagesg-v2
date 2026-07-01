@@ -1,0 +1,84 @@
+{
+    "items": [
+        {
+            "name": "Sentosa",
+            "type": "partner",
+            "image": "sentosa-logo.png",
+            "url": "",
+            "sort_order": 10,
+            "hidden": false
+        },
+        {
+            "name": "Moomoo",
+            "type": "partner",
+            "image": "moomoo-logo.png",
+            "url": "",
+            "sort_order": 20,
+            "hidden": false
+        },
+        {
+            "name": "MOS Burger",
+            "type": "partner",
+            "image": "mos-burger-logo.png",
+            "url": "",
+            "sort_order": 30,
+            "hidden": false
+        },
+        {
+            "name": "Yamaha",
+            "type": "partner",
+            "image": "yamaha-logo.png",
+            "url": "",
+            "sort_order": 40,
+            "hidden": false
+        },
+        {
+            "name": "Cainiao",
+            "type": "partner",
+            "image": "cainiao-logo.png",
+            "url": "",
+            "sort_order": 50,
+            "hidden": false
+        },
+        {
+            "name": "Singapore National Eye Centre",
+            "type": "partner",
+            "image": "singapore-national-eye-centre-logo.png",
+            "url": "",
+            "sort_order": 60,
+            "hidden": false
+        },
+        {
+            "name": "Tiger",
+            "type": "partner",
+            "image": "tiger-logo.png",
+            "url": "",
+            "sort_order": 70,
+            "hidden": false
+        },
+        {
+            "name": "UNIQLO",
+            "type": "partner",
+            "image": "uniqlo-logo.png",
+            "url": "",
+            "sort_order": 80,
+            "hidden": false
+        },
+        {
+            "name": "SBS Transit",
+            "type": "partner",
+            "image": "sbs-transit-logo.png",
+            "url": "",
+            "sort_order": 90,
+            "hidden": false
+        },
+        {
+            "name": "Nestle",
+            "type": "partner",
+            "image": "nestle-logo.png",
+            "url": "",
+            "sort_order": 100,
+            "hidden": false
+        }
+    ]
+}

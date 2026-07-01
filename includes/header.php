@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/seo.php';
+
 $pageTitle = $pageTitle ?? 'Signage SG | Premium Architectural Fabricators Singapore';
 $navPage = $navPage ?? 'home';
 $metaDescription = $metaDescription ?? 'Signage SG designs, fabricates, and installs commercial signage in Singapore, including 3D lettering, lightboxes, acrylic signs, decals, and project coordination.';
@@ -39,8 +41,11 @@ $productMenuGroups = $productMenuGroups ?? [
     'Display Set' => ['Banner', 'Normal Roll-Up Bunting', 'Deluxe Roll-Up Bunting', 'Tripod/Round Plate Bunting', 'Human Stand', 'Easel Stand / Wood Stand', 'X-Stand', 'Door Bunting'],
     'Marketing Essential' => ['Namecard', 'Leaflet'],
 ];
-$canonicalUrl = preg_match('#^https?://#i', $canonicalPath) ? $canonicalPath : rtrim($siteBaseUrl, '/') . '/' . ltrim($canonicalPath, '/');
-$ogImageUrl = preg_match('#^https?://#i', $ogImage) ? $ogImage : rtrim($siteBaseUrl, '/') . '/' . ltrim($ogImage, '/');
+$canonicalPath = signage_seo_canonical_path($canonicalPath);
+$canonicalUrl = signage_seo_absolute_url($canonicalPath, $siteBaseUrl);
+$ogImageUrl = signage_seo_absolute_url($ogImage, $siteBaseUrl);
+$pageSchemas = $structuredData === null ? [] : (array_is_list($structuredData) ? $structuredData : [$structuredData]);
+$structuredDataGraph = signage_seo_schema_graph($pageSchemas, $pageTitle, $metaDescription, $canonicalUrl, $siteBaseUrl);
 ?>
 <!DOCTYPE html>
 <html lang="en" class="h-full">
@@ -50,7 +55,12 @@ $ogImageUrl = preg_match('#^https?://#i', $ogImage) ? $ogImage : rtrim($siteBase
     <title><?php echo htmlspecialchars($pageTitle, ENT_QUOTES, 'UTF-8'); ?></title>
     <meta name="description" content="<?php echo htmlspecialchars($metaDescription, ENT_QUOTES, 'UTF-8'); ?>">
     <meta name="robots" content="<?php echo htmlspecialchars($metaRobots, ENT_QUOTES, 'UTF-8'); ?>">
+    <meta name="author" content="Signage SG">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="format-detection" content="telephone=no">
     <link rel="canonical" href="<?php echo htmlspecialchars($canonicalUrl, ENT_QUOTES, 'UTF-8'); ?>">
+    <link rel="alternate" hreflang="en-SG" href="<?php echo htmlspecialchars($canonicalUrl, ENT_QUOTES, 'UTF-8'); ?>">
+    <link rel="alternate" hreflang="x-default" href="<?php echo htmlspecialchars($canonicalUrl, ENT_QUOTES, 'UTF-8'); ?>">
 
     <meta property="og:locale" content="en_SG">
     <meta property="og:type" content="<?php echo htmlspecialchars($ogType, ENT_QUOTES, 'UTF-8'); ?>">
@@ -58,6 +68,7 @@ $ogImageUrl = preg_match('#^https?://#i', $ogImage) ? $ogImage : rtrim($siteBase
     <meta property="og:description" content="<?php echo htmlspecialchars($metaDescription, ENT_QUOTES, 'UTF-8'); ?>">
     <meta property="og:url" content="<?php echo htmlspecialchars($canonicalUrl, ENT_QUOTES, 'UTF-8'); ?>">
     <meta property="og:image" content="<?php echo htmlspecialchars($ogImageUrl, ENT_QUOTES, 'UTF-8'); ?>">
+    <meta property="og:image:alt" content="<?php echo htmlspecialchars($pageTitle, ENT_QUOTES, 'UTF-8'); ?>">
     <meta property="og:site_name" content="Signage SG">
 
     <meta name="twitter:card" content="summary_large_image">
@@ -75,9 +86,7 @@ $ogImageUrl = preg_match('#^https?://#i', $ogImage) ? $ogImage : rtrim($siteBase
 
     <link rel="icon" type="image/png" href="<?php echo htmlspecialchars($assetBase, ENT_QUOTES, 'UTF-8'); ?>/images/logo.png">
     <link rel="stylesheet" href="<?php echo htmlspecialchars($assetBase, ENT_QUOTES, 'UTF-8'); ?>/css/style.css">
-<?php if ($structuredData !== null): ?>
-    <script type="application/ld+json"><?php echo json_encode($structuredData, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT); ?></script>
-<?php endif; ?>
+    <script type="application/ld+json"><?php echo json_encode($structuredDataGraph, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT); ?></script>
 <?php echo $extraHead; ?>
 </head>
 <body class="d-flex flex-column h-full">

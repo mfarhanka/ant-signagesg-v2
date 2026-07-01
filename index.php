@@ -44,6 +44,8 @@ $structuredData = [
         ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'Industry signage solution planning']]
     ]
 ];
+require_once __DIR__ . '/includes/logo-admin-functions.php';
+$trustedBrandLogos = signage_visible_logo_items();
 require __DIR__ . '/includes/header.php';
 ?>
 
@@ -177,13 +179,20 @@ require __DIR__ . '/includes/header.php';
             <div class="trusted-brands-carousel" id="trustedBrandsCarousel" aria-label="Trusted brands logo carousel">
                 <div class="trusted-brands-viewport">
                     <div class="trusted-brands-track">
-                        <div class="trusted-brands-item"><img src="assets/images/trusted-brands/bridgestone-logo.png" alt="Bridgestone logo" class="trusted-brand-logo"></div>
-                        <div class="trusted-brands-item"><img src="assets/images/trusted-brands/british-club-logo.png" alt="The British Club logo" class="trusted-brand-logo"></div>
-                        <div class="trusted-brands-item"><img src="assets/images/trusted-brands/changi-airport-logo.png" alt="Changi Airport logo" class="trusted-brand-logo"></div>
-                        <div class="trusted-brands-item"><img src="assets/images/trusted-brands/m1-logo.png" alt="M1 logo" class="trusted-brand-logo"></div>
-                        <div class="trusted-brands-item"><img src="assets/images/trusted-brands/marubeni-logo.png" alt="Marubeni logo" class="trusted-brand-logo"></div>
-                        <div class="trusted-brands-item"><img src="assets/images/trusted-brands/ritz-carlton-logo.png" alt="The Ritz-Carlton logo" class="trusted-brand-logo"></div>
-                        <div class="trusted-brands-item"><img src="assets/images/trusted-brands/temasek-polytechnic-logo.png" alt="Temasek Polytechnic logo" class="trusted-brand-logo"></div>
+<?php foreach ($trustedBrandLogos as $trustedBrandLogo): ?>
+<?php $trustedLogoName = (string) ($trustedBrandLogo['name'] ?? 'Trusted brand'); ?>
+<?php $trustedLogoUrl = trim((string) ($trustedBrandLogo['url'] ?? '')); ?>
+<?php $trustedLogoImage = signage_logo_image_url((string) ($trustedBrandLogo['image'] ?? '')); ?>
+                        <div class="trusted-brands-item">
+<?php if ($trustedLogoUrl !== ''): ?>
+                            <a href="<?php echo htmlspecialchars($trustedLogoUrl, ENT_QUOTES, 'UTF-8'); ?>" target="_blank" rel="noopener" aria-label="<?php echo htmlspecialchars($trustedLogoName, ENT_QUOTES, 'UTF-8'); ?>">
+<?php endif; ?>
+                                <img src="<?php echo htmlspecialchars($trustedLogoImage, ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($trustedLogoName . ' logo', ENT_QUOTES, 'UTF-8'); ?>" class="trusted-brand-logo">
+<?php if ($trustedLogoUrl !== ''): ?>
+                            </a>
+<?php endif; ?>
+                        </div>
+<?php endforeach; ?>
                     </div>
                 </div>
                 <div class="trusted-brands-footer">

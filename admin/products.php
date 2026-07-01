@@ -1,5 +1,12 @@
 <?php
 if (PHP_SAPI !== 'cli') {
+    $sessionPath = __DIR__ . '/../data/sessions';
+
+    if (!is_dir($sessionPath)) {
+        mkdir($sessionPath, 0777, true);
+    }
+
+    session_save_path($sessionPath);
     session_start();
 } else {
     $_SESSION = [];
@@ -552,6 +559,8 @@ $entryTotals = signage_admin_count_entries($items);
             <p class="muted"><?php echo count($groups); ?> categories, <?php echo count($items); ?> subcategories, <?php echo (int) $entryTotals['total']; ?> product-page items</p>
         </div>
         <div class="admin-links">
+            <a href="index.php">Dashboard</a>
+            <a href="logos.php">Logos</a>
             <a href="../products" target="_blank">View Products</a>
             <a href="?logout=1">Logout</a>
         </div>

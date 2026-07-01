@@ -47,8 +47,8 @@
         "Printing Services": [
             "Label Sticker",
             "Glass Window Sticker",
-            "Wall Sticker",
-            "Vehicle Sticker Wrapping"
+            "Vehicle Sticker Wrapping",
+            "Wall Sticker"
         ],
         "Exhibition Booth": [
             "PVC Table Booth",
@@ -610,7 +610,7 @@
         {
             "title": "Wall Sticker",
             "group": "Printing Services",
-            "image": "wall-sticker.jpeg",
+            "image": "chatgpt-image-jun-30-2026-03-29-04-pm.png",
             "source_url": "https://signages.com.sg/sticker/",
             "entries": [
                 {
@@ -667,7 +667,8 @@
                     "description": "Large-format hoarding sticker for an aesthetic clinic renovation.",
                     "hidden": false
                 }
-            ]
+            ],
+            "slug": "sticker"
         },
         {
             "title": "Vehicle Sticker Wrapping",

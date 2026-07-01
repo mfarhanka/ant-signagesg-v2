@@ -56,6 +56,18 @@ $structuredData = [
     'description' => $metaDescription,
     'url' => $siteBaseUrl . $canonicalPath,
     'image' => $siteBaseUrl . '/assets/images/products/' . $heroImage,
+    'provider' => [
+        '@type' => 'LocalBusiness',
+        '@id' => $siteBaseUrl . '/#organization',
+        'name' => 'Signage SG',
+        'url' => $siteBaseUrl . '/',
+        'telephone' => '+65 8286 1600',
+    ],
+    'areaServed' => [
+        '@type' => 'Country',
+        'name' => 'Singapore',
+    ],
+    'serviceType' => $currentItem ? $currentItem['title'] : $productGroupTitle,
 ];
 $extraHead = <<<'HTML'
     <style>
