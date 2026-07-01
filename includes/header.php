@@ -86,6 +86,15 @@ $structuredDataGraph = signage_seo_schema_graph($pageSchemas, $pageTitle, $metaD
 
     <link rel="icon" type="image/png" href="<?php echo htmlspecialchars($assetBase, ENT_QUOTES, 'UTF-8'); ?>/images/logo.png">
     <link rel="stylesheet" href="<?php echo htmlspecialchars($assetBase, ENT_QUOTES, 'UTF-8'); ?>/css/style.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z0SP2BFMSB"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-Z0SP2BFMSB');
+    </script>
     <script type="application/ld+json"><?php echo json_encode($structuredDataGraph, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT); ?></script>
 <?php echo $extraHead; ?>
 </head>
